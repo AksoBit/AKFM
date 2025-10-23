@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://ba8dqphbk1c1i"
-path="res://.godot/imported/Fifaks10Dev1.ttf-575872819b47bda7fee15c9bfc979e56.fontdata"
+uid="uid://da8s7os3013x"
+path="res://.godot/imported/DepartureMono-Regular.otf-1275681174d5a893ad3cf9e29e75dc24.fontdata"
 
 [deps]
 
-source_file="res://Fonts/Fifaks10Dev1.ttf"
-dest_files=["res://.godot/imported/Fifaks10Dev1.ttf-575872819b47bda7fee15c9bfc979e56.fontdata"]
+source_file="res://Fonts/DepartureMono-Regular.otf"
+dest_files=["res://.godot/imported/DepartureMono-Regular.otf-1275681174d5a893ad3cf9e29e75dc24.fontdata"]
 
 [params]
 

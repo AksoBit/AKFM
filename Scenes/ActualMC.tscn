@@ -19,7 +19,7 @@
 [ext_resource type="Script" uid="uid://k184ju54kok6" path="res://Scripts/flash_timer.gd" id="17_bcvmy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2ori"]
-size = Vector2(48, 65)
+size = Vector2(40, 65)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6gu3r"]
 size = Vector2(18, 54)
@@ -203,17 +203,17 @@ animations = [{
 z_index = 1
 position = Vector2(320, 301)
 collision_mask = 15
+safe_margin = 0.001
 script = ExtResource("1_nhhmn")
 
 [node name="Area2D" type="Area2D" parent="UwUGG"]
 scale = Vector2(-1, 1)
-collision_layer = 32
-collision_mask = 543
+collision_mask = 2334
 monitoring = false
 script = ExtResource("2_ssrd1")
 
 [node name="HitArea" type="CollisionShape2D" parent="UwUGG/Area2D"]
-position = Vector2(-24, -4.5)
+position = Vector2(-20, -4.5)
 shape = SubResource("RectangleShape2D_g2ori")
 
 [node name="jeffrey" type="Sprite2D" parent="UwUGG/Area2D"]
@@ -237,6 +237,10 @@ one_shot = true
 wait_time = 10.0
 one_shot = true
 autostart = true
+
+[node name="CoreRegen" type="Timer" parent="UwUGG"]
+wait_time = 2.0
+one_shot = true
 
 [node name="ПервыйПлеер" type="AudioStreamPlayer" parent="UwUGG"]
 stream = ExtResource("6_thbw8")
@@ -289,6 +293,10 @@ bus = &"SFX"
 [node name="FlashTimer" type="Timer" parent="UwUGG"]
 script = ExtResource("17_bcvmy")
 
+[node name="Coyote" type="Timer" parent="UwUGG"]
+wait_time = 0.05
+one_shot = true
+
 [node name="Camera2D" type="Camera2D" parent="."]
 z_index = 2
 position = Vector2(320, 180)
@@ -314,5 +322,7 @@ horizontal_alignment = 1
 [connection signal="timeout" from="UwUGG/DASHTIME" to="UwUGG" method="_on_dashtime_timeout"]
 [connection signal="timeout" from="UwUGG/DashRegen" to="UwUGG" method="_on_dash_regen_timeout"]
 [connection signal="timeout" from="UwUGG/DashRegen2" to="UwUGG" method="_on_dash_regen_2_timeout"]
+[connection signal="timeout" from="UwUGG/CoreRegen" to="UwUGG" method="_on_core_regen_timeout"]
 [connection signal="finished" from="UwUGG/Step" to="UwUGG/Step" method="_on_finished"]
 [connection signal="animation_finished" from="UwUGG/AnimatedSprite2D" to="UwUGG/Area2D" method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="timeout" from="UwUGG/Coyote" to="UwUGG" method="_on_coyote_timeout"]

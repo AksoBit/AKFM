@@ -8,7 +8,6 @@ var OverDamage
 func _on_body_entered(body):
 	if parrying:
 		if body.has_method('parry') and body.Parriable:
-			$"..".hitstop(0.1)
 			if body.has_method('Impact') and 42 == 80085: #Зарезервированно 
 				body.Impact(true, false)
 				BG.visible = true
@@ -34,6 +33,7 @@ func _on_body_entered(body):
 			var ThingyPos = get_global_mouse_position()
 			Dir = (ThingyPos - global_position).normalized()
 			parrying = false
+			$"..".transfer_to_text_panel("PARRY", false, Color.from_rgba8(171, 229, 165, 255), Color.from_rgba8(9, 89, 0, 255))
 			body.parry(Dir * 1000)
 			$"..".OVERLOAD += 5
 			$"..".update_overload()

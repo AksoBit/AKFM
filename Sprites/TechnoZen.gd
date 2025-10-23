@@ -8,9 +8,10 @@ var Parts = preload("res://Scenes/TechnoBody.tscn").instantiate()
 @onready var MC = get_parent().get_parent().get_node("UwUGG/UwUGG")
 var Twenty_O_Seven_IS_ETERNAL = preload("res://Scenes/BeamFollowing.tscn")
 var idkreally = Twenty_O_Seven_IS_ETERNAL.instantiate()
-var energy = 150
+var energy = 100
 var AttackCount = 0
 var IsAttaking = false
+var Offset
 var EnForOVERDRIVE = 0
 var IsChillin = true
 var rng = RandomNumberGenerator.new()
@@ -21,6 +22,7 @@ const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 @onready var Face = $Main/AnimatedSprite2D
 func _ready() -> void:
+	Offset = global_position
 	$AnimatedSprite2D.play()
 	while Activated == false:
 		if $"." == null:
@@ -113,8 +115,8 @@ func OVERDRIVE():
 func take_damage(damage):
 	energy -= damage
 	if energy <= 0:
-		get_parent().get_parent().add_child(Parts)
-		Parts.global_position = global_position
+		get_parent().get_parent().call_deferred("add_child", Parts)
+		Parts.global_position = global_position - Offset
 		Global.TechnoDeath()
 		queue_free()
 	$RichTextLabel.text = str(energy)

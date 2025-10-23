@@ -15,7 +15,7 @@ func BLOW():
 			for i in range(ShapeCast.get_collision_count()):
 				var body = ShapeCast.get_collider(i)
 				if body.has_method("take_damage"):
-					body.take_damage(2)
+					body.take_damage(1)
 		await get_tree().create_timer(0.1).timeout 
 	queue_free()
 

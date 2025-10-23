@@ -35,6 +35,8 @@ var DashRegen = 0 #Я хз чстнслв
 var candash = true #При false отключает рывки
 
 #Переменные для дебага 
+var CoyoteStarted = false
+var Coyote = false
 var isdashing = false
 var isjumping = false
 var iswalkin = false
@@ -66,7 +68,7 @@ var OVERDRIVEN = false #Сам факт овердрайва
 var OVERDRIVE_TYPE = 1 #Тип оружия
 var energy := 100 #Мне некуда было запихнуть саму энергию, пускай туточке будет
 var GOD_MODE = false
-var OVERLOAD = 0
+var OVERLOAD := 0
 #Музыка!
 var music = Global.music
 var AlreadyPlaying2 = false
@@ -74,8 +76,11 @@ var AlreadyPlaying = false
 var AlreadyOver200 = false
 var NotRegen = true
 var EnReg = true
+var NotCoreRegening = true
+var CoreReg = true
 var NotRegening = true
 var MusicPack = Global.MusicPack
+var CoreCounter := 0
 #А туточке всякие загрузки и пути
 var Book = preload("res://Scenes/∞/BOOK.tscn")
 var CORE = preload("res://Scenes/CORE.tscn")
@@ -86,11 +91,15 @@ var NeonThingy = preload("res://Scenes/MC/NeonThingy.tscn")
 var TEST_THINGY = preload("res://Scenes/NeonGG.tscn")
 @onready var EnergyIcon = get_parent().get_parent().get_parent().get_parent().get_parent().get_node("SubViewportContainer2/SubViewport/UI/UI")
 @onready var EnergyLable = get_parent().get_parent().get_parent().get_parent().get_parent().get_node("SubViewportContainer2/SubViewport/UI/UI/RichTextLabel")
+@onready var TextPanel = get_parent().get_parent().get_parent().get_parent().get_parent().get_node("SubViewportContainer2/SubViewport/UI/Panel")
 @onready var OverloadBar = get_parent().get_parent().get_parent().get_parent().get_parent().get_node("SubViewportContainer2/SubViewport/UI/OverloadBar/Label")
 @onready var AttackArea = $Area2D
 func _ready() -> void:
 	update_overload()
 	await get_tree().process_frame
+	if OS.get_unique_id() == "{5fffa4c0-29de-11eb-9669-806e6f6e6963}":
+		admin = true
+		transfer_to_text_panel("ПРИВЕТ, ХОЗЯИН~", false, Color.from_rgba8(0, 68, 255, 255), Color.from_rgba8(148, 175, 255, 255))
 	MusicPack = Global.MusicPack
 	if MusicPack == 1:
 		music = load("res://Music/1xx/100 Continue.ogg")
@@ -109,6 +118,10 @@ func _process(delta):
 		EnReg = true	
 		NotRegening = false
 		$DashRegen2.start()
+	if CoreCounter > 0 and NotCoreRegening == true:
+		NotCoreRegening = false
+		CoreReg = true
+		$CoreRegen.start()
 	if energy < 200:
 		AlreadyOver200 = false
 	if energy >= 200 and not OVERDRIVEN and AlreadyPlaying and not AlreadyOver200:
@@ -124,7 +137,7 @@ func _process(delta):
 		AlreadyOver200 = true
 		AlreadyPlaying2 = false
 		MusicPlayer()
-	elif  not OVERDRIVEN and AlreadyPlaying and not AlreadyPlaying2 and not AlreadyOver200:
+	elif not OVERDRIVEN and AlreadyPlaying and not AlreadyPlaying2 and not AlreadyOver200:
 		if MusicPack == 1 and not Global.OVERDRUM:
 			music = load("res://Music/1xx/103 Early Hints.ogg")
 		elif MusicPack == 2 and not Global.OVERDRUM:
@@ -147,7 +160,7 @@ func _process(delta):
 			DashOverdose = 2
 			if DashesUsed >= 8:
 				DashOverdose = 3
-	if DashesUsed <= 3:
+	if DashesUsed <= 2:
 		DashOverdose = 0	
 
 	if DashesUsed > 0 and NotRegen:
@@ -165,6 +178,10 @@ func _physics_process(delta):
 	var current_gravity = base_gravity
 	if velocity.y > 0 and not is_on_floor():
 		current_gravity *= fast_fall_gravity_multiplier
+	if not is_on_floor() and not CoyoteStarted:
+		CoyoteStarted = true
+		Coyote = true
+		$Coyote.start()
 	if not isdashing:
 		velocity.y += current_gravity * delta
 		if not isknockbacking:
@@ -183,12 +200,12 @@ func _physics_process(delta):
 		$AnimatedSprite2D.flip_h = false
 		AttackArea.set_scale(Vector2(-1, 1))
 		$Area2D/HitArea.set_scale(Vector2(-1, 1))
-
-
 	if is_on_floor():
+		CoyoteStarted = false
 		dashesleft = 2
 		isjumping = false 
-	if Input.is_action_just_pressed("UwU_SPACE") and is_on_floor():
+	if Input.is_action_just_pressed("UwU_SPACE") and (is_on_floor() or Coyote):
+		Coyote = false
 		velocity.y = -jump_force
 		isjumping = true
 	move_and_slide()
@@ -220,10 +237,22 @@ func _input(event):
 			pass
 		else:
 			var NEWCORE = CORE.instantiate()
-			get_parent().add_child(NEWCORE)
+			get_parent().get_parent().add_child(NEWCORE)
 			NEWCORE.global_position = global_position
 			NEWCORE.get_node("RigidBody2D").MC = self
-			energy -= 5
+			NEWCORE.get_node("RigidBody2D").linear_velocity += velocity / 2
+			CoreReg = false
+			if not GOD_MODE:
+				CoreCounter += 1 
+				if CoreCounter >= 2:
+					if CoreCounter >= 4:
+						if CoreCounter >= 6:
+							transfer_to_text_panel("overcore", true, Color.from_rgba8(51, 0, 2, 255))
+						else:
+							transfer_to_text_panel("overcore", true, Color.from_rgba8(103, 0, 2, 255))
+					else:
+						transfer_to_text_panel("overcore", true, Color.from_rgba8(152, 0, 2, 255))
+				energy -= CoreCounter * 5
 			update_energy()
 	if event is InputEventKey and event.keycode == KEY_1 and admin:
 		if event.pressed:
@@ -235,7 +264,7 @@ func _input(event):
 	if event is InputEventKey and event.keycode == KEY_2 and admin:
 		if not event.pressed:
 			var NewHack = Hack.instantiate()
-			get_parent().get_parent().add_child(NewHack)
+			get_parent().get_parent().add_child(NewHack)	
 			NewHack.global_position = get_global_mouse_position()
 			NewHack.get_node("ManHack").activate()
 	if event is InputEventKey and event.keycode == KEY_7 and admin:
@@ -279,7 +308,6 @@ func _input(event):
 			shift_pressed = false
 			ShiftClick = false
 			var hold_time = (Time.get_ticks_msec() / 1000.0) - shift_pressed_time
-			 
 			if hold_time < tap_threshold:
 				print('pong')
 				dash(false)
@@ -296,7 +324,7 @@ func _input(event):
 			else:
 				dash(true)
 	if event is InputEventMouseButton:
-		if event.pressed and shift_pressed:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed and shift_pressed:
 			ShiftClick = true
 		elif event.button_index == MOUSE_BUTTON_LEFT and event.pressed and not AttackArea.attacking:
 			hit()
@@ -341,27 +369,30 @@ func dash(IsWicked): #Параметр IsWicked отвечает за то, бу
 		$DASHTIME.start()
 func overdose():
 	#Отнимает энергию при Передозе
-	if OVERDRIVEN:
+	if OVERDRIVEN or GOD_MODE:
 		return
+	DashesUsed += 1
 	match DashOverdose:
 		1:
 			energy -= 10
 			OVERLOAD -= 1
 			EnReg = false
 			update_energy()
+			transfer_to_text_panel("overdash", true, Color.from_rgba8(152,0,2,255))
 		2:
 			OVERLOAD -= 2
 			energy -= 20
 			EnReg = false
 			update_energy()
+			transfer_to_text_panel("overdash", true, Color.from_rgba8(103,0,2, 255))
 		3:
 			OVERLOAD -= 3
 			energy -= 30
 			EnReg = false
 			update_energy()
+			transfer_to_text_panel("overdash", true, Color.from_rgba8(51,0,2, 255))
 	EnReg = false
 	update_energy()
-	DashesUsed += 1
 func OverdriveRift():
 	var NewNeonThingy = NeonThingy.instantiate()
 	get_parent().get_parent().add_child(NewNeonThingy)
@@ -471,7 +502,8 @@ func die():
 		Save.set_value("~NUMBERS~", "YourselfKilled", Deaths )
 	Engine.time_scale = 0
 func _on_dash_regen_2_timeout():
-	#Через некоторое время без урона включается, восстанавливает энергию до 100
+	return
+	#ЗАРЕЗЕРВИРОВАННО
 	while energy < 100 and EnReg == true:
 		energy += 1
 		update_energy()
@@ -563,7 +595,7 @@ func OVERDRIVE():
 	$"ПервыйПлеер".play()
 	var OneTimeTestWarUwUNyaLol = 5.33 / Global.MusicPitch
 	await get_tree().create_timer(OneTimeTestWarUwUNyaLol).timeout
-	speed = 600
+	speed = 800
 	jump_force = 600
 	if MusicPack == 1 and not Global.OVERDRUM:
 		music = load("res://Music/1xx/101 Switching Protocols.ogg")
@@ -582,7 +614,7 @@ func OVERDRIVE():
 		await get_tree().create_timer(0.1).timeout
 	OVERDRIVEN = false
 	THIS_PLACE_ABOUT_TO_BLOW()
-	speed = 400
+	speed = Global.speed
 	jump_force = 600
 	OVERLOAD = 0
 	print('Конец овердрайва')
@@ -620,4 +652,16 @@ func THIS_PLACE_ABOUT_TO_BLOW():
 		node.BLOW()
 func update_overload():
 	OVERLOAD = clamp(OVERLOAD, 0, 100)
-	OverloadBar.text = str(OVERLOAD)
+	OverloadBar.text = str(OVERLOAD, "%")
+func transfer_to_text_panel(text, is_minus, color = Color.from_rgba8(255, 255, 255, 255), outline = Color.from_rgba8(0, 0, 0, 255)):
+	TextPanel.update_text_panel(text, is_minus, color, outline)
+
+
+func _on_core_regen_timeout() -> void:
+	NotCoreRegening = true
+	if CoreReg:
+		CoreCounter -= 1
+
+
+func _on_coyote_timeout() -> void:
+	Coyote = false

@@ -1,5 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://04qy45w0ikuo"]
+[gd_scene load_steps=15 format=3 uid="uid://04qy45w0ikuo"]
 
+[ext_resource type="Texture2D" uid="uid://bov04lxjbskq" path="res://Sprites/AksoBit/BSOD.png" id="1_61h5y"]
 [ext_resource type="Shader" uid="uid://bikpltre5f3l2" path="res://Shaders/SubP.gdshader" id="2_p2aqq"]
 [ext_resource type="PackedScene" uid="uid://dguu3lm4p4l2p" path="res://Scenes/PolyBack.tscn" id="3_dweys"]
 [ext_resource type="PackedScene" uid="uid://dhsclxwwchsih" path="res://Scenes/Домики.tscn" id="4_dbahg"]
@@ -34,6 +35,10 @@ shader_parameter/blur = 0.3
 shader_parameter/scanlines_mult = 0.1
 
 [node name="Node2D" type="Node2D"]
+
+[node name="Bsod" type="Sprite2D" parent="."]
+position = Vector2(320, 180)
+texture = ExtResource("1_61h5y")
 
 [node name="SubViewportContainer3" type="SubViewportContainer" parent="."]
 visible = false

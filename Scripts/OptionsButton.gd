@@ -18,7 +18,7 @@ func _ready():
 	Main.value = Settings.get_value("~SOUND~", "Global")
 	Speed.value = Settings.get_value("~SOUND~", "Speed")
 	Voice.value = Settings.get_value("~SOUND~", "Voice")
-	$Curva.value = Settings.get_value("~GRAPHICS~", "Curvature")
+	$Curva.value = 15 -  Settings.get_value("~GRAPHICS~", "Curvature")
 	$Vin.value = Settings.get_value("~GRAPHICS~", "Vingette multiplyer",)
 	$Scan.value = Settings.get_value("~GRAPHICS~", "Scanlines")
 	$Blur.value = Settings.get_value("~GRAPHICS~", "Blur")

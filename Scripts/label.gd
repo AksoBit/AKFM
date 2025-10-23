@@ -11,9 +11,6 @@ var mpos
 func _ready() -> void:
 	if Global.Debug == false:
 		queue_free()
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pos = GG.global_position
 	vel = GG.velocity

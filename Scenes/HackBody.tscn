@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bkxhvnqwsk755"]
+[gd_scene load_steps=10 format=3 uid="uid://bkxhvnqwsk755"]
 
 [ext_resource type="Texture2D" uid="uid://0x8leec280ol" path="res://Sprites/Hack/HackPart1.png" id="1_t0yvp"]
 [ext_resource type="Texture2D" uid="uid://chkmjxija8fl8" path="res://Sprites/Spark.png" id="2_cy1wj"]
 [ext_resource type="Texture2D" uid="uid://drckfpr3rwqmb" path="res://Sprites/Hack/HackPart4.png" id="3_3o265"]
+[ext_resource type="Texture2D" uid="uid://csonpemk2p3s3" path="res://Other/curva.tres" id="3_cy1wj"]
 [ext_resource type="Texture2D" uid="uid://b8t3lsssvon4x" path="res://Sprites/Hack/HackPart2.png" id="4_084dm"]
 [ext_resource type="Script" uid="uid://bilhhhiqomch4" path="res://Scripts/TechnoBOOM.gd" id="5_mcf1t"]
 [ext_resource type="Texture2D" uid="uid://dllupr0a2lnel" path="res://Sprites/Hack/HackPart3.png" id="6_3dt3w"]
@@ -17,6 +18,7 @@ angle_max = 100.0
 spread = 105.674
 initial_velocity_max = 64.52
 gravity = Vector3(0, 50, 0)
+alpha_curve = ExtResource("3_cy1wj")
 
 [node name="Node2D" type="Node2D" groups=["Bodies"]]
 

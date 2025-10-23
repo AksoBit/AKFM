@@ -1,9 +1,69 @@
-[gd_scene load_steps=19 format=3 uid="uid://1yb4wbnegc86"]
+[gd_scene load_steps=34 format=3 uid="uid://1yb4wbnegc86"]
 
 [ext_resource type="Texture2D" uid="uid://b58rqhn3wjrnb" path="res://Sprites/Battarey-Sheet.png" id="1_dewlx"]
 [ext_resource type="FontFile" uid="uid://ba8dqphbk1c1i" path="res://Fonts/Fifaks10Dev1.ttf" id="2_hfhsn"]
+[ext_resource type="LabelSettings" uid="uid://dg42q1hckpf2e" path="res://Fonts/FontSettings.tres" id="3_48q88"]
 [ext_resource type="Script" uid="uid://c38jvxskpucjb" path="res://Scripts/label.gd" id="3_qwshj"]
 [ext_resource type="Texture2D" uid="uid://cjvbi5ipyhyac" path="res://Sprites/MC/overload_bar.png" id="4_hfhsn"]
+[ext_resource type="FontFile" uid="uid://da8s7os3013x" path="res://Fonts/DepartureMono-Regular.otf" id="6_48q88"]
+[ext_resource type="Script" uid="uid://dil4nig03p1id" path="res://Scripts/MC/ThatTextPanelYouKnow.gd" id="6_xjg7p"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qwshj"]
+bg_color = Color(0, 0, 0, 0.39215687)
+
+[sub_resource type="LabelSettings" id="LabelSettings_j04uc"]
+font = ExtResource("6_48q88")
+font_size = 11
+font_color = Color(0, 0, 0, 1)
+outline_size = 3
+
+[sub_resource type="LabelSettings" id="LabelSettings_vqx31"]
+font = ExtResource("6_48q88")
+font_size = 11
+font_color = Color(0, 0, 0, 1)
+outline_size = 3
+
+[sub_resource type="LabelSettings" id="LabelSettings_b1goy"]
+font = ExtResource("6_48q88")
+font_size = 11
+font_color = Color(0, 0, 0, 1)
+outline_size = 3
+
+[sub_resource type="LabelSettings" id="LabelSettings_n04ve"]
+font = ExtResource("6_48q88")
+font_size = 11
+font_color = Color(0, 0, 0, 1)
+outline_size = 3
+
+[sub_resource type="LabelSettings" id="LabelSettings_wi7yl"]
+font = ExtResource("6_48q88")
+font_size = 11
+font_color = Color(0, 0, 0, 1)
+outline_size = 3
+
+[sub_resource type="LabelSettings" id="LabelSettings_5q4fb"]
+font = ExtResource("6_48q88")
+font_size = 11
+font_color = Color(0, 0, 0, 1)
+outline_size = 3
+
+[sub_resource type="LabelSettings" id="LabelSettings_mqm5i"]
+font = ExtResource("6_48q88")
+font_size = 11
+font_color = Color(0, 0, 0, 1)
+outline_size = 3
+
+[sub_resource type="LabelSettings" id="LabelSettings_jnovg"]
+font = ExtResource("6_48q88")
+font_size = 11
+font_color = Color(0, 0, 0, 1)
+outline_size = 3
+
+[sub_resource type="LabelSettings" id="LabelSettings_13dyv"]
+font = ExtResource("6_48q88")
+font_size = 11
+font_color = Color(0, 0, 0, 1)
+outline_size = 3
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0im1g"]
 atlas = ExtResource("1_dewlx")
@@ -159,19 +219,144 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="LabelSettings" id="LabelSettings_mg6lk"]
+font = ExtResource("6_48q88")
+font_size = 11
+font_color = Color(0, 0, 0, 1)
+outline_size = 3
+
+[sub_resource type="LabelSettings" id="LabelSettings_xjg7p"]
+font = ExtResource("6_48q88")
+font_size = 22
+
 [node name="Node2D" type="Node2D"]
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 6.0
+offset_top = 54.0
+offset_right = 126.0
+offset_bottom = 54.0
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_qwshj")
+script = ExtResource("6_xjg7p")
+
+[node name="Row 1" type="Label" parent="Panel"]
+visible = false
+texture_filter = 1
+layout_mode = 0
+offset_left = 2.0
+offset_top = 10.0
+offset_right = 86.0
+offset_bottom = 24.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+text = "+LOREM IPSUM"
+label_settings = ExtResource("3_48q88")
+
+[node name="Row 2" type="Label" parent="Panel"]
+visible = false
+layout_mode = 0
+offset_left = 2.0
+offset_top = 22.0
+offset_right = 86.0
+offset_bottom = 36.0
+text = "+LOREM IPSUM"
+label_settings = SubResource("LabelSettings_j04uc")
+
+[node name="Row 3" type="Label" parent="Panel"]
+visible = false
+layout_mode = 0
+offset_left = 2.0
+offset_top = 34.0
+offset_right = 86.0
+offset_bottom = 48.0
+text = "+LOREM IPSUM"
+label_settings = SubResource("LabelSettings_vqx31")
+
+[node name="Row 4" type="Label" parent="Panel"]
+visible = false
+layout_mode = 0
+offset_left = 2.0
+offset_top = 46.0
+offset_right = 86.0
+offset_bottom = 60.0
+text = "+LOREM IPSUM"
+label_settings = SubResource("LabelSettings_b1goy")
+
+[node name="Row 5" type="Label" parent="Panel"]
+visible = false
+layout_mode = 0
+offset_left = 2.0
+offset_top = 58.0
+offset_right = 86.0
+offset_bottom = 72.0
+text = "+LOREM IPSUM"
+label_settings = SubResource("LabelSettings_n04ve")
+
+[node name="Row 6" type="Label" parent="Panel"]
+visible = false
+layout_mode = 0
+offset_left = 2.0
+offset_top = 70.0
+offset_right = 86.0
+offset_bottom = 84.0
+text = "+LOREM IPSUM"
+label_settings = SubResource("LabelSettings_wi7yl")
+
+[node name="Row 7" type="Label" parent="Panel"]
+visible = false
+layout_mode = 0
+offset_left = 2.0
+offset_top = 82.0
+offset_right = 86.0
+offset_bottom = 96.0
+text = "+LOREM IPSUM"
+label_settings = SubResource("LabelSettings_5q4fb")
+
+[node name="Row 8" type="Label" parent="Panel"]
+visible = false
+layout_mode = 0
+offset_left = 2.0
+offset_top = 94.0
+offset_right = 86.0
+offset_bottom = 108.0
+text = "+LOREM IPSUM"
+label_settings = SubResource("LabelSettings_mqm5i")
+
+[node name="Row 9" type="Label" parent="Panel"]
+visible = false
+layout_mode = 0
+offset_left = 2.0
+offset_top = 106.0
+offset_right = 86.0
+offset_bottom = 120.0
+text = "+LOREM IPSUM"
+label_settings = SubResource("LabelSettings_jnovg")
+
+[node name="Row 10" type="Label" parent="Panel"]
+visible = false
+layout_mode = 0
+offset_left = 2.0
+offset_top = 118.0
+offset_right = 86.0
+offset_bottom = 132.0
+text = "+LOREM IPSUM"
+label_settings = SubResource("LabelSettings_13dyv")
+
+[node name="ClrTimer" type="Timer" parent="Panel"]
+wait_time = 5.0
 
 [node name="UI" type="AnimatedSprite2D" parent="."]
 position = Vector2(70, 33)
 sprite_frames = SubResource("SpriteFrames_48q88")
-animation = &"72"
+animation = &"OVERDRIVE FULL"
 
 [node name="Label" type="Label" parent="UI"]
 modulate = Color(1, 1, 1, 0.7490196)
-offset_left = -70.0
-offset_top = 31.0
-offset_right = 198.0
-offset_bottom = 210.0
+offset_left = 90.0
+offset_top = -33.0
+offset_right = 358.0
+offset_bottom = 146.0
 theme_override_fonts/font = ExtResource("2_hfhsn")
 theme_override_font_sizes/font_size = 12
 text = "pos: 0 ; 0
@@ -181,6 +366,7 @@ isd:
 isj:
 
 "
+label_settings = SubResource("LabelSettings_mg6lk")
 script = ExtResource("3_qwshj")
 metadata/_edit_use_anchors_ = true
 
@@ -207,8 +393,9 @@ position = Vector2(57, 61)
 texture = ExtResource("4_hfhsn")
 
 [node name="Label" type="Label" parent="OverloadBar"]
-offset_left = 74.0
-offset_top = -17.0
-offset_right = 114.0
-offset_bottom = 6.0
+offset_left = 68.0
+offset_top = -14.0
+offset_right = 108.0
+offset_bottom = 14.0
 text = "0%"
+label_settings = SubResource("LabelSettings_xjg7p")

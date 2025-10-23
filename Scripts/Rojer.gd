@@ -6,7 +6,7 @@ var base_gravity = 1200
 var direction = Vector2.ZERO
 var fast_fall_gravity_multiplier = 1.5
 var acceleration = 400 
-var max_speed = 100  
+var max_speed = 300
 var jumped = false
 var can_jump = false
 var is_rotating = false
@@ -14,6 +14,7 @@ var hp = 25
 var fell = false
 var AlreadyFellTimerStarted = false
 var Activated = false
+var DONT_FUCKING_DARE = false
 var Parriable = false
 var is_falling = false
 var IsOnSomeone = false
@@ -23,18 +24,20 @@ var Offset = Vector2.ZERO
 var OnCoolDown = false
 var BeliveHeCanFLy
 func _physics_process(delta: float) -> void:
-	
 	if Activated == true:
 		while IsOnSomeone and not BREAK:
+			if Someone == null:
+				break
 			global_position =  Someone.global_position + Offset
 			await get_tree().create_timer(0.01).timeout 
 		IsOnSomeone = false
 		if fell and AlreadyFellTimerStarted == false :
+			is_attaking = false
 			is_falling = false
 			is_rotating = false
 			Parriable = false
 			AlreadyFellTimerStarted = true
-			await get_tree().create_timer(2).timeout 
+			await get_tree().create_timer(1).timeout 
 			$Sprite2D.rotation = 0
 			fell = false
 			AlreadyFellTimerStarted = false
@@ -58,7 +61,7 @@ func _physics_process(delta: float) -> void:
 		if is_on_floor() and not fell and is_rotating:
 			print($"..".name, ' падает')
 			fell = true
-		if can_jump and is_on_floor() and not fell:
+		if can_jump and is_on_floor() and not fell and not OnCoolDown:
 			jump()
 		if not fell:
 			if velocity.x < 0 and not BeliveHeCanFLy:
@@ -82,42 +85,45 @@ func _physics_process(delta: float) -> void:
 		if not fell and not IsOnSomeone:
 			move_and_slide()
 func _on_jump_range_body_entered(body: Node2D):
-		if body.name == "UwUGG" and not OnCoolDown:
+		if body.name == "UwUGG":
 			can_jump = true
 func _on_attack_area_body_entered(body: Node2D) -> void:
-	if body.has_method("take_damage") and not IsOnSomeone and (Parriable or BeliveHeCanFLy):
-		print($"..".name, " прицепился к ", body.name)
-		Someone = body
-		IsOnSomeone = true
-		collision_layer = (1 << 9)
-		Offset = global_position - body.global_position
-		for i in 20:
-			if not IsOnSomeone and not BREAK:
+	if body.has_method("take_damage") and not body == $".":
+		is_attaking = true
+	if body.has_method("take_damage") and not IsOnSomeone and (Parriable or BeliveHeCanFLy) and not body == $".":
+		if body.name == "UwUGG" or BeliveHeCanFLy:
+			print($"..".name, " прицепился к ", body.name)
+			Someone = body
+			velocity = Vector2.ZERO
+			IsOnSomeone = true
+			collision_layer = (1 << 11)
+			var Bites = 20
+			Offset = global_position - body.global_position
+			if Someone.name == "UwUGG":
+				Bites = 50
+			else:
+				Bites = 20
+			for i in Bites:
+				if not IsOnSomeone and not BREAK:
+					break
+				Parriable = true
+				print($"..".name, ' кускус')
+				if Someone == null:
+					break
+				Someone.take_damage(1)
+				await get_tree().create_timer(0.05).timeout 
+			IsOnSomeone = false
+			BREAK = false
+			collision_layer = (1 << 2)
+	elif body.has_method("take_damage") and is_attaking and not body == $"." and body.name == "UwUGG":
+		while is_attaking:
+			if body == null:
 				break
-			Parriable = true
-			print($"..".name, ' кускус')
-			Someone.take_damage(5)
-			await get_tree().create_timer(0.2).timeout 
-		IsOnSomeone = false
-		BREAK = false
-		collision_layer = (1 << 2)
-	if body.name == "UwUGG": 
-		is_attaking = true
-		while is_attaking and not fell and not IsOnSomeone and not BeliveHeCanFLy:
-			print($"..".name, ' делает кусь')
-			body.take_damage(5)
-			await get_tree().create_timer(0.1).timeout 
-	elif body.has_method("take_damage"):
-		is_attaking = true
-		while is_attaking and not fell:
-			Parriable = false
-			print($"..".name, ' делает кусь чему-то')
-			body.take_damage(5)
+			body.take_damage(1)
 			await get_tree().create_timer(0.1).timeout 
 func _on_attack_area_body_exited(body: Node2D) -> void:
 	if body.name == "UwUGG": 
 		is_attaking = false
-		IsOnSomeone = false
 		print($"..".name, ' не делает кусь')
 func take_damage(damage) -> void:
 	hp -= damage	
@@ -131,12 +137,14 @@ func die():
 	queue_free()
 func parry(Dir):
 	if Parriable:
+		collision_layer = (1 << 2)
 		BeliveHeCanFLy = true
-		velocity = Dir
 		print('+parry')
 		Parriable = false
 		$Sprite2D.flip_v = true
 		is_attaking = false
+		IsOnSomeone = false
+		velocity = Dir
 		while BeliveHeCanFLy:
 			is_attaking = false
 			look_at(velocity.normalized()) 
@@ -145,8 +153,8 @@ func parry(Dir):
 		rotation_degrees = 0
 		$Sprite2D.flip_v = false
 	if IsOnSomeone:
+		IsOnSomeone = false
 		BREAK = true
-		collision_layer = (1 << 2)
 func activate():
 		print($"..".name, " активирован")
 		Activated = true
@@ -164,12 +172,10 @@ func jump():
 		else:
 			velocity.x += 600
 		jumped = true
+		OnCoolDown = true
+		$BiTimer.start()
 func _on_jump_range_body_exited(body: Node2D) -> void:
 	if body.name == "UwUGG": 
 		can_jump = false
-func CoolDown():
-	can_jump = false
-	OnCoolDown = true
-	$BiTimer.start()
 func _on_bi_timer_timeout() -> void:
 	OnCoolDown = false

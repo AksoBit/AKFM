@@ -6,7 +6,7 @@ func _ready() -> void:
 	Engine.time_scale = 1
 	Global.music = load("res://Music/1xx/100 Continue.ogg")
 	Global.footstep = load("res://Sounds/untitled.wav")
-	Global.speed = 400
+	Global.speed = 500
 	Global.admin = false
 	$AnimationPlayer.play("drive")
 	$AnimationPlayer2.play("RESET")

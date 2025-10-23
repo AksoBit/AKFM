@@ -4,10 +4,10 @@
 [ext_resource type="Script" uid="uid://dsm3eqpbuw4eo" path="res://Scripts/Blood.gd" id="1_qxkcl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6h1kt"]
-size = Vector2(3, 4)
+size = Vector2(2, 2)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ucu7o"]
-size = Vector2(2, 2)
+size = Vector2(1, 1)
 
 [node name="Node2D" type="Node2D"]
 

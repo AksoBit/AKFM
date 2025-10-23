@@ -1,5 +1,6 @@
-[gd_scene load_steps=15 format=3 uid="uid://dmqu5ptcnawk0"]
+[gd_scene load_steps=16 format=3 uid="uid://dmqu5ptcnawk0"]
 
+[ext_resource type="Texture2D" uid="uid://bov04lxjbskq" path="res://Sprites/AksoBit/BSOD.png" id="1_6lxjs"]
 [ext_resource type="Shader" uid="uid://bikpltre5f3l2" path="res://Shaders/SubP.gdshader" id="1_djnlx"]
 [ext_resource type="Texture2D" uid="uid://b4q3sdhdifyot" path="res://Sprites/ФонСинт.png" id="1_xnf50"]
 [ext_resource type="PackedScene" uid="uid://dhsclxwwchsih" path="res://Scenes/Домики.tscn" id="3_anw3t"]
@@ -35,6 +36,10 @@ shader_parameter/blur = 0.3
 shader_parameter/scanlines_mult = 0.1
 
 [node name="Node2D" type="Node2D"]
+
+[node name="Bsod" type="Sprite2D" parent="."]
+position = Vector2(320, 180)
+texture = ExtResource("1_6lxjs")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(320, 180)

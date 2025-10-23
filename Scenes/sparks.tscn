@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://c5csxmi14mt0"]
+[gd_scene load_steps=4 format=3 uid="uid://c5csxmi14mt0"]
 
 [ext_resource type="Texture2D" uid="uid://chkmjxija8fl8" path="res://Sprites/Spark.png" id="1_7gn88"]
+[ext_resource type="Texture2D" uid="uid://csonpemk2p3s3" path="res://Other/curva.tres" id="2_re8ko"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_me7x7"]
 lifetime_randomness = 0.45
@@ -11,6 +12,7 @@ angle_max = 100.0
 spread = 105.674
 initial_velocity_max = 64.52
 gravity = Vector3(0, 50, 0)
+alpha_curve = ExtResource("2_re8ko")
 
 [node name="Node2D" type="Node2D"]
 

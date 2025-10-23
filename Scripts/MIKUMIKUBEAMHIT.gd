@@ -10,7 +10,7 @@ func _on_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, 
 			if body == null:
 				return
 			if body.name == "UwUGG":
-				body.take_damage(20)
+				body.take_damage(15)
 			else:
 				body.take_damage(1)
 			await get_tree().create_timer(0.2).timeout

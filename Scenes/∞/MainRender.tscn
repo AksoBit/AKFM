@@ -1,5 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://dda1d8r4ns7aa"]
+[gd_scene load_steps=15 format=3 uid="uid://dda1d8r4ns7aa"]
 
+[ext_resource type="Texture2D" uid="uid://bov04lxjbskq" path="res://Sprites/AksoBit/BSOD.png" id="1_2n60f"]
 [ext_resource type="Shader" uid="uid://bikpltre5f3l2" path="res://Shaders/SubP.gdshader" id="2_visal"]
 [ext_resource type="PackedScene" uid="uid://dlomnpbd24ptv" path="res://Scenes/PeyGorno.tscn" id="3_tduug"]
 [ext_resource type="Shader" uid="uid://cie8slgga3ka4" path="res://Shaders/Flashing.gdshader" id="4_tduug"]
@@ -34,6 +35,10 @@ shader_parameter/blur = 0.3
 shader_parameter/scanlines_mult = 0.1
 
 [node name="Node2D" type="Node2D"]
+
+[node name="Bsod" type="Sprite2D" parent="."]
+position = Vector2(320, 180)
+texture = ExtResource("1_2n60f")
 
 [node name="SubViewportContainer4" type="SubViewportContainer" parent="."]
 texture_filter = 1
