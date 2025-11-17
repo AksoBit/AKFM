@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://cfivro2cvucyd"]
+[gd_scene load_steps=50 format=3 uid="uid://cfivro2cvucyd"]
 
 [ext_resource type="Script" uid="uid://dj5hi7veghggu" path="res://Scripts/SomethingWicked.gd" id="1_nhhmn"]
 [ext_resource type="Script" uid="uid://d0l0mwpergp4w" path="res://Scripts/area_2d.gd" id="2_ssrd1"]
@@ -17,9 +17,10 @@
 [ext_resource type="Texture2D" uid="uid://csonpemk2p3s3" path="res://Other/curva.tres" id="15_fspmd"]
 [ext_resource type="Script" uid="uid://cq5g7ixcdw21c" path="res://Scripts/camera_2d.gd" id="17_6gu3r"]
 [ext_resource type="Script" uid="uid://k184ju54kok6" path="res://Scripts/flash_timer.gd" id="17_bcvmy"]
+[ext_resource type="Texture2D" uid="uid://d2s6m8h7qakj" path="res://Sprites/MC/SiriNormal.png" id="17_nhhmn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2ori"]
-size = Vector2(40, 65)
+size = Vector2(49, 65)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6gu3r"]
 size = Vector2(18, 54)
@@ -197,23 +198,125 @@ animations = [{
 "speed": 30.0
 }]
 
+[sub_resource type="CanvasTexture" id="CanvasTexture_bcvmy"]
+diffuse_texture = ExtResource("13_f56q8")
+normal_texture = ExtResource("17_nhhmn")
+
+[sub_resource type="Animation" id="Animation_ssrd1"]
+resource_name = "Attack"
+length = 0.26667002
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Animations:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.1, 0.16666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_nhhmn"]
+resource_name = "Idle"
+length = 1.0333368
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Animations:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.26666668, 0.53333336, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_bcvmy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Animations:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("footstepart:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_kfw33"]
+resource_name = "Run"
+length = 0.80000335
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Animations:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666666, 0.13333334, 0.2, 0.26666668, 0.33333334, 0.4, 0.46666667, 0.53333336, 0.59999996, 0.6666666, 0.7333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("footstepart:emitting")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.13333334, 0.53333336),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nhhmn"]
+_data = {
+&"Attack": SubResource("Animation_ssrd1"),
+&"Idle": SubResource("Animation_nhhmn"),
+&"RESET": SubResource("Animation_bcvmy"),
+&"Run": SubResource("Animation_kfw33")
+}
+
 [node name="Node2D" type="Node2D"]
 
 [node name="UwUGG" type="CharacterBody2D" parent="."]
 z_index = 1
 position = Vector2(320, 301)
+collision_layer = 16385
 collision_mask = 15
 safe_margin = 0.001
 script = ExtResource("1_nhhmn")
 
 [node name="Area2D" type="Area2D" parent="UwUGG"]
 scale = Vector2(-1, 1)
-collision_mask = 2334
+collision_mask = 2590
 monitoring = false
 script = ExtResource("2_ssrd1")
 
 [node name="HitArea" type="CollisionShape2D" parent="UwUGG/Area2D"]
-position = Vector2(-20, -4.5)
+position = Vector2(-15.5, -4.5)
 shape = SubResource("RectangleShape2D_g2ori")
 
 [node name="jeffrey" type="Sprite2D" parent="UwUGG/Area2D"]
@@ -276,14 +379,19 @@ rotation = -1.5708
 emitting = false
 amount = 4
 texture = ExtResource("14_n4hwn")
-lifetime = 0.5
+lifetime = 0.3
+one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_nhhmn")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UwUGG" groups=["Flashable"]]
+visible = false
 material = SubResource("ShaderMaterial_bcvmy")
 position = Vector2(0, -5)
 sprite_frames = SubResource("SpriteFrames_fgnqx")
+animation = &"run"
+frame = 1
+frame_progress = 0.36372584
 speed_scale = 0.5
 
 [node name="Parry" type="AudioStreamPlayer" parent="UwUGG"]
@@ -296,6 +404,19 @@ script = ExtResource("17_bcvmy")
 [node name="Coyote" type="Timer" parent="UwUGG"]
 wait_time = 0.05
 one_shot = true
+
+[node name="Animations" type="Sprite2D" parent="UwUGG"]
+texture_filter = 1
+position = Vector2(0, -5.0000076)
+texture = SubResource("CanvasTexture_bcvmy")
+hframes = 5
+vframes = 4
+frame = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UwUGG"]
+libraries = {
+&"": SubResource("AnimationLibrary_nhhmn")
+}
 
 [node name="Camera2D" type="Camera2D" parent="."]
 z_index = 2
@@ -326,3 +447,4 @@ horizontal_alignment = 1
 [connection signal="finished" from="UwUGG/Step" to="UwUGG/Step" method="_on_finished"]
 [connection signal="animation_finished" from="UwUGG/AnimatedSprite2D" to="UwUGG/Area2D" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="UwUGG/Coyote" to="UwUGG" method="_on_coyote_timeout"]
+[connection signal="animation_finished" from="UwUGG/AnimationPlayer" to="UwUGG/Area2D" method="_on_animation_player_animation_finished"]

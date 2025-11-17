@@ -7,6 +7,7 @@ var vel
 var en
 var fps
 var mpos
+var DPM
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if Global.Debug == false:
@@ -17,6 +18,7 @@ func _process(delta: float) -> void:
 	isd = GG.isdashing
 	isj = GG.isjumping
 	en = GG.energy
+	DPM = GG.DPM
 	mpos = get_global_mouse_position().round()
 	fps = Performance.get_monitor(0)
 	text = "Pos: " + str(pos) + "\n" + \
@@ -24,6 +26,7 @@ func _process(delta: float) -> void:
 	"Vel: " + str(vel) + "\n" + \
 	"Isd: " + str(isd) + "\n" + \
 	"Isj: " + str(isj) + "\n" + \
+	"DP5SEC: " + str(DPM) + "\n" + \
 	"En: " + str(en) + "\n" + \
 	"Fps: " + str(fps)
 	

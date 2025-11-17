@@ -59,7 +59,6 @@ initial_velocity_max = 64.52
 gravity = Vector3(0, 50, 0)
 
 [node name="Node2D" type="Node2D"]
-metadata/_edit_lock_ = true
 
 [node name="Line2D" type="Line2D" parent="."]
 points = PackedVector2Array(0, 0, 0, -1000)
@@ -73,7 +72,7 @@ script = ExtResource("2_4v7f6")
 position = Vector2(0, -500)
 scale = Vector2(1, 999.99994)
 collision_layer = 8
-collision_mask = 7
+collision_mask = 519
 monitoring = false
 script = ExtResource("3_5murv")
 
@@ -83,6 +82,7 @@ shape = SubResource("RectangleShape2D_5murv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Line2D"]
 visible = false
+texture_filter = 1
 position = Vector2(0, -500)
 scale = Vector2(1, 999.99994)
 sprite_frames = SubResource("SpriteFrames_isjm7")

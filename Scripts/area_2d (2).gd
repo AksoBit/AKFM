@@ -3,6 +3,7 @@ extends Area2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	Engine.time_scale = 1
 	Global.MusicPack = 3
 	get_parent().get_parent().get_parent().get_parent().get_node("SubViewportContainer2/SubViewport/UI/UI").visible = false
 	get_parent().get_node("UwUGG/UwUGG").jump_force = 300

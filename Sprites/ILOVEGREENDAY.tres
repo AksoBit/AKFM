@@ -1,9 +1,10 @@
-[gd_resource type="TileSet" load_steps=16 format=3 uid="uid://b0haw5o1uye6x"]
+[gd_resource type="TileSet" load_steps=18 format=3 uid="uid://b0haw5o1uye6x"]
 
 [ext_resource type="Texture2D" uid="uid://bputqpnxy4uk0" path="res://Sprites/cube.png" id="1_lk30l"]
 [ext_resource type="Texture2D" uid="uid://co2utoiyq7tsg" path="res://Sprites/Polygon.png" id="2_afhdg"]
 [ext_resource type="Texture2D" uid="uid://62mw1riwenfh" path="res://Sprites/carpet.png" id="3_afhdg"]
 [ext_resource type="Texture2D" uid="uid://be5ekkhxosq70" path="res://Sprites/Lamp.png" id="3_or1kc"]
+[ext_resource type="Texture2D" uid="uid://bdwmcwfberejq" path="res://Sprites/Poly/Polygon.png" id="3_uj75j"]
 [ext_resource type="Texture2D" uid="uid://d1vcexxp8iog4" path="res://Sprites/black.png" id="4_mqva0"]
 [ext_resource type="Texture2D" uid="uid://cohgyw8xv7yfg" path="res://Sprites/walls.png" id="5_83fse"]
 
@@ -23,8 +24,12 @@ texture = ExtResource("1_lk30l")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 
+[sub_resource type="CanvasTexture" id="CanvasTexture_or1kc"]
+diffuse_texture = ExtResource("2_afhdg")
+normal_texture = ExtResource("3_uj75j")
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4550c"]
-texture = ExtResource("2_afhdg")
+texture = SubResource("CanvasTexture_or1kc")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)

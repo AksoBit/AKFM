@@ -5,10 +5,10 @@
 [ext_resource type="Script" uid="uid://d0rxcfmiw78ee" path="res://Scripts/attack_area.gd" id="4_1rjej"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1vcgo"]
-size = Vector2(24, 20)
+size = Vector2(24, 22)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kd477"]
-size = Vector2(9, 9)
+size = Vector2(9, 20)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s5mcx"]
 radius = 216.0
@@ -23,7 +23,7 @@ platform_floor_layers = 4294967290
 script = ExtResource("1_81ewt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Roach"]
-position = Vector2(0, -1)
+position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_1vcgo")
 
 [node name="AttackArea" type="Area2D" parent="Roach"]
@@ -33,7 +33,7 @@ collision_mask = 5
 script = ExtResource("4_1rjej")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Roach/AttackArea"]
-position = Vector2(-16.5, -8.5)
+position = Vector2(-16.5, -3)
 shape = SubResource("RectangleShape2D_kd477")
 debug_color = Color(0.998493, 0, 0.140566, 0.42)
 

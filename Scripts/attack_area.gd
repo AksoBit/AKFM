@@ -13,7 +13,6 @@ func _process(delta: float) -> void:
 		if $"../Sprite2D".flip_h == false:
 			set_scale(Vector2(1, 1))
 			$"../CollisionShape2D".set_scale(Vector2(1, 1))
-			DirRN = false
 		else:
 			set_scale(Vector2(-1, 1))
 			$"../CollisionShape2D".set_scale(Vector2(-1, 1))

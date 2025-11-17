@@ -1,14 +1,16 @@
-[gd_scene load_steps=25 format=3 uid="uid://bgjhe3y7ud0r0"]
+[gd_scene load_steps=28 format=3 uid="uid://bgjhe3y7ud0r0"]
 
 [ext_resource type="Script" uid="uid://bpd8d01c0qiuc" path="res://Scripts/Hack.gd" id="1_r2p04"]
 [ext_resource type="Texture2D" uid="uid://d4gqhtapgpbi1" path="res://Sprites/Hack/hack.png" id="2_am1lo"]
 [ext_resource type="Shader" uid="uid://cie8slgga3ka4" path="res://Shaders/Flashing.gdshader" id="2_e3otq"]
 [ext_resource type="Script" uid="uid://dati1fdku3rr2" path="res://Scripts/UwUwUwUwU.gd" id="3_8rhuy"]
+[ext_resource type="Texture2D" uid="uid://8606h03f2thq" path="res://Sprites/Hack/HackLighted.png" id="4_1tryr"]
 [ext_resource type="Texture2D" uid="uid://dp7jf3gqi0u5x" path="res://Sprites/truster.png" id="4_r2p04"]
 [ext_resource type="Script" uid="uid://cwprac4aogtaf" path="res://Scripts/sprite_2d_2.gd" id="5_1tryr"]
 [ext_resource type="Texture2D" uid="uid://chkmjxija8fl8" path="res://Sprites/Spark.png" id="6_5im1k"]
 [ext_resource type="Texture2D" uid="uid://ddrjdpa4vp7ll" path="res://Sprites/NeonParticle.png" id="7_am1lo"]
 [ext_resource type="AudioStream" uid="uid://cfmguh2j6vstt" path="res://Sounds/Болгарка.wav" id="7_liqdm"]
+[ext_resource type="Texture2D" uid="uid://csonpemk2p3s3" path="res://Other/curva.tres" id="9_1tryr"]
 [ext_resource type="FontFile" uid="uid://da8s7os3013x" path="res://Fonts/DepartureMono-Regular.otf" id="10_e3otq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_it74k"]
@@ -73,6 +75,19 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_4cdcu"]
 radius = 3.16228
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_liqdm"]
+shader = ExtResource("2_e3otq")
+shader_parameter/Flashing = false
+shader_parameter/White = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_e3otq"]
+particle_flag_align_y = true
+particle_flag_rotate_y = true
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+color = Color(1, 1, 1, 0)
+alpha_curve = ExtResource("9_1tryr")
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7vgp5"]
 lifetime_randomness = 0.45
 particle_flag_align_y = true
@@ -82,11 +97,6 @@ angle_max = 100.0
 spread = 105.674
 initial_velocity_max = 64.52
 gravity = Vector3(0, 50, 0)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_liqdm"]
-shader = ExtResource("2_e3otq")
-shader_parameter/Flashing = false
-shader_parameter/White = false
 
 [sub_resource type="LabelSettings" id="LabelSettings_51wp6"]
 font = ExtResource("10_e3otq")
@@ -107,7 +117,7 @@ shape = SubResource("CircleShape2D_it74k")
 
 [node name="AttackArea" type="Area2D" parent="ManHack"]
 collision_layer = 4
-collision_mask = 15
+collision_mask = 527
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ManHack/AttackArea"]
 shape = SubResource("CircleShape2D_tugjx")
@@ -116,6 +126,11 @@ shape = SubResource("CircleShape2D_tugjx")
 texture = ExtResource("2_am1lo")
 flip_h = true
 script = ExtResource("3_8rhuy")
+
+[node name="HackLighted" type="PointLight2D" parent="ManHack/Sprite2D"]
+scale = Vector2(1, -1)
+color = Color(1, 0, 0, 0.6431373)
+texture = ExtResource("4_1tryr")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="ManHack/Sprite2D"]
 visible = false
@@ -132,6 +147,17 @@ position = Vector2(25, 0)
 shape = SubResource("CircleShape2D_4cdcu")
 disabled = true
 
+[node name="GPUParticles2D" type="GPUParticles2D" parent="ManHack/Sprite2D2/ContactPos"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_liqdm")
+position = Vector2(-52, 0)
+rotation = 3.14159
+amount = 100
+texture = ExtResource("7_am1lo")
+lifetime = 0.3
+draw_order = 2
+process_material = SubResource("ParticleProcessMaterial_e3otq")
+
 [node name="sparks" type="GPUParticles2D" parent="ManHack/Sprite2D2/ContactPos"]
 rotation = 3.14159
 emitting = false
@@ -145,13 +171,6 @@ randomness = 1.0
 trail_sections = 2
 trail_section_subdivisions = 1
 process_material = SubResource("ParticleProcessMaterial_7vgp5")
-
-[node name="GPUParticles2D" type="GPUParticles2D" parent="ManHack/Sprite2D2"]
-material = SubResource("ShaderMaterial_liqdm")
-position = Vector2(-10, 0)
-rotation = 3.14159
-amount = 3
-texture = ExtResource("7_am1lo")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="ManHack"]
 stream = ExtResource("7_liqdm")

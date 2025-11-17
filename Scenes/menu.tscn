@@ -445,13 +445,6 @@ offset_bottom = 66.0
 button_pressed = true
 text = "VSync"
 
-[node name="DeBugtton2" type="CheckButton" parent="ФонСинт"]
-offset_left = -275.0
-offset_top = -145.0
-offset_right = -136.0
-offset_bottom = -114.0
-text = "OVERDRUM"
-
 [node name="Curva" type="HSlider" parent="ФонСинт"]
 offset_left = -314.0
 offset_top = -76.0
@@ -596,7 +589,6 @@ texture_normal = ExtResource("19_ocger")
 [connection signal="value_changed" from="ФонСинт/Voicelines" to="ФонСинт" method="_on_voicelines_value_changed"]
 [connection signal="button_down" from="ФонСинт/Button" to="ФонСинт/Button" method="_on_button_down"]
 [connection signal="button_down" from="ФонСинт/CheckButton" to="ФонСинт" method="_on_check_button_button_down"]
-[connection signal="toggled" from="ФонСинт/DeBugtton2" to="ФонСинт" method="_on_de_bugtton_2_toggled"]
 [connection signal="value_changed" from="ФонСинт/Curva" to="ФонСинт" method="_on_curva_value_changed"]
 [connection signal="value_changed" from="ФонСинт/Vin" to="ФонСинт" method="_on_vin_value_changed"]
 [connection signal="value_changed" from="ФонСинт/Scan" to="ФонСинт" method="_on_scan_value_changed"]

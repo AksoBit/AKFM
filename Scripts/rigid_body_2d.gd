@@ -28,7 +28,7 @@ func _ready() -> void:
 	var reqx = global_position.x - mouse_pos.x
 	linear_velocity.x += -reqx
 	set_process(true)
-func _process(delta: float) -> void:
+func  _process(delta: float) -> void:
 	CoolRay.global_position = FirstDot
 	SeconDot = global_position
 	Direction = (SeconDot - FirstDot)
@@ -39,9 +39,10 @@ func _process(delta: float) -> void:
 	if CoolRay.is_colliding():
 		var body = CoolRay.get_collider()
 		if body.has_method("take_damage") and not body.name == "UwUGG":
-			body.take_damage(Damage)
+			body.take_damage(Damage, 0, 0, "Core")
 			if Parriable == false:
-				MC.OVERLOAD += 5
+				MC.take_overheat(5)
+				MC.DPM += Damage
 				MC.transfer_to_text_panel("CANON", false, Color.from_rgba8(254, 244, 55, 255), Color.from_rgba8(0, 0, 0, 255))
 		elif body.name == "UwUGG":
 			body.take_damage(Damage/4)
@@ -55,14 +56,31 @@ func _process(delta: float) -> void:
 		CoreParts.global_position = Thingy - Correction
 		queue_free()
 	FirstDot = global_position
+func DESTROY():
+	Damage = Damage * 2
+	MC.take_overheat(5)
+	MC.transfer_to_text_panel("SCREWDRIVER", false, Color.from_rgba8(254, 244, 55, 255), Color.from_rgba8(0, 0, 0, 255))
+	if $"../Area2D" == null:
+		return
+	$"../Area2D".visible = true
+	$"../Area2D".monitoring = true
+	$"../Area2D".global_position = global_position
+	$"../Area2D".DESTROY()
+	get_parent().get_parent().call_deferred("add_child", CoreParts)
+	CoreParts.global_position = global_position - Correction
+	queue_free()
 func _on_area_2d_2_body_entered(body: Node2D) -> void:
 	if $"../Area2D" == null:
 		return
 	else:
 		if body.has_method("take_damage") and not body.name == "UwUGG":
-			body.take_damage(Damage)
+			if Parriable == false:
+				MC.take_overheat(5)
+				MC.transfer_to_text_panel("CANON", false, Color.from_rgba8(254, 244, 55, 255), Color.from_rgba8(0, 0, 0, 255))
+				MC.DPM += Damage
+			body.take_damage(abs(Damage), 0, 0, "Core")
 		elif body.name == "UwUGG":
-			body.take_damage(Damage/4)
+			body.take_damage(Damage/4, 0, 0, "Core")
 		$"../Area2D".visible = true
 		$"../Area2D".monitoring = true
 		$"../Area2D".global_position = global_position
@@ -77,7 +95,6 @@ func parry(Dir):
 		$"../Area2D/CoreParry".play()
 		var TiMulti = Endtimer - Startimer
 		linear_velocity = Dir * 3
-		print(TiMulti / 100)
 		Damage = Damage + (TiMulti / 100)
 		print('+parry')
 		Parriable = false

@@ -19,7 +19,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func ClrTimer(Row, Mult, RowText):
+func ClrTimer(Mult, RowText):
 	await get_tree().create_timer(5).timeout
 	for i in range(9):
 		if Mult == Multiplyers[i] and RowText == Rows[i]:
@@ -42,7 +42,7 @@ func update_text_panel(text, is_minus, text_color = Color.from_hsv(0.0, 0.0, 1.0
 				get_node("Row " + str(i + 1)).label_settings.font_color = text_color
 				get_node("Row " + str(i + 1)).label_settings.outline_color = outline
 				get_node("Row " + str(i + 1)).text = str(Rows[i], Multiplyers[i])
-				ClrTimer(FreeRow, Multiplyers[i], Rows[i])
+				ClrTimer(Multiplyers[i], Rows[i])
 				return
 			else:
 				var Multi = int(Multiplyers[i].substr(Multiplyers[i].length() - 1, 1))
@@ -62,9 +62,9 @@ func update_text_panel(text, is_minus, text_color = Color.from_hsv(0.0, 0.0, 1.0
 				get_node("Row " + str(i + 1)).visible = true
 				get_node("Row " + str(i + 1)).label_settings.font_color = text_color
 				get_node("Row " + str(i + 1)).text = str(Rows[i], Multiplyers[i])
-				ClrTimer(FreeRow, Multiplyers[i], Rows[i])
+				ClrTimer(Multiplyers[i], Rows[i])
 				return
-	size.y = 12 * (FreeRow + 1) + 12
+	size.y = 12 * (FreeRow + 1) + 5
 	if FreeRow == -1:
 		pass
 	else:
@@ -75,7 +75,7 @@ func update_text_panel(text, is_minus, text_color = Color.from_hsv(0.0, 0.0, 1.0
 		get_node("Row " + str(FreeRow + 1)).label_settings.font_color = text_color
 		get_node("Row " + str(FreeRow + 1)).label_settings.outline_color = outline
 		get_node("Row " + str(FreeRow + 1)).text = str(text)
-		ClrTimer(FreeRow, Multiplyers[FreeRow], Rows[FreeRow])
+		ClrTimer(Multiplyers[FreeRow], Rows[FreeRow])
 func FindARow():
 	for i in range(9):
 		if Rows[i] == null:
@@ -117,5 +117,5 @@ func Aranged():
 	if Rows[0] == null:
 		size.y = 0
 	else:
-		size.y = 12 * (FindARow()) + 12
+		size.y = 12 * (FindARow()) + 5
 	IsArranging = false

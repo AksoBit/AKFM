@@ -97,10 +97,13 @@ UwU_SPACE={
 
 [layer_names]
 
-2d_physics/layer_1="GG"
+2d_physics/layer_1="MC"
 2d_physics/layer_2="Walls&Floor"
 2d_physics/layer_3="Enemys"
 2d_physics/layer_4="Projectiles"
+2d_physics/layer_9="Invisible walls"
+2d_physics/layer_10="Breakable stuff"
+2d_physics/layer_15="Blood"
 
 [rendering]
 

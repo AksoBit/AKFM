@@ -1,5 +1,4 @@
 extends Area2D
-
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == ("UwUGG"):
 		Global.music = load('res://Sounds/w9u2jbrxo7scu2gicg67bltaf1cy7nycy2ior.mp3')

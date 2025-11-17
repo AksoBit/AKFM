@@ -22,7 +22,6 @@ func _ready():
 	$Vin.value = Settings.get_value("~GRAPHICS~", "Vingette multiplyer",)
 	$Scan.value = Settings.get_value("~GRAPHICS~", "Scanlines")
 	$Blur.value = Settings.get_value("~GRAPHICS~", "Blur")
-	$DeBugtton2.button_pressed = Settings.get_value("~SOUND~", "Overdrum", false)
 	$CheckButton2.button_pressed = Settings.get_value("~GRAPHICS~", "CRT",)
 	_on_volume_value_changed(Music.value)
 	_on_sfx_value_changed(SFX.value)

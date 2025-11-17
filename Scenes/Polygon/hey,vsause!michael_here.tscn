@@ -1,22 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://c8d7yr0ophwhb"]
+[gd_scene load_steps=6 format=3 uid="uid://c8d7yr0ophwhb"]
 
 [ext_resource type="Shader" uid="uid://38p7q2hgbxym" path="res://Shaders/BLACK_HOLE.gdshader" id="1_1sxh5"]
-[ext_resource type="Texture2D" uid="uid://bputqpnxy4uk0" path="res://Sprites/cube.png" id="1_ijhal"]
 [ext_resource type="Texture2D" uid="uid://c1elng8mpgsf0" path="res://Sprites/Poly/Hey, Vsause! Michael here.png" id="2_ijhal"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kg5ah"]
+render_priority = 0
 shader = ExtResource("1_1sxh5")
-shader_parameter/black_hole_pos = Vector2(0.5, 0.5)
-shader_parameter/gravity_strength = 0.3
-shader_parameter/schwarzschild_radius = 0.05
-shader_parameter/accretion_disk_strength = 0.2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qilb8"]
+render_priority = 0
 shader = ExtResource("1_1sxh5")
-shader_parameter/black_hole_pos = Vector2(0.5, 0.5)
-shader_parameter/gravity_strength = 0.3
-shader_parameter/schwarzschild_radius = 0.05
-shader_parameter/accretion_disk_strength = 0.2
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_75q1y"]
 
@@ -32,8 +25,3 @@ material = SubResource("ShaderMaterial_qilb8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hey,Vsause!MichaelHere/Area2D"]
 shape = SubResource("CircleShape2D_75q1y")
-
-[node name="Cube" type="Sprite2D" parent="Hey,Vsause!MichaelHere"]
-position = Vector2(-24, 0)
-scale = Vector2(1.0024778, 0.9946959)
-texture = ExtResource("1_ijhal")

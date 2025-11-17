@@ -4,8 +4,8 @@ extends Sprite2D
 var previsible = false
 var byebye = preload("res://Sounds/MC/bye.mp3")
 var hi = preload("res://Sprites/MC/hi.png")
-#В тот день мы еще не знали с чем столкнулись.
-#Спасибо.
+#Это все не имеет смысла.
+#Серьезно.
 func _ready():
 	if Engine.is_editor_hint():
 		visible = false

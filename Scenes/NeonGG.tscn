@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://dsm3eqpbuw4eo" path="res://Scripts/Blood.gd" id="1_qxkcl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6h1kt"]
-size = Vector2(2, 2)
+size = Vector2(2, 4)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ucu7o"]
 size = Vector2(1, 1)
@@ -12,10 +12,12 @@ size = Vector2(1, 1)
 [node name="Node2D" type="Node2D"]
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
+collision_layer = 0
+collision_mask = 0
 
 [node name="Area2D" type="Area2D" parent="RigidBody2D"]
 collision_layer = 16
-collision_mask = 16
+collision_mask = 16384
 script = ExtResource("1_qxkcl")
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D/Area2D"]

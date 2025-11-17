@@ -17,6 +17,8 @@ func _on_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, 
 	elif body.has_method("IDC"):
 		body.IsChillin = true
 		body.IDC()
+	elif body.has_method('DESTROY'):
+		body.DESTROY()
 func _on_body_shape_exited(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
 	IsInTheBeam = false
 	if body == null:

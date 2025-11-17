@@ -72,7 +72,7 @@ script = ExtResource("2_7a06y")
 position = Vector2(0, -500)
 scale = Vector2(1, 999.99994)
 collision_layer = 8
-collision_mask = 7
+collision_mask = 519
 monitoring = false
 script = ExtResource("3_d53g5")
 
@@ -82,6 +82,7 @@ shape = SubResource("RectangleShape2D_6b3ox")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Line2D"]
 visible = false
+texture_filter = 1
 position = Vector2(0, -500)
 scale = Vector2(1, 999.99994)
 sprite_frames = SubResource("SpriteFrames_l0kiw")

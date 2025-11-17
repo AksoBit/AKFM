@@ -1,9 +1,6 @@
 extends CharacterBody2D
 
-var speed = 80
-var UwU = -1 
-var gravity = 980
-var health = 1
+var health = 200
 
 
 

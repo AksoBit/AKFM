@@ -1,12 +1,13 @@
-[gd_scene load_steps=34 format=3 uid="uid://1yb4wbnegc86"]
+[gd_scene load_steps=46 format=3 uid="uid://1yb4wbnegc86"]
 
-[ext_resource type="Texture2D" uid="uid://b58rqhn3wjrnb" path="res://Sprites/Battarey-Sheet.png" id="1_dewlx"]
 [ext_resource type="FontFile" uid="uid://ba8dqphbk1c1i" path="res://Fonts/Fifaks10Dev1.ttf" id="2_hfhsn"]
 [ext_resource type="LabelSettings" uid="uid://dg42q1hckpf2e" path="res://Fonts/FontSettings.tres" id="3_48q88"]
 [ext_resource type="Script" uid="uid://c38jvxskpucjb" path="res://Scripts/label.gd" id="3_qwshj"]
-[ext_resource type="Texture2D" uid="uid://cjvbi5ipyhyac" path="res://Sprites/MC/overload_bar.png" id="4_hfhsn"]
+[ext_resource type="Texture2D" uid="uid://bm5psh1rp816w" path="res://Sprites/MC/RiftLine.png" id="4_mg6lk"]
+[ext_resource type="Texture2D" uid="uid://b1xx07vnxlgrl" path="res://Sprites/MC/ReUi.png" id="4_xjg7p"]
 [ext_resource type="FontFile" uid="uid://da8s7os3013x" path="res://Fonts/DepartureMono-Regular.otf" id="6_48q88"]
 [ext_resource type="Script" uid="uid://dil4nig03p1id" path="res://Scripts/MC/ThatTextPanelYouKnow.gd" id="6_xjg7p"]
+[ext_resource type="Texture2D" uid="uid://p46dpsnvgqu2" path="res://Sprites/MC/Counter.png" id="8_mg6lk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qwshj"]
 bg_color = Color(0, 0, 0, 0.39215687)
@@ -65,63 +66,51 @@ font_size = 11
 font_color = Color(0, 0, 0, 1)
 outline_size = 3
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0im1g"]
-atlas = ExtResource("1_dewlx")
-region = Rect2(0, 0, 140, 66)
+[sub_resource type="AtlasTexture" id="AtlasTexture_mg6lk"]
+atlas = ExtResource("4_xjg7p")
+region = Rect2(0, 0, 175, 84)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_07w6w"]
-atlas = ExtResource("1_dewlx")
-region = Rect2(560, 0, 140, 66)
+[sub_resource type="AtlasTexture" id="AtlasTexture_wunin"]
+atlas = ExtResource("4_xjg7p")
+region = Rect2(700, 0, 175, 84)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4jfdy"]
-atlas = ExtResource("1_dewlx")
-region = Rect2(700, 0, 140, 66)
+[sub_resource type="AtlasTexture" id="AtlasTexture_j04uc"]
+atlas = ExtResource("4_xjg7p")
+region = Rect2(875, 0, 175, 84)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_h8kya"]
-atlas = ExtResource("1_dewlx")
-region = Rect2(840, 0, 140, 66)
+[sub_resource type="AtlasTexture" id="AtlasTexture_vqx31"]
+atlas = ExtResource("4_xjg7p")
+region = Rect2(1050, 0, 175, 84)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mtc0d"]
-atlas = ExtResource("1_dewlx")
-region = Rect2(980, 0, 140, 66)
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1goy"]
+atlas = ExtResource("4_xjg7p")
+region = Rect2(1225, 0, 175, 84)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_q2003"]
-atlas = ExtResource("1_dewlx")
-region = Rect2(140, 0, 140, 66)
+[sub_resource type="AtlasTexture" id="AtlasTexture_n04ve"]
+atlas = ExtResource("4_xjg7p")
+region = Rect2(1225, 0, 175, 84)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_uwnhs"]
-atlas = ExtResource("1_dewlx")
-region = Rect2(280, 0, 140, 66)
+[sub_resource type="AtlasTexture" id="AtlasTexture_wi7yl"]
+atlas = ExtResource("4_xjg7p")
+region = Rect2(175, 0, 175, 84)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xiypv"]
-atlas = ExtResource("1_dewlx")
-region = Rect2(420, 0, 140, 66)
+[sub_resource type="AtlasTexture" id="AtlasTexture_5q4fb"]
+atlas = ExtResource("4_xjg7p")
+region = Rect2(350, 0, 175, 84)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_iff5l"]
-atlas = ExtResource("1_dewlx")
-region = Rect2(1680, 0, 140, 66)
+[sub_resource type="AtlasTexture" id="AtlasTexture_mqm5i"]
+atlas = ExtResource("4_xjg7p")
+region = Rect2(525, 0, 175, 84)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pjiyg"]
-atlas = ExtResource("1_dewlx")
-region = Rect2(1540, 0, 140, 66)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_37b32"]
-atlas = ExtResource("1_dewlx")
-region = Rect2(1400, 0, 140, 66)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fdi6t"]
-atlas = ExtResource("1_dewlx")
-region = Rect2(1260, 0, 140, 66)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rbcqp"]
-atlas = ExtResource("1_dewlx")
-region = Rect2(1120, 0, 140, 66)
+[sub_resource type="AtlasTexture" id="AtlasTexture_jnovg"]
+atlas = ExtResource("4_xjg7p")
+region = Rect2(1575, 0, 175, 84)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_48q88"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0im1g")
+"texture": SubResource("AtlasTexture_mg6lk")
 }],
 "loop": true,
 "name": &"0",
@@ -129,93 +118,74 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_07w6w")
+"texture": SubResource("AtlasTexture_wunin")
 }],
 "loop": true,
-"name": &"108",
+"name": &"128",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4jfdy")
+"texture": SubResource("AtlasTexture_j04uc")
 }],
 "loop": true,
-"name": &"144",
+"name": &"160",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_h8kya")
+"texture": SubResource("AtlasTexture_vqx31")
 }],
 "loop": true,
-"name": &"180",
+"name": &"192",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mtc0d")
+"texture": SubResource("AtlasTexture_b1goy")
 }],
 "loop": true,
-"name": &"216",
+"name": &"224",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_q2003")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uwnhs")
+"texture": SubResource("AtlasTexture_n04ve")
 }],
 "loop": true,
-"name": &"36",
+"name": &"256",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wi7yl")
+}],
+"loop": true,
+"name": &"32",
 "speed": 1.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xiypv")
+"texture": SubResource("AtlasTexture_5q4fb")
 }],
 "loop": true,
-"name": &"72",
+"name": &"64",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_iff5l")
+"texture": SubResource("AtlasTexture_mqm5i")
 }],
 "loop": true,
-"name": &"OVERDRIVE 144",
+"name": &"96",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_pjiyg")
+"texture": SubResource("AtlasTexture_jnovg")
 }],
 "loop": true,
-"name": &"OVERDRIVE 180",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_37b32")
-}],
-"loop": true,
-"name": &"OVERDRIVE 216",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fdi6t")
-}],
-"loop": true,
-"name": &"OVERDRIVE FULL",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rbcqp")
-}],
-"loop": true,
-"name": &"over 216",
+"name": &"OVERDRIVE",
 "speed": 5.0
 }]
 
@@ -225,17 +195,172 @@ font_size = 11
 font_color = Color(0, 0, 0, 1)
 outline_size = 3
 
+[sub_resource type="LabelSettings" id="LabelSettings_wunin"]
+font = ExtResource("6_48q88")
+font_size = 13
+font_color = Color(1, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_13dyv"]
+atlas = ExtResource("8_mg6lk")
+region = Rect2(10, 34, 10, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r71lk"]
+atlas = ExtResource("8_mg6lk")
+region = Rect2(0, 0, 10, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d1ul7"]
+atlas = ExtResource("8_mg6lk")
+region = Rect2(10, 0, 10, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pinj1"]
+atlas = ExtResource("8_mg6lk")
+region = Rect2(20, 0, 10, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_68ajo"]
+atlas = ExtResource("8_mg6lk")
+region = Rect2(30, 0, 10, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iufls"]
+atlas = ExtResource("8_mg6lk")
+region = Rect2(0, 17, 10, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b8rtp"]
+atlas = ExtResource("8_mg6lk")
+region = Rect2(10, 17, 10, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_612k1"]
+atlas = ExtResource("8_mg6lk")
+region = Rect2(20, 17, 10, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_us6mg"]
+atlas = ExtResource("8_mg6lk")
+region = Rect2(30, 17, 10, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8blbl"]
+atlas = ExtResource("8_mg6lk")
+region = Rect2(0, 34, 10, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bb0on"]
+atlas = ExtResource("8_mg6lk")
+region = Rect2(20, 34, 10, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wijgc"]
+atlas = ExtResource("8_mg6lk")
+region = Rect2(30, 34, 10, 17)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yhvps"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_13dyv")
+}],
+"loop": true,
+"name": &"0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r71lk")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d1ul7")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pinj1")
+}],
+"loop": true,
+"name": &"3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_68ajo")
+}],
+"loop": true,
+"name": &"4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iufls")
+}],
+"loop": true,
+"name": &"5",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b8rtp")
+}],
+"loop": true,
+"name": &"6",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_612k1")
+}],
+"loop": true,
+"name": &"7",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_us6mg")
+}],
+"loop": true,
+"name": &"8",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8blbl")
+}],
+"loop": true,
+"name": &"9",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bb0on")
+}],
+"loop": true,
+"name": &"E",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wijgc")
+}],
+"loop": true,
+"name": &"r",
+"speed": 5.0
+}]
+
 [sub_resource type="LabelSettings" id="LabelSettings_xjg7p"]
 font = ExtResource("6_48q88")
-font_size = 22
+font_size = 11
+font_color = Color(1, 0.90000004, 0, 1)
+outline_size = 3
+outline_color = Color(1, 0.31666666, 0, 1)
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Panel" type="Panel" parent="."]
-offset_left = 6.0
-offset_top = 54.0
-offset_right = 126.0
-offset_bottom = 54.0
+offset_left = 4.0
+offset_top = 71.0
+offset_right = 135.0
+offset_bottom = 71.0
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_qwshj")
 script = ExtResource("6_xjg7p")
@@ -245,9 +370,9 @@ visible = false
 texture_filter = 1
 layout_mode = 0
 offset_left = 2.0
-offset_top = 10.0
+offset_top = 3.0
 offset_right = 86.0
-offset_bottom = 24.0
+offset_bottom = 17.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
 text = "+LOREM IPSUM"
@@ -257,9 +382,9 @@ label_settings = ExtResource("3_48q88")
 visible = false
 layout_mode = 0
 offset_left = 2.0
-offset_top = 22.0
+offset_top = 15.0
 offset_right = 86.0
-offset_bottom = 36.0
+offset_bottom = 29.0
 text = "+LOREM IPSUM"
 label_settings = SubResource("LabelSettings_j04uc")
 
@@ -267,9 +392,9 @@ label_settings = SubResource("LabelSettings_j04uc")
 visible = false
 layout_mode = 0
 offset_left = 2.0
-offset_top = 34.0
+offset_top = 27.0
 offset_right = 86.0
-offset_bottom = 48.0
+offset_bottom = 41.0
 text = "+LOREM IPSUM"
 label_settings = SubResource("LabelSettings_vqx31")
 
@@ -277,9 +402,9 @@ label_settings = SubResource("LabelSettings_vqx31")
 visible = false
 layout_mode = 0
 offset_left = 2.0
-offset_top = 46.0
+offset_top = 39.0
 offset_right = 86.0
-offset_bottom = 60.0
+offset_bottom = 53.0
 text = "+LOREM IPSUM"
 label_settings = SubResource("LabelSettings_b1goy")
 
@@ -287,9 +412,9 @@ label_settings = SubResource("LabelSettings_b1goy")
 visible = false
 layout_mode = 0
 offset_left = 2.0
-offset_top = 58.0
+offset_top = 51.0
 offset_right = 86.0
-offset_bottom = 72.0
+offset_bottom = 65.0
 text = "+LOREM IPSUM"
 label_settings = SubResource("LabelSettings_n04ve")
 
@@ -297,9 +422,9 @@ label_settings = SubResource("LabelSettings_n04ve")
 visible = false
 layout_mode = 0
 offset_left = 2.0
-offset_top = 70.0
+offset_top = 63.0
 offset_right = 86.0
-offset_bottom = 84.0
+offset_bottom = 77.0
 text = "+LOREM IPSUM"
 label_settings = SubResource("LabelSettings_wi7yl")
 
@@ -307,9 +432,9 @@ label_settings = SubResource("LabelSettings_wi7yl")
 visible = false
 layout_mode = 0
 offset_left = 2.0
-offset_top = 82.0
+offset_top = 75.0
 offset_right = 86.0
-offset_bottom = 96.0
+offset_bottom = 89.0
 text = "+LOREM IPSUM"
 label_settings = SubResource("LabelSettings_5q4fb")
 
@@ -317,9 +442,9 @@ label_settings = SubResource("LabelSettings_5q4fb")
 visible = false
 layout_mode = 0
 offset_left = 2.0
-offset_top = 94.0
+offset_top = 87.0
 offset_right = 86.0
-offset_bottom = 108.0
+offset_bottom = 101.0
 text = "+LOREM IPSUM"
 label_settings = SubResource("LabelSettings_mqm5i")
 
@@ -327,9 +452,9 @@ label_settings = SubResource("LabelSettings_mqm5i")
 visible = false
 layout_mode = 0
 offset_left = 2.0
-offset_top = 106.0
+offset_top = 99.0
 offset_right = 86.0
-offset_bottom = 120.0
+offset_bottom = 113.0
 text = "+LOREM IPSUM"
 label_settings = SubResource("LabelSettings_jnovg")
 
@@ -337,9 +462,9 @@ label_settings = SubResource("LabelSettings_jnovg")
 visible = false
 layout_mode = 0
 offset_left = 2.0
-offset_top = 118.0
+offset_top = 111.0
 offset_right = 86.0
-offset_bottom = 132.0
+offset_bottom = 125.0
 text = "+LOREM IPSUM"
 label_settings = SubResource("LabelSettings_13dyv")
 
@@ -347,16 +472,23 @@ label_settings = SubResource("LabelSettings_13dyv")
 wait_time = 5.0
 
 [node name="UI" type="AnimatedSprite2D" parent="."]
-position = Vector2(70, 33)
+position = Vector2(92.5, 33)
 sprite_frames = SubResource("SpriteFrames_48q88")
-animation = &"OVERDRIVE FULL"
+animation = &"OVERDRIVE"
+
+[node name="OverheatThingy" type="Sprite2D" parent="UI"]
+show_behind_parent = true
+position = Vector2(-84, 33.5)
+scale = Vector2(0.49999988, 10.999998)
+texture = ExtResource("4_mg6lk")
 
 [node name="Label" type="Label" parent="UI"]
 modulate = Color(1, 1, 1, 0.7490196)
-offset_left = 90.0
-offset_top = -33.0
-offset_right = 358.0
-offset_bottom = 146.0
+texture_filter = 1
+offset_left = 89.0
+offset_top = -34.0
+offset_right = 357.0
+offset_bottom = 145.0
 theme_override_fonts/font = ExtResource("2_hfhsn")
 theme_override_font_sizes/font_size = 12
 text = "pos: 0 ; 0
@@ -371,11 +503,12 @@ script = ExtResource("3_qwshj")
 metadata/_edit_use_anchors_ = true
 
 [node name="RichTextLabel" type="Label" parent="UI"]
+visible = false
 texture_filter = 1
-offset_left = -44.0
-offset_top = -22.0
-offset_right = 38.0
-offset_bottom = 77.0
+offset_left = 56.0
+offset_top = 5.0
+offset_right = 138.0
+offset_bottom = 104.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 6
@@ -383,19 +516,51 @@ theme_override_fonts/font = ExtResource("2_hfhsn")
 theme_override_font_sizes/font_size = 48
 text = "100
 "
+label_settings = SubResource("LabelSettings_wunin")
 metadata/_edit_use_anchors_ = true
+
+[node name="NUM1" type="AnimatedSprite2D" parent="UI"]
+position = Vector2(57.5, 13.5)
+sprite_frames = SubResource("SpriteFrames_yhvps")
+animation = &"E"
+
+[node name="NUM2" type="AnimatedSprite2D" parent="UI"]
+position = Vector2(68.5, 13.5)
+sprite_frames = SubResource("SpriteFrames_yhvps")
+animation = &"r"
+
+[node name="NUM3" type="AnimatedSprite2D" parent="UI"]
+position = Vector2(79.5, 13.5)
+sprite_frames = SubResource("SpriteFrames_yhvps")
+animation = &"r"
+
+[node name="OverloadBar" type="Sprite2D" parent="."]
+position = Vector2(56, 63)
+centered = false
+
+[node name="Label" type="Label" parent="OverloadBar"]
+offset_left = 55.0
+offset_top = -5.0
+offset_right = 95.0
+offset_bottom = 23.0
+text = "5"
+label_settings = SubResource("LabelSettings_xjg7p")
+
+[node name="Label2" type="Label" parent="OverloadBar"]
+offset_left = 63.0
+offset_top = -5.0
+offset_right = 103.0
+offset_bottom = 23.0
+text = "O"
+label_settings = SubResource("LabelSettings_xjg7p")
+
+[node name="Label3" type="Label" parent="OverloadBar"]
+offset_left = 71.0
+offset_top = -5.0
+offset_right = 111.0
+offset_bottom = 23.0
+text = "O"
+label_settings = SubResource("LabelSettings_xjg7p")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(320, 180)
-
-[node name="OverloadBar" type="Sprite2D" parent="."]
-position = Vector2(57, 61)
-texture = ExtResource("4_hfhsn")
-
-[node name="Label" type="Label" parent="OverloadBar"]
-offset_left = 68.0
-offset_top = -14.0
-offset_right = 108.0
-offset_bottom = 14.0
-text = "0%"
-label_settings = SubResource("LabelSettings_xjg7p")

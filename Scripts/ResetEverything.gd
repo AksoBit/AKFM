@@ -17,6 +17,5 @@ func _on_button_down() -> void:
 	$"../Volume".value = 50
 	$"../Speed".value = 100
 	$"../Voicelines".value = 50
-	$"../DeBugtton2".button_pressed = false
 	Global.OVERDRUM = false 
 	Settings.set_value("~SOUND~", "Overdrum", false)

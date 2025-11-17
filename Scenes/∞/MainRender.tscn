@@ -35,6 +35,7 @@ shader_parameter/blur = 0.3
 shader_parameter/scanlines_mult = 0.1
 
 [node name="Node2D" type="Node2D"]
+texture_filter = 1
 
 [node name="Bsod" type="Sprite2D" parent="."]
 position = Vector2(320, 180)

@@ -22,7 +22,7 @@ gravity = Vector3(0, 50, 0)
 [node name="Node2D" type="Node2D"]
 
 [node name="Streetlight" type="StaticBody2D" parent="." groups=["Destroyable"]]
-collision_layer = 256
+collision_layer = 512
 collision_mask = 15
 script = ExtResource("1_kn4yn")
 
@@ -39,10 +39,12 @@ bus = &"SFX"
 
 [node name="PointLight2D" type="PointLight2D" parent="Streetlight"]
 texture_filter = 2
-position = Vector2(0, -16)
-color = Color(0.3285, 0.4824083, 0.73, 1)
+position = Vector2(0, -71)
+color = Color(0.5803922, 0.69411767, 1, 1)
+energy = 2.0
 shadow_enabled = true
 texture = ExtResource("4_vobun")
+offset = Vector2(0, 53)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="Streetlight"]
 position = Vector2(0, -55)
@@ -58,3 +60,9 @@ trail_lifetime = 0.2
 trail_sections = 2
 trail_section_subdivisions = 1
 process_material = SubResource("ParticleProcessMaterial_swnua")
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="Streetlight"]
+visible = false
+position = Vector2(9, -26)
+height = 1.0
+max_distance = 784.0

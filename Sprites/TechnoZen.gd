@@ -4,7 +4,8 @@ var MIKUMIKUBEEEEEEEEAAAAAAAAAAAM = preload("res://Scenes/BEAM.tscn")
 var IHateMyLife = preload("res://Scenes/NonvericalBEAM.tscn")
 var NEWMIKUMIKUBEEEEEEEEAAAAAAAAAAAM = MIKUMIKUBEEEEEEEEAAAAAAAAAAAM.instantiate()
 var FUCK = IHateMyLife.instantiate()
-var Parts = preload("res://Scenes/TechnoBody.tscn").instantiate()
+var Halved = preload("res://Scenes/Debris/TechnoHalved.tscn").instantiate()
+var Parts = preload("res://Scenes/Debris/TechnoBody.tscn").instantiate()
 @onready var MC = get_parent().get_parent().get_node("UwUGG/UwUGG")
 var Twenty_O_Seven_IS_ETERNAL = preload("res://Scenes/BeamFollowing.tscn")
 var idkreally = Twenty_O_Seven_IS_ETERNAL.instantiate()
@@ -112,11 +113,18 @@ func OVERDRIVE():
 		get_parent().get_parent().add_child(NEWMIKUMIKUBEEEEEEEEAAAAAAAAAAAM)
 	Face.play("default")
 	IsAttaking = false
-func take_damage(damage):
-	energy -= damage
+func take_damage(damage, hitstopdur = 0, OverHeatDamage = 0, reason = null):
+	if reason == "Siri":
+		energy -= int(damage * 1.5)
+	else:
+		energy -= damage
 	if energy <= 0:
-		get_parent().get_parent().call_deferred("add_child", Parts)
-		Parts.global_position = global_position - Offset
+		if reason == "Hack":
+			get_parent().get_parent().call_deferred("add_child", Halved)
+			Halved.global_position = global_position - Offset
+		else:
+			get_parent().get_parent().call_deferred("add_child", Parts)
+			Parts.global_position = global_position - Offset
 		Global.TechnoDeath()
 		queue_free()
 	$RichTextLabel.text = str(energy)
