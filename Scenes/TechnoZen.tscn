@@ -1,21 +1,22 @@
-[gd_scene load_steps=26 format=3 uid="uid://cuhtkraetxw67"]
+[gd_scene load_steps=27 format=3 uid="uid://cuhtkraetxw67"]
 
 [ext_resource type="Script" uid="uid://cwrjo50ginl0" path="res://Sprites/TechnoZen.gd" id="1_vj2kx"]
-[ext_resource type="Texture2D" uid="uid://4yk30l3xt2fm" path="res://Sprites/TechnoZen/Body/SomeGravyStuffIdk.png" id="2_t5jxm"]
-[ext_resource type="Texture2D" uid="uid://ct0ime7g2lrfl" path="res://Sprites/TechnoZen/Body/Main.png" id="2_vj2kx"]
-[ext_resource type="Texture2D" uid="uid://cvemxtwfwhmq4" path="res://Sprites/TechnoZen/Faces/(◕‿◕✿).png" id="3_xh2mq"]
-[ext_resource type="Texture2D" uid="uid://c02w4nm5s16gy" path="res://Sprites/TechnoZen/Faces/ERR.png" id="4_p853r"]
-[ext_resource type="Texture2D" uid="uid://dcnmk6k5gxce1" path="res://Sprites/TechnoZen/Faces/(◡‿◡✿).png" id="5_hj2y4"]
-[ext_resource type="Texture2D" uid="uid://dvdfx3l27ldm7" path="res://Sprites/TechnoZen/Faces/(}︿{).png" id="6_7saci"]
-[ext_resource type="Texture2D" uid="uid://cdgj2m16wkbsf" path="res://Sprites/TechnoZen/Faces/(◕‿↼✿) .png" id="7_kgcj2"]
-[ext_resource type="Texture2D" uid="uid://ob6bheip2x6b" path="res://Sprites/TechnoZen/Faces/-_-.png" id="8_tfgwq"]
-[ext_resource type="Texture2D" uid="uid://bwqn458kxim4r" path="res://Sprites/TechnoZen/Faces/(◠‿◠✿) .png" id="9_i2nt7"]
-[ext_resource type="Texture2D" uid="uid://c87g88qoqsl0i" path="res://Sprites/TechnoZen/Faces/(￢︿￢✿).png" id="10_hj2y4"]
+[ext_resource type="Texture2D" uid="uid://4yk30l3xt2fm" path="res://Sprites/Enemies/TechnoZen/Body/SomeGravyStuffIdk.png" id="2_t5jxm"]
+[ext_resource type="Texture2D" uid="uid://ct0ime7g2lrfl" path="res://Sprites/Enemies/TechnoZen/Body/Main.png" id="2_vj2kx"]
+[ext_resource type="Texture2D" uid="uid://cvemxtwfwhmq4" path="res://Sprites/Enemies/TechnoZen/Faces/(◕‿◕✿).png" id="3_xh2mq"]
+[ext_resource type="Texture2D" uid="uid://c02w4nm5s16gy" path="res://Sprites/Enemies/TechnoZen/Faces/ERR.png" id="4_p853r"]
+[ext_resource type="Texture2D" uid="uid://dcnmk6k5gxce1" path="res://Sprites/Enemies/TechnoZen/Faces/(◡‿◡✿).png" id="5_hj2y4"]
+[ext_resource type="Texture2D" uid="uid://dvdfx3l27ldm7" path="res://Sprites/Enemies/TechnoZen/Faces/(}︿{).png" id="6_7saci"]
+[ext_resource type="Texture2D" uid="uid://cdgj2m16wkbsf" path="res://Sprites/Enemies/TechnoZen/Faces/(◕‿↼✿) .png" id="7_kgcj2"]
+[ext_resource type="Texture2D" uid="uid://ob6bheip2x6b" path="res://Sprites/Enemies/TechnoZen/Faces/-_-.png" id="8_tfgwq"]
+[ext_resource type="Texture2D" uid="uid://bwqn458kxim4r" path="res://Sprites/Enemies/TechnoZen/Faces/(◠‿◠✿) .png" id="9_i2nt7"]
+[ext_resource type="Texture2D" uid="uid://c87g88qoqsl0i" path="res://Sprites/Enemies/TechnoZen/Faces/(￢︿￢✿).png" id="10_hj2y4"]
 [ext_resource type="AudioStream" uid="uid://d1tkchf62p6dw" path="res://Sounds/Enemies/TechnoZen/FuckingDie.wav" id="12_7saci"]
 [ext_resource type="FontFile" uid="uid://da8s7os3013x" path="res://Fonts/DepartureMono-Regular.otf" id="12_kgcj2"]
+[ext_resource type="Texture2D" uid="uid://cngwv3kdu1nnu" path="res://Sprites/Enemies/RemIS/heal_mark.png" id="13_tfgwq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p853r"]
-radius = 99.0202
+radius = 108.16654
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2mvw8"]
 atlas = ExtResource("2_t5jxm")
@@ -122,7 +123,8 @@ outline_size = 8
 
 [node name="Node2D" type="Node2D"]
 
-[node name="TechnoZen" type="CharacterBody2D" parent="."]
+[node name="TechnoZen" type="CharacterBody2D" parent="." groups=["enemy"]]
+texture_filter = 1
 collision_layer = 4
 collision_mask = 263
 script = ExtResource("1_vj2kx")
@@ -142,6 +144,7 @@ sprite_frames = SubResource("SpriteFrames_438m0")
 frame_progress = 0.14101236
 
 [node name="Main" type="Sprite2D" parent="TechnoZen"]
+z_index = 1
 texture_filter = 1
 texture = ExtResource("2_vj2kx")
 
@@ -159,6 +162,7 @@ visible = false
 texture = ExtResource("6_7saci")
 
 [node name="RichTextLabel" type="Label" parent="TechnoZen"]
+texture_filter = 1
 offset_left = -46.0
 offset_top = -117.0
 offset_right = 47.0
@@ -168,6 +172,11 @@ label_settings = SubResource("LabelSettings_hj2y4")
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
+
+[node name="HealMark" type="Sprite2D" parent="TechnoZen"]
+visible = false
+position = Vector2(0, -41)
+texture = ExtResource("13_tfgwq")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="TechnoZen"]
 stream = ExtResource("12_7saci")

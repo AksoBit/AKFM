@@ -1,14 +1,132 @@
-[gd_scene load_steps=7 format=3 uid="uid://bliviqyh5phgy"]
+[gd_scene load_steps=20 format=3 uid="uid://bliviqyh5phgy"]
 
-[ext_resource type="Script" uid="uid://uiawa4bhgmxm" path="res://Scripts/Rojer.gd" id="1_81ewt"]
-[ext_resource type="Texture2D" uid="uid://bqjtngfv45m6s" path="res://Sprites/Rodger/ReReRodger.png" id="3_k27hd"]
-[ext_resource type="Script" uid="uid://d0rxcfmiw78ee" path="res://Scripts/attack_area.gd" id="4_1rjej"]
+[ext_resource type="Script" uid="uid://uiawa4bhgmxm" path="res://Scripts/Enemies/Rojer.gd" id="1_81ewt"]
+[ext_resource type="Texture2D" uid="uid://p4y8on6yneni" path="res://Sprites/Spark.png" id="3_wwooq"]
+[ext_resource type="Script" uid="uid://d0rxcfmiw78ee" path="res://Scripts/Enemies/attack_area.gd" id="4_1rjej"]
+[ext_resource type="Texture2D" uid="uid://1bn8i8olkbfk" path="res://Sprites/Enemies/Rodger/ReReReReRodger_saw.png" id="4_1vcgo"]
+[ext_resource type="Texture2D" uid="uid://cngwv3kdu1nnu" path="res://Sprites/Enemies/RemIS/heal_mark.png" id="4_81ewt"]
+[ext_resource type="Texture2D" uid="uid://di4t4yrm0t6tn" path="res://Sprites/Enemies/Rodger/ReReReReRodger.png" id="4_one1q"]
+
+[sub_resource type="Animation" id="Animation_1vcgo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Roach/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_s5mcx"]
+resource_name = "bite"
+length = 0.03333667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Roach/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+
+[sub_resource type="Animation" id="Animation_kd477"]
+resource_name = "flyyyyyyy"
+length = 0.03333667
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Roach/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+
+[sub_resource type="Animation" id="Animation_1rjej"]
+resource_name = "run"
+length = 0.40000334
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Roach/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.26666668),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t83g6"]
+_data = {
+&"RESET": SubResource("Animation_1vcgo"),
+&"bite": SubResource("Animation_s5mcx"),
+&"flyyyyyyy": SubResource("Animation_kd477"),
+&"run": SubResource("Animation_1rjej")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1vcgo"]
-size = Vector2(24, 22)
+size = Vector2(24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kd477"]
+atlas = ExtResource("4_1vcgo")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s5mcx"]
+atlas = ExtResource("4_1vcgo")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t83g6"]
+atlas = ExtResource("4_1vcgo")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o06k2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kd477")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s5mcx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t83g6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s5mcx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kd477"]
-size = Vector2(9, 20)
+size = Vector2(9, 22)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_o06k2"]
+lifetime_randomness = 0.45
+particle_flag_align_y = true
+particle_flag_disable_z = true
+angle_min = 100.0
+angle_max = 100.0
+spread = 105.674
+initial_velocity_max = 64.52
+gravity = Vector3(0, 50, 0)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s5mcx"]
 radius = 216.0
@@ -16,14 +134,21 @@ height = 518.0
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Roach" type="CharacterBody2D" parent="."]
+[node name="Roach" type="CharacterBody2D" parent="." groups=["enemy"]]
+texture_filter = 1
 collision_layer = 4
 collision_mask = 263
 platform_floor_layers = 4294967290
 script = ExtResource("1_81ewt")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Roach"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_t83g6")
+}
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Roach"]
-position = Vector2(0, -2)
+position = Vector2(0, -3)
 shape = SubResource("RectangleShape2D_1vcgo")
 
 [node name="AttackArea" type="Area2D" parent="Roach"]
@@ -32,10 +157,30 @@ collision_layer = 2
 collision_mask = 5
 script = ExtResource("4_1rjej")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Roach/AttackArea"]
+z_index = 1
+position = Vector2(-16, -10)
+sprite_frames = SubResource("SpriteFrames_o06k2")
+frame_progress = 0.2447281
+speed_scale = 3.0
+
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Roach/AttackArea"]
-position = Vector2(-16.5, -3)
+position = Vector2(-16.5, -4)
 shape = SubResource("RectangleShape2D_kd477")
 debug_color = Color(0.998493, 0, 0.140566, 0.42)
+
+[node name="sparks" type="GPUParticles2D" parent="Roach/AttackArea"]
+z_index = 1
+position = Vector2(-16, -10)
+emitting = false
+amount = 100
+amount_ratio = 0.4
+texture = ExtResource("3_wwooq")
+speed_scale = 4.63
+randomness = 1.0
+trail_sections = 2
+trail_section_subdivisions = 1
+process_material = SubResource("ParticleProcessMaterial_o06k2")
 
 [node name="JumpRange" type="Area2D" parent="Roach"]
 
@@ -50,7 +195,14 @@ one_shot = true
 [node name="Sprite2D" type="Sprite2D" parent="Roach" groups=["Flashable"]]
 texture_filter = 1
 position = Vector2(0, -7)
-texture = ExtResource("3_k27hd")
+texture = ExtResource("4_one1q")
+hframes = 3
+vframes = 2
+
+[node name="HealMark" type="Sprite2D" parent="Roach"]
+visible = false
+position = Vector2(9, -17)
+texture = ExtResource("4_81ewt")
 
 [connection signal="body_entered" from="Roach/AttackArea" to="Roach" method="_on_attack_area_body_entered"]
 [connection signal="body_exited" from="Roach/AttackArea" to="Roach" method="_on_attack_area_body_exited"]

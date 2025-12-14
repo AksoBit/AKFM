@@ -26,9 +26,9 @@ buses/default_bus_layout="res://Music/default_bus_layout.tres"
 
 [autoload]
 
-Global="*res://Scripts/global.gd"
+Global="*res://Scripts/Misc/global.gd"
 Settings="*res://Scripts/settings.gd"
-Save="*res://Scripts/SAVE.gd"
+Save="*res://Scripts/Misc/SAVE.gd"
 
 [debug]
 
@@ -44,7 +44,7 @@ window/size/sharp_corners=true
 window/size/window_width_override=1920
 window/size/window_height_override=1080
 window/stretch/mode="canvas_items"
-mouse_cursor/custom_image="uid://y5tpfd4d12mh"
+mouse_cursor/custom_image="uid://c0ogjfb81340r"
 
 [file_customization]
 
@@ -59,6 +59,7 @@ Destroyable=""
 NeonRifts=""
 Flashable=""
 AlwaysFlashing=""
+enemy=""
 
 [input]
 

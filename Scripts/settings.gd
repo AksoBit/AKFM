@@ -1,3 +1,32 @@
+# ░░░░                                                                  ▒░░▒░    
+# ░░░░░░                                                               ▒░░░░░░   
+#░░░░▒░░░░        ░                                                     ▒░▒░░▒░  
+# ▒░▒░░░░▒░     ▒░░░▒                                                    ▒░░░░░░ 
+#  ▒▒░░░▒▒░░▒░ ▒░░░░░░                █    █                     ▒▒░   ░ ▒▒░░░░▒ 
+#   ▒░░░░░░░░░▒░░░░▒                ░█░▒▒▒▒▒▓█░░░              ░░░░░▒░   ░▒▒▒▒░▒ 
+#   ▒░▒░░░░░░▒░░░░▒              ░▒█▓░░░░░░░░░░▒▒░▒▒░          ░▒░░░░░  ▒▒░░░░░▒ 
+#   ░░░░░░▒░░░░░░▒            ░▒▒░░░░░░░░░░░░░░░░░░░░░▒          ▒░░░▒░▒░░░░░░░░ 
+#    ▒░░░▒░░░░░░░▒ ░         ▒░░░▓▒░░▒░░░░░░░▒░░▒▓░░░░░░▒       ░░▒░░░░░░░░░░░░░░
+#     ▒░░░░░░░░░░▒         ░░░░█░░░░▒░░░░░░░░░░▒░░░▓░░░░░▒░      ░░░░░░░░░▒░░░░▒ 
+#     ░░░░░░░▒░░░▒        ▒░░▒░░░░░░░░▒▓▓▓▓▓▓▓░░░░░░░░░░░░▒░     ░░░▒░░░░░░░░░▒░ 
+#      ▒░░░░░░░▒░░       ▒░░░░░░░░░▒▓▓▓▓▓▓▓▓▓▓▓▓▓░░░░░░░░░░░░    ░▒▒░░░░░░░░░▓   
+#       ░░░░░░░▒░      ░░░░░░░░░░▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░░░░░░░▒      ▒▒░░░░░░▓░ ░  
+#        ░░▒▒▒▒         ▒░░░░░░░▒▓▓▓████▓▓▓███▓▓▓▓▓▓░░░░░░░░░▒      ░▒▒▒▒░░      
+#                      ▒░░░░░░░▒▓▓▓██████▓█████▓▓▓▓▓▓░░░░░░░░▒░                  
+#                      ▒░░░░░░▒▓▓▓▓█████████████▓▓▓▓▓▓░░░░░░░░░                  
+#                      ▒░░░░░░▓▓▓▓███████████████▓▓▓▓▓▒░░░░░░░░                  
+#                      ▒░░░░░▓▓▓▓▓███████████████▓▓▓▓▓█░░░░░░░░                  
+#                      ▒░░░░░█▓▓▓▓████▓░░░░░░▓███▓▓▓▓▓▓▒░░░░░▒░                  
+#                      ░░░░░▓▓▓▓▓▓██▒░░░░░░░░░░▒█▓▓▓▓▓▓▓░░░░░▒                   
+#                      ░▒░░░▓▓▓▓▓▓▓░░░░░░░░░░░░░░▓▓▓▓▓▓▓▒░░░░░                   
+#                       ░▒░▒▓▓▓▓▓▒░░░░░░░░░░░░░░░░▒▓▓▓▓▓▓░░░▒                    
+#                        ▒░▒▓▓▓▓░░░░░░░░░░░░░░░░░░░░▓▓▓▓▓░░▒                     
+#                        ▒░░▒▒░░░░░░░░░░░░░░░░░░░░░░░▒▓▓░░░░                     
+#                         ▒░░░▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░                     
+#                          ▒▒░▒░░░░░░░░░░░░░░░░░░░░░░░▒▒░░▒                      
+#                              ░▒▒░░░░░░░░░░░░░░░░░▒▒░                           
+#                                ░░░▒▒░░░░░░░░░▒▒░░
+#Очень страшный код                               
 extends Node
 
 var config = ConfigFile.new()
@@ -19,6 +48,10 @@ func _ready():
 		set_value("~GRAPHICS~", "Scanlines", 0.1)
 		set_value("~GAMEPLAY~", "Debug", false)
 		set_value("~SYSTEM~", "Version", Version)
+		set_value("~AKSOBIT~", "ULTRAKILL", false)
+		set_value("~AKSOBIT~", "HENT", false)
+		set_value("~AKSOBIT~", "COOL_GAMES", false)
+		set_value("~AKSOBIT~", "Started", false)
 		config.save(path)
 	if config.get_value("~SYSTEM~", "Version") != Version:
 		Save.hey_ive_got_an_update()
@@ -75,7 +108,24 @@ func _ready():
 			set_value("~GAMEPLAY~", "Debug", get_value("~GAMEPLAY~", "Debug"))
 		else:
 			set_value("~GAMEPLAY~", "Debug", false)
-		set_value("~SYSTEM~", "Version", Version)
+		if get_value("~AKSOBIT~", "ULTRAKILL") != null:
+			set_value("~AKSOBIT~", "ULTRAKILL", get_value("~AKSOBIT~", "ULTRAKILL"))
+		else:
+			set_value("~AKSOBIT~", "ULTRAKILL", false)
+		if get_value("~AKSOBIT~", "HENT") != null:
+			set_value("~AKSOBIT~", "HENT", get_value("~AKSOBIT~", "HENT"))
+		else:
+			set_value("~AKSOBIT~", "HENT", false)
+		if get_value("~AKSOBIT~", "COOL_GAMES") != null:
+			set_value("~AKSOBIT~", "COOL_GAMES", get_value("~AKSOBIT~", "COOL_GAMES"))
+		else:
+			set_value("~AKSOBIT~", "COOL_GAMES", false)
+		if get_value("~AKSOBIT~", "Started") != null:
+			set_value("~AKSOBIT~", "Started", get_value("~AKSOBIT~", "Started"))
+		else:
+			set_value("~AKSOBIT~", "Started", false)
+	set_value("~SYSTEM~", "Version", Version)
+
 func get_value(section, key):
 	return config.get_value(section, key)
 

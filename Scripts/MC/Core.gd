@@ -1,0 +1,105 @@
+extends RigidBody2D
+var parriable = true
+var Damage = 10
+var FirstDot
+var SeconDot
+var Distance
+var Direction
+var MC 
+var Charge = []
+var Startimer
+var Endtimer
+var Correction = Vector2.ZERO
+var CoreParts = preload("res://Scenes/MC/CoreParts.tscn").instantiate()
+@onready var CoolRay = $"../RayCast2D"
+func _ready() -> void:
+	Startimer = Time.get_ticks_msec()
+	set_process(false)
+	Correction = global_position #Эм... Простите?... Я не смог найти баг, так что будем делать ЭТО.
+	await get_tree().process_frame
+	FirstDot = global_position
+	CoolRay.global_position = FirstDot
+	apply_torque(10000)
+	var mouse_pos = get_global_mouse_position()
+	var req = global_position.y - mouse_pos.y
+	Damage = int(Damage * MC.calc_overdamage())
+	if req < 0:
+		linear_velocity.y += -sqrt(2 * 980) 
+	else:
+		linear_velocity.y += -sqrt(2 * 980 * req) 
+	var reqx = global_position.x - mouse_pos.x
+	linear_velocity.x += -reqx
+	set_process(true)
+func  _process(delta: float) -> void:
+	CoolRay.global_position = FirstDot
+	SeconDot = global_position
+	Direction = (SeconDot - FirstDot)
+	Distance = Direction.length()
+	CoolRay.target_position = Vector2.RIGHT * Distance
+	CoolRay.global_rotation = Direction.angle()
+	CoolRay.force_raycast_update()
+	if CoolRay.is_colliding():
+		var body = CoolRay.get_collider()
+		if body.has_method("take_damage") and not body.name == "UwUGG":
+			body.take_damage(Damage, 0, 0, "Core")
+			if parriable == false:
+				MC.take_overheat(5)
+				MC.DPM += Damage
+				MC.transfer_to_text_panel("CANON", false, Color.from_rgba8(254, 244, 55, 255), Color.from_rgba8(0, 0, 0, 255))
+		elif body.name == "UwUGG":
+			body.take_damage(Damage/4)
+		print("Поезд сделал БУМ")
+		var Thingy = CoolRay.get_collision_point()
+		$"../Area2D".DESTROY()
+		get_parent().get_parent().call_deferred("add_child", CoreParts)
+		CoreParts.global_position = Thingy - Correction
+		queue_free()
+	FirstDot = global_position
+func DESTROY():
+	$"../Area2D/CorExplosion".volume_linear = 0
+	$"../CoreScrew".pitch_scale = randf_range(0.7, 1.3)
+	$"../CoreScrew".play()
+	Damage = Damage * 2
+	MC.take_overheat(5)
+	MC.transfer_to_text_panel("SCREWDRIVER", false, Color.from_rgba8(254, 244, 55, 255), Color.from_rgba8(0, 0, 0, 255))
+	if $"../Area2D" == null:
+		return
+	$"../Area2D".DESTROY()
+	get_parent().get_parent().call_deferred("add_child", CoreParts)
+	CoreParts.global_position = global_position - Correction
+	queue_free()
+func _on_area_2d_2_body_entered(body: Node2D) -> void:
+	if $"../Area2D" == null:
+		return
+	else:
+		if body.has_method("take_damage") and not body.name == "UwUGG":
+			if parriable == false:
+				MC.take_overheat(5)
+				MC.transfer_to_text_panel("CANON", false, Color.from_rgba8(254, 244, 55, 255), Color.from_rgba8(0, 0, 0, 255))
+				MC.DPM += Damage
+			body.take_damage(abs(Damage), 0, 0, "Core")
+		elif body.name == "UwUGG":
+			body.take_damage(Damage/4, 0, 0, "Core")
+		$"../Area2D".DESTROY()
+		get_parent().get_parent().call_deferred("add_child", CoreParts)
+		CoreParts.global_position = global_position - Correction
+		queue_free()
+func parry(Dir):
+	if parriable == true:
+		Endtimer = int(Time.get_ticks_msec())
+		var TiMulti = Endtimer - Startimer
+		linear_velocity = Dir * 3
+		Damage = Damage + (TiMulti / 100)
+		print('+parry')
+		parriable = false
+func Impact(BW, Finish):
+	if Finish:
+		material.set_shader_parameter("Flashing", false)
+	else:
+		material.set_shader_parameter("Flashing", true)
+	if BW == true:
+		material.set_shader_parameter("White", true)
+	else:
+		material.set_shader_parameter("White", false)
+func ChargeWith(Thingy = "Laser"):
+	Charge.append(Thingy)

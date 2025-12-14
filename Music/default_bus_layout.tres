@@ -1,4 +1,4 @@
-[gd_resource type="AudioBusLayout" load_steps=5 format=3 uid="uid://ca7fpi51f6yn2"]
+[gd_resource type="AudioBusLayout" load_steps=6 format=3 uid="uid://ca7fpi51f6yn2"]
 
 [sub_resource type="AudioEffectDistortion" id="AudioEffectDistortion_j3pel"]
 resource_name = "Distortion"
@@ -13,6 +13,14 @@ resource_name = "Chorus"
 
 [sub_resource type="AudioEffectReverb" id="AudioEffectReverb_j3pel"]
 resource_name = "Reverb"
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_mry32"]
+resource_name = "Reverb"
+room_size = 0.04
+damping = 0.04
+hipass = 0.39
+dry = 0.12
+wet = 0.15
 
 [resource]
 bus/0/effect/0/effect = SubResource("AudioEffectDistortion_j3pel")
@@ -35,6 +43,8 @@ bus/2/mute = false
 bus/2/bypass_fx = false
 bus/2/volume_db = 0.0
 bus/2/send = &"Master"
+bus/2/effect/0/effect = SubResource("AudioEffectReverb_mry32")
+bus/2/effect/0/enabled = false
 bus/3/name = &"Voice"
 bus/3/solo = false
 bus/3/mute = false

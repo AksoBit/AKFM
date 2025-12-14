@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://bp8hihjaiyk4"]
+
+[ext_resource type="Shader" uid="uid://cf7f5lsu5ynts" path="res://Shaders/CRT.gdshader" id="1_ifaxt"]
+[ext_resource type="Script" uid="uid://cx2ehyer8t20w" path="res://Scripts/Misc/CRT.gd" id="2_we6n0"]
+[ext_resource type="Script" uid="uid://dv8k01wrvidut" path="res://Scripts/Misc/MLscreen.gd" id="3_we6n0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gqg41"]
+shader = ExtResource("1_ifaxt")
+shader_parameter/curva = 7.0
+shader_parameter/vin_mult = 0.25
+shader_parameter/blur = 0.3
+shader_parameter/scanlines_mult = 0.1
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CRT" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_gqg41")
+offset_right = 640.0
+offset_bottom = 360.0
+mouse_filter = 2
+script = ExtResource("2_we6n0")
+metadata/_edit_use_anchors_ = true
+
+[node name="Node2D" type="Node2D" parent="."]
+script = ExtResource("3_we6n0")

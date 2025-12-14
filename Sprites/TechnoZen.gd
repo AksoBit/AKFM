@@ -10,9 +10,11 @@ var Parts = preload("res://Scenes/Debris/TechnoBody.tscn").instantiate()
 var Twenty_O_Seven_IS_ETERNAL = preload("res://Scenes/BeamFollowing.tscn")
 var idkreally = Twenty_O_Seven_IS_ETERNAL.instantiate()
 var energy = 100
+var max_energy = 100
 var AttackCount = 0
 var IsAttaking = false
 var Offset
+var OVERDRIVEN = false
 var EnForOVERDRIVE = 0
 var IsChillin = true
 var rng = RandomNumberGenerator.new()
@@ -101,6 +103,7 @@ func shoot1FOLLOWING():
 		Face.play("default")
 		IsAttaking = false
 func OVERDRIVE():
+	OVERDRIVEN = true 
 	IsAttaking = true
 	EnForOVERDRIVE = 0
 	$AudioStreamPlayer2D.play()
@@ -112,25 +115,33 @@ func OVERDRIVE():
 		NEWMIKUMIKUBEEEEEEEEAAAAAAAAAAAM = MIKUMIKUBEEEEEEEEAAAAAAAAAAAM.instantiate()
 		get_parent().get_parent().add_child(NEWMIKUMIKUBEEEEEEEEAAAAAAAAAAAM)
 	Face.play("default")
+	OVERDRIVEN = false
 	IsAttaking = false
 func take_damage(damage, hitstopdur = 0, OverHeatDamage = 0, reason = null):
+	var damage_to_return = damage
 	if reason == "Siri":
 		energy -= int(damage * 1.5)
+		int(damage_to_return * 1.5)
 	else:
 		energy -= damage
 	if energy <= 0:
-		if reason == "Hack":
-			get_parent().get_parent().call_deferred("add_child", Halved)
-			Halved.global_position = global_position - Offset
-		else:
-			get_parent().get_parent().call_deferred("add_child", Parts)
-			Parts.global_position = global_position - Offset
-		Global.TechnoDeath()
-		queue_free()
+		die(reason)
 	$RichTextLabel.text = str(energy)
-	$Main/AnimatedSprite2D/Sprite2D	.visible = true
+	$Main/AnimatedSprite2D/Sprite2D.visible = true
+	idk_some_stuff_to_be_cool()
+	return damage_to_return
+func idk_some_stuff_to_be_cool():
 	await get_tree().create_timer(0.5).timeout
 	$Main/AnimatedSprite2D/Sprite2D.visible = false
+func die(reason = "idk"):
+	if reason == "Hack":
+		get_parent().get_parent().call_deferred("add_child", Halved)
+		Halved.global_position = global_position - Offset
+	else:
+		get_parent().get_parent().call_deferred("add_child", Parts)
+		Parts.global_position = global_position - Offset
+	Global.TechnoDeath()
+	queue_free()
 func IDC():
 	while IsChillin == true:
 		$Main/AnimatedSprite2D/Sprite2D2.visible = true
@@ -149,3 +160,9 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 func activate():
 	print(name, " активирован")
 	Activated = true
+	
+func heal_target(show_mark):
+	if show_mark == true:
+		$HealMark.visible = true
+	else:
+		$HealMark.visible = false

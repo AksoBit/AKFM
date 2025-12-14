@@ -1,12 +1,13 @@
-[gd_scene load_steps=20 format=3 uid="uid://ndq7jelautjm"]
+[gd_scene load_steps=21 format=3 uid="uid://ndq7jelautjm"]
 
-[ext_resource type="Script" uid="uid://bnccbmw0h0e0m" path="res://Scripts/Core.gd" id="1_ca1vv"]
+[ext_resource type="Script" uid="uid://bnccbmw0h0e0m" path="res://Scripts/MC/Core.gd" id="1_ca1vv"]
 [ext_resource type="Texture2D" uid="uid://dj1qim4l1lfiv" path="res://Sprites/MC/ENERGY_CORE.png" id="1_jdxe4"]
 [ext_resource type="Shader" uid="uid://cie8slgga3ka4" path="res://Shaders/Flashing.gdshader" id="1_xe0ao"]
-[ext_resource type="Script" uid="uid://b77gjl2tgehoa" path="res://Scripts/BOOM.gd" id="3_2k8qt"]
-[ext_resource type="Texture2D" uid="uid://cupmmk726tpvr" path="res://Sprites/boom.png" id="3_wl83l"]
+[ext_resource type="Script" uid="uid://b77gjl2tgehoa" path="res://Scripts/MC/BOOM.gd" id="3_2k8qt"]
+[ext_resource type="AudioStream" uid="uid://b3rb1bvryx8yt" path="res://Sounds/MC/CORE_screw.wav" id="4_obrod"]
 [ext_resource type="AudioStream" uid="uid://8b1p6qceamr4" path="res://Sounds/MC/CORExplosion.wav" id="5_0s4uu"]
 [ext_resource type="Texture2D" uid="uid://b3puehcb3tf05" path="res://Sprites/MC/CoreExplosion.png" id="5_48f2i"]
+[ext_resource type="Texture2D" uid="uid://c842kn3rdm5c1" path="res://Sprites/MC/LaserCoreExplosion.png" id="6_xe0ao"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_obrod"]
 shader = ExtResource("1_xe0ao")
@@ -20,7 +21,7 @@ radius = 6.0
 radius = 6.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_adac1"]
-radius = 65.03076
+radius = 64.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xe0ao"]
 atlas = ExtResource("5_48f2i")
@@ -86,7 +87,7 @@ texture_filter = 1
 material = SubResource("ShaderMaterial_obrod")
 position = Vector2(1, 1)
 collision_layer = 16
-collision_mask = 30
+collision_mask = 22
 script = ExtResource("1_ca1vv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Core"]
@@ -104,6 +105,12 @@ collision_mask = 6
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Core/Area2D2"]
 shape = SubResource("CircleShape2D_2k8qt")
 
+[node name="CoreScrew" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+stream = ExtResource("4_obrod")
+volume_db = 8.0
+bus = &"SFX"
+
 [node name="Area2D" type="Area2D" parent="."]
 visible = false
 position = Vector2(1, 1)
@@ -115,17 +122,19 @@ script = ExtResource("3_2k8qt")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_adac1")
 
-[node name="Boom" type="Sprite2D" parent="Area2D/CollisionShape2D2"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D/CollisionShape2D2"]
 visible = false
 texture_filter = 1
-scale = Vector2(2, 2)
-texture = ExtResource("3_wl83l")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D/CollisionShape2D2"]
-texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_68po0")
+frame = 6
+frame_progress = 1.0
+
+[node name="LaserCoreExplosion" type="Sprite2D" parent="Area2D/CollisionShape2D2"]
+visible = false
+texture = ExtResource("6_xe0ao")
 
 [node name="CorExplosion" type="AudioStreamPlayer2D" parent="Area2D"]
+process_mode = 3
 position = Vector2(-1, -1)
 stream = ExtResource("5_0s4uu")
 volume_db = 8.0
@@ -137,4 +146,5 @@ collision_mask = 6
 
 [connection signal="body_entered" from="Core/Area2D2" to="Core" method="_on_area_2d_2_body_entered"]
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="Area2D" to="Area2D" method="_on_body_exited"]
 [connection signal="animation_finished" from="Area2D/CollisionShape2D2/AnimatedSprite2D" to="Area2D" method="_on_animated_sprite_2d_animation_finished"]

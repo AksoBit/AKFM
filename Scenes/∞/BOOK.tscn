@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dhpqy15ydpns5"]
 
 [ext_resource type="Texture2D" uid="uid://cq5vcv4jem3p" path="res://Sprites/∞/Book.png" id="1_ulj5a"]
-[ext_resource type="Script" uid="uid://jxugnha7ucvd" path="res://Scripts/book.gd" id="2_k3l80"]
+[ext_resource type="Script" uid="uid://jxugnha7ucvd" path="res://Scripts/∞/book.gd" id="2_k3l80"]
 [ext_resource type="FontFile" uid="uid://ba8dqphbk1c1i" path="res://Fonts/Fifaks10Dev1.ttf" id="3_vikv3"]
 
 [node name="Node2D" type="Node2D"]

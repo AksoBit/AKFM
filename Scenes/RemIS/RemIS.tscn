@@ -1,0 +1,119 @@
+[gd_scene load_steps=14 format=4 uid="uid://dwuvare8t62s"]
+
+[ext_resource type="Texture2D" uid="uid://o4lqdcrwmw03" path="res://Sprites/Enemies/RemIS/RemIS.png" id="1_1qtxq"]
+[ext_resource type="Texture2D" uid="uid://i3n8fxjthbfr" path="res://Sprites/Enemies/RemIS/OVERDRIVE_laser.png" id="1_pnu4v"]
+[ext_resource type="Script" uid="uid://g1iihh6ndq5w" path="res://Scripts/Enemies/RemIS/RemIS.gd" id="1_xy1lv"]
+[ext_resource type="Script" uid="uid://dsibjefmhd44g" path="res://Scripts/Enemies/RemIS/debugger.gd" id="2_kai1l"]
+[ext_resource type="AudioStream" uid="uid://dcjfpgxk6typl" path="res://Sounds/Enemies/RemIS/Heal.wav" id="3_bvpbu"]
+[ext_resource type="AudioStream" uid="uid://enm8a1ij1uu6" path="res://Sounds/Enemies/RemIS/OVERDRIVER.wav" id="4_duhp4"]
+[ext_resource type="AudioStream" uid="uid://rcrf2gwyyvhi" path="res://Sounds/Enemies/RemIS/Charge.wav" id="4_gqq84"]
+[ext_resource type="Texture2D" uid="uid://cngwv3kdu1nnu" path="res://Sprites/Enemies/RemIS/heal_mark.png" id="5_bok2m"]
+[ext_resource type="AudioStream" uid="uid://dnqlnb3odnqmv" path="res://Sounds/Enemies/RemIS/Overdrive.wav" id="5_r3ynl"]
+[ext_resource type="Texture2D" uid="uid://cekaeloamw2wc" path="res://Sprites/Enemies/RemIS/Healaser.png" id="6_7k5bu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xy1lv"]
+size = Vector2(13, 40)
+
+[sub_resource type="AudioStreamWAV" id="AudioStreamWAV_kai1l"]
+data = PackedByteArray("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")
+format = 3
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bvpbu"]
+radius = 64.0
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Line2D2" type="Line2D" parent="."]
+visible = false
+width = 4.0
+texture = ExtResource("1_pnu4v")
+texture_mode = 2
+
+[node name="Line2D" type="Line2D" parent="."]
+visible = false
+texture_filter = 1
+points = PackedVector2Array(61, 31, 0, 0)
+width = 4.0
+texture = ExtResource("6_7k5bu")
+texture_mode = 2
+
+[node name="RemIS" type="CharacterBody2D" parent="." groups=["enemy"]]
+texture_filter = 1
+collision_layer = 4
+collision_mask = 263
+script = ExtResource("1_xy1lv")
+
+[node name="Overdriver" type="AudioStreamPlayer" parent="RemIS"]
+stream = ExtResource("4_duhp4")
+bus = &"SFX"
+
+[node name="Overdrive" type="AudioStreamPlayer" parent="RemIS"]
+stream = ExtResource("5_r3ynl")
+bus = &"SFX"
+
+[node name="Label" type="Label" parent="RemIS"]
+offset_left = 27.0
+offset_top = -15.0
+offset_right = 98.0
+offset_bottom = 8.0
+text = "Привет. Это дебаг панель ремис. Если ты это читаешь, то ты:
+А) Ты смотришь файлы игры. Спасибо что обратил на них внимание!
+Б) Мой дебагер сломался :<"
+script = ExtResource("2_kai1l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RemIS"]
+shape = SubResource("RectangleShape2D_xy1lv")
+
+[node name="RayCast2D" type="RayCast2D" parent="RemIS/CollisionShape2D"]
+visible = false
+target_position = Vector2(5000, 0)
+collision_mask = 15
+
+[node name="Upper" type="Node2D" parent="RemIS/CollisionShape2D"]
+position = Vector2(18, -11.5)
+
+[node name="Bottomer(?)" type="Node2D" parent="RemIS/CollisionShape2D"]
+position = Vector2(18, 11.5)
+
+[node name="Middle" type="Node2D" parent="RemIS/CollisionShape2D"]
+position = Vector2(11.5, 0)
+
+[node name="Charge" type="AudioStreamPlayer2D" parent="RemIS/CollisionShape2D/Middle"]
+stream = ExtResource("4_gqq84")
+bus = &"SFX"
+
+[node name="RemIs" type="Sprite2D" parent="RemIS/CollisionShape2D"]
+texture_filter = 1
+position = Vector2(2.5, 0)
+texture = ExtResource("1_1qtxq")
+flip_h = true
+hframes = 2
+vframes = 2
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="RemIS"]
+stream = SubResource("AudioStreamWAV_kai1l")
+max_polyphony = 1000
+bus = &"SFX"
+
+[node name="Heal" type="AudioStreamPlayer2D" parent="RemIS"]
+stream = ExtResource("3_bvpbu")
+max_polyphony = 10
+bus = &"SFX"
+
+[node name="HealMark" type="Sprite2D" parent="RemIS"]
+visible = false
+texture = ExtResource("5_bok2m")
+
+[node name="Area2D" type="Area2D" parent="RemIS"]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RemIS/Area2D"]
+shape = SubResource("CircleShape2D_bvpbu")
+
+[node name="ClearLine" type="Timer" parent="RemIS"]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="body_entered" from="RemIS/Area2D" to="RemIS" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="RemIS/Area2D" to="RemIS" method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="RemIS/ClearLine" to="RemIS" method="_on_clear_line_timeout"]

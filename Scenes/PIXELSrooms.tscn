@@ -8,7 +8,7 @@
 [ext_resource type="Shader" uid="uid://cie8slgga3ka4" path="res://Shaders/Flashing.gdshader" id="4_xxkch"]
 [ext_resource type="PackedScene" uid="uid://1yb4wbnegc86" path="res://Scenes/UI.tscn" id="5_kd50x"]
 [ext_resource type="Shader" uid="uid://cf7f5lsu5ynts" path="res://Shaders/CRT.gdshader" id="6_bk8u3"]
-[ext_resource type="Script" uid="uid://cx2ehyer8t20w" path="res://Scripts/CRT.gd" id="7_31b67"]
+[ext_resource type="Script" uid="uid://cx2ehyer8t20w" path="res://Scripts/Misc/CRT.gd" id="7_31b67"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xxkch"]
 shader = ExtResource("1_gdqog")

@@ -1,17 +1,18 @@
-[gd_scene load_steps=28 format=3 uid="uid://bgjhe3y7ud0r0"]
+[gd_scene load_steps=29 format=3 uid="uid://bgjhe3y7ud0r0"]
 
-[ext_resource type="Script" uid="uid://bpd8d01c0qiuc" path="res://Scripts/Hack.gd" id="1_r2p04"]
-[ext_resource type="Texture2D" uid="uid://d4gqhtapgpbi1" path="res://Sprites/Hack/hack.png" id="2_am1lo"]
+[ext_resource type="Script" uid="uid://bpd8d01c0qiuc" path="res://Scripts/Enemies/Hack.gd" id="1_r2p04"]
+[ext_resource type="Texture2D" uid="uid://d4gqhtapgpbi1" path="res://Sprites/Enemies/Hack/hack.png" id="2_am1lo"]
 [ext_resource type="Shader" uid="uid://cie8slgga3ka4" path="res://Shaders/Flashing.gdshader" id="2_e3otq"]
 [ext_resource type="Script" uid="uid://dati1fdku3rr2" path="res://Scripts/UwUwUwUwU.gd" id="3_8rhuy"]
-[ext_resource type="Texture2D" uid="uid://8606h03f2thq" path="res://Sprites/Hack/HackLighted.png" id="4_1tryr"]
-[ext_resource type="Texture2D" uid="uid://dp7jf3gqi0u5x" path="res://Sprites/truster.png" id="4_r2p04"]
+[ext_resource type="Texture2D" uid="uid://8606h03f2thq" path="res://Sprites/Enemies/Hack/HackLighted.png" id="4_1tryr"]
+[ext_resource type="Texture2D" uid="uid://0qrrgyl0pva" path="res://Sprites/truster.png" id="4_r2p04"]
 [ext_resource type="Script" uid="uid://cwprac4aogtaf" path="res://Scripts/sprite_2d_2.gd" id="5_1tryr"]
-[ext_resource type="Texture2D" uid="uid://chkmjxija8fl8" path="res://Sprites/Spark.png" id="6_5im1k"]
-[ext_resource type="Texture2D" uid="uid://ddrjdpa4vp7ll" path="res://Sprites/NeonParticle.png" id="7_am1lo"]
+[ext_resource type="Texture2D" uid="uid://p4y8on6yneni" path="res://Sprites/Spark.png" id="6_5im1k"]
+[ext_resource type="Texture2D" uid="uid://dw5ki4478nlgo" path="res://Sprites/Misc/NeonParticle.png" id="7_am1lo"]
 [ext_resource type="AudioStream" uid="uid://cfmguh2j6vstt" path="res://Sounds/Болгарка.wav" id="7_liqdm"]
 [ext_resource type="Texture2D" uid="uid://csonpemk2p3s3" path="res://Other/curva.tres" id="9_1tryr"]
 [ext_resource type="FontFile" uid="uid://da8s7os3013x" path="res://Fonts/DepartureMono-Regular.otf" id="10_e3otq"]
+[ext_resource type="Texture2D" uid="uid://cngwv3kdu1nnu" path="res://Sprites/Enemies/RemIS/heal_mark.png" id="12_liqdm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_it74k"]
 radius = 26.0
@@ -106,10 +107,11 @@ outline_size = 3
 
 [node name="Node2D" type="Node2D"]
 
-[node name="ManHack" type="CharacterBody2D" parent="."]
+[node name="ManHack" type="CharacterBody2D" parent="." groups=["enemy"]]
+z_index = 1
 texture_filter = 1
 collision_layer = 4
-collision_mask = 271
+collision_mask = 263
 script = ExtResource("1_r2p04")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ManHack"]
@@ -123,6 +125,7 @@ collision_mask = 527
 shape = SubResource("CircleShape2D_tugjx")
 
 [node name="Sprite2D" type="Sprite2D" parent="ManHack"]
+z_index = 1
 texture = ExtResource("2_am1lo")
 flip_h = true
 script = ExtResource("3_8rhuy")
@@ -137,6 +140,7 @@ visible = false
 occluder = SubResource("OccluderPolygon2D_8rhuy")
 
 [node name="Sprite2D2" type="AnimatedSprite2D" parent="ManHack"]
+z_index = 1
 sprite_frames = SubResource("SpriteFrames_it74k")
 flip_h = true
 flip_v = true
@@ -173,8 +177,13 @@ trail_section_subdivisions = 1
 process_material = SubResource("ParticleProcessMaterial_7vgp5")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="ManHack"]
+process_mode = 3
 stream = ExtResource("7_liqdm")
 bus = &"SFX"
+
+[node name="HealMark" type="Sprite2D" parent="ManHack"]
+visible = false
+texture = ExtResource("12_liqdm")
 
 [node name="RichTextLabel" type="Label" parent="ManHack"]
 offset_left = -46.0

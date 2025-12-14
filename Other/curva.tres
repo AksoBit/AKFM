@@ -1,8 +1,8 @@
 [gd_resource type="CurveTexture" load_steps=2 format=3 uid="uid://csonpemk2p3s3"]
 
 [sub_resource type="Curve" id="Curve_am1lo"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.720588, 0.842697), -0.614749, -0.614749, 0, 0, Vector2(1, 0.011236), 0.0, 0.0, 0, 0]
-point_count = 3
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.15827338, 0.9662922), 0.0, 0.0, 0, 0, Vector2(0.82014394, 0.92134833), -0.614749, -0.614749, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
 
 [resource]
 curve = SubResource("Curve_am1lo")

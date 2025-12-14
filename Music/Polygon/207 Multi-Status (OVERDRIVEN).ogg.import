@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://k6gmc1ucfo88"
+path="res://.godot/imported/207 Multi-Status (OVERDRIVEN).ogg-6af54913cd18afc43dc82d77c4edaa1f.oggvorbisstr"
+
+[deps]
+
+source_file="res://Music/Polygon/207 Multi-Status (OVERDRIVEN).ogg"
+dest_files=["res://.godot/imported/207 Multi-Status (OVERDRIVEN).ogg-6af54913cd18afc43dc82d77c4edaa1f.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

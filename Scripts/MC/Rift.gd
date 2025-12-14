@@ -8,17 +8,11 @@ func BLOW():
 	$TearStart.visible = true
 	$TearEnd.visible = true
 	$AnimatedSprite2D.play("default")
-	$Timer.start()
-	while not DESTROY:
-		ShapeCast.force_shapecast_update()
-		if ShapeCast.is_colliding():
-			for i in range(ShapeCast.get_collision_count()):
-				var body = ShapeCast.get_collider(i)
-				if body.has_method("take_damage"):
-					body.take_damage(1)
-		await get_tree().create_timer(0.1).timeout 
+	ShapeCast.force_shapecast_update()
+	if ShapeCast.is_colliding():
+		for i in range(ShapeCast.get_collision_count()):
+			var body = ShapeCast.get_collider(i)
+			if body.has_method("take_damage"):
+				body.take_damage(15)
+	await get_tree().create_timer(0.1).timeout 
 	queue_free()
-
-
-func _on_timer_timeout() -> void:
-	DESTROY = true

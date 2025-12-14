@@ -14,9 +14,8 @@ func _process(delta: float) -> void:
 func _on_settings_back_button_down() -> void:
 	$".".visible = false
 	$"../MainMenu".visible = true
-	$"../MainMenu/AnimationPlayer/CollisionShape2D".visible = true
-	$"../MainMenu/Synth/Area2D".IsInFuckIdkActuallyUwU = true
-
+	$"../MainMenu/Synth".visible = true
+	$"../MainMenu/Synth/Control".visible = true
 
 func _on_settings_sound_button_down() -> void:
 	$".".visible = false

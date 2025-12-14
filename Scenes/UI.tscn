@@ -1,13 +1,14 @@
-[gd_scene load_steps=46 format=3 uid="uid://1yb4wbnegc86"]
+[gd_scene load_steps=48 format=3 uid="uid://1yb4wbnegc86"]
 
 [ext_resource type="FontFile" uid="uid://ba8dqphbk1c1i" path="res://Fonts/Fifaks10Dev1.ttf" id="2_hfhsn"]
 [ext_resource type="LabelSettings" uid="uid://dg42q1hckpf2e" path="res://Fonts/FontSettings.tres" id="3_48q88"]
-[ext_resource type="Script" uid="uid://c38jvxskpucjb" path="res://Scripts/label.gd" id="3_qwshj"]
+[ext_resource type="Script" uid="uid://c38jvxskpucjb" path="res://Scripts/MC/label.gd" id="3_qwshj"]
 [ext_resource type="Texture2D" uid="uid://bm5psh1rp816w" path="res://Sprites/MC/RiftLine.png" id="4_mg6lk"]
 [ext_resource type="Texture2D" uid="uid://b1xx07vnxlgrl" path="res://Sprites/MC/ReUi.png" id="4_xjg7p"]
 [ext_resource type="FontFile" uid="uid://da8s7os3013x" path="res://Fonts/DepartureMono-Regular.otf" id="6_48q88"]
 [ext_resource type="Script" uid="uid://dil4nig03p1id" path="res://Scripts/MC/ThatTextPanelYouKnow.gd" id="6_xjg7p"]
 [ext_resource type="Texture2D" uid="uid://p46dpsnvgqu2" path="res://Sprites/MC/Counter.png" id="8_mg6lk"]
+[ext_resource type="Texture2D" uid="uid://d040a6xt5buib" path="res://Sprites/Misc/Critical Error Occured.png" id="9_wunin"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qwshj"]
 bg_color = Color(0, 0, 0, 0.39215687)
@@ -354,6 +355,14 @@ font_color = Color(1, 0.90000004, 0, 1)
 outline_size = 3
 outline_color = Color(1, 0.31666666, 0, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_r71lk"]
+line_spacing = -2.0
+font = ExtResource("6_48q88")
+font_size = 11
+font_color = Color(0.5803922, 0.69411767, 1, 1)
+outline_size = 3
+outline_color = Color(0, 0.2666664, 1, 1)
+
 [node name="Node2D" type="Node2D"]
 
 [node name="Panel" type="Panel" parent="."]
@@ -564,3 +573,23 @@ label_settings = SubResource("LabelSettings_xjg7p")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(320, 180)
+
+[node name="Death" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(320, 180)
+texture = ExtResource("9_wunin")
+
+[node name="Label" type="Label" parent="Death"]
+offset_left = -144.0
+offset_top = -8.0
+offset_right = 144.0
+offset_bottom = 67.0
+text = "Счет — 0
+Лучший счет — 0
+Убийств — 0
+Причина смерти — Проблемы со скиллом
+"
+label_settings = SubResource("LabelSettings_r71lk")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3

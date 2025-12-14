@@ -1,11 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cfim7c6xuil0q"]
+[gd_scene load_steps=7 format=3 uid="uid://cfim7c6xuil0q"]
 
-[ext_resource type="Texture2D" uid="uid://baoglgt3rjbwa" path="res://Sprites/Document.png" id="1_swt7k"]
+[ext_resource type="Texture2D" uid="uid://paa4gwf3a0pv" path="res://Sprites/AksoBit/Document.png" id="1_swt7k"]
 [ext_resource type="FontFile" uid="uid://ba8dqphbk1c1i" path="res://Fonts/Fifaks10Dev1.ttf" id="2_fejj2"]
 [ext_resource type="Script" uid="uid://cj47nxwlj0tr8" path="res://Scripts/AksoBit/document.gd" id="2_ortx0"]
 [ext_resource type="Texture2D" uid="uid://dpaukasuhs1bq" path="res://Sprites/AksoBit/Sign.png" id="4_ortx0"]
 [ext_resource type="Texture2D" uid="uid://rox5fi1oyhf6" path="res://Sprites/AksoBit/UserSign.png" id="5_pi3mc"]
-[ext_resource type="Script" uid="uid://c6k8s8fbcxgiv" path="res://Scripts/AksoBit/Sign.gd" id="6_g5vwm"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ortx0"]
 font = ExtResource("2_fejj2")
@@ -25,28 +24,18 @@ script = ExtResource("2_ortx0")
 offset_left = 91.0
 offset_right = 499.0
 offset_bottom = 357.0
-text = "Я, имя_пользователя
-пребывая в твердом уме и здравой памяти полностью осознаю восхитительную и вопиющую неиграбельность таких настроек и выходящие из нее риски появления включая, но не заканчивая:
-Мигрени
-Тошноты
-Рвоты
-Рака глаз
-Рака мозга
-Вареного рака 
-Диарии 
-ПТСР
-Шизофрении
-Суицидальных наклонностей
-Гинофобии
-Мучительной смерти
+text = "Данная игра может содержать жестокие сцены, несмешные шутки, баги, кошек, и отсылки на... А нет, абсолютно все персонажи являются вымышленными, все совпадения случайны. Еще игра не несет цели оскорбить или обидеть, вызвать хаос и разрушение. А сейчас к серьезным вещам:
 
-Настоящим заявлением я освобождаю АксоБита и АксоБита от ответственности и обязуюсь принять вину за убийство 35-го президента Соединенных Штатов Америки Джона Фицджералда Кеннеди в пятницу 22 ноября 1963 года в Далласе. 
+Данная игра содержит МИГАЮЩИЕ ОГОНЬКИ, если у вас была или есть эпилепсия... Лучше не играть. Поверьте мне, эта игра точно не стоит того.
 
-ДАТА,             , имя"
+Данная игра еще не закончена и содержит баги, почти, если не все, будет переработано и перекроено.
+
+Если у вас есть предложение, если вы нашли баг или если вам просто скучно, напишите мне в ТГ @NekoAxolotl или на почту aksozonfm@gmail.com"
 label_settings = SubResource("LabelSettings_ortx0")
 autowrap_mode = 3
 
 [node name="Sign" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(278, 335)
 texture = ExtResource("4_ortx0")
 
@@ -59,7 +48,6 @@ offset_left = -16.0
 offset_top = -16.0
 offset_right = 16.0
 offset_bottom = 16.0
-script = ExtResource("6_g5vwm")
 
 [node name="UserSign2" type="Sprite2D" parent="."]
 position = Vector2(396, 335)

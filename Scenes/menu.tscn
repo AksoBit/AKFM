@@ -1,102 +1,82 @@
-[gd_scene load_steps=41 format=3 uid="uid://djb65ej7jfkgw"]
+[gd_scene load_steps=44 format=3 uid="uid://djb65ej7jfkgw"]
 
-[ext_resource type="Script" uid="uid://bmjmsxv5yjpcm" path="res://Scripts/controls.gd" id="1_wwsa2"]
-[ext_resource type="Script" uid="uid://vn0ragwmn6vf" path="res://Scripts/main_menu.gd" id="2_158mb"]
-[ext_resource type="Texture2D" uid="uid://qgk22uky6ykv" path="res://Sprites/WARNING.png" id="2_wwsa2"]
+[ext_resource type="Script" uid="uid://bmjmsxv5yjpcm" path="res://Scripts/Menu/controls.gd" id="1_wwsa2"]
+[ext_resource type="Script" uid="uid://vn0ragwmn6vf" path="res://Scripts/Menu/main_menu.gd" id="2_158mb"]
+[ext_resource type="Texture2D" uid="uid://c740j5h561nv6" path="res://Sprites/WARNING.png" id="2_wwsa2"]
 [ext_resource type="AudioStream" uid="uid://b6o2lwyfadj0m" path="res://Music/1xx/100 Continue.ogg" id="3_wwsa2"]
-[ext_resource type="Script" uid="uid://dssya31kfslx6" path="res://Scripts/PolyButton.gd" id="6_l6llh"]
-[ext_resource type="Script" uid="uid://b5tat81hf6q51" path="res://Scripts/MenuButton.gd" id="6_ocger"]
-[ext_resource type="Texture2D" uid="uid://dgmow4id2axdy" path="res://Sprites/Synth.png" id="6_wbdvm"]
-[ext_resource type="Texture2D" uid="uid://lo64rt3uuwmf" path="res://Sprites/Car.png" id="7_q3rjx"]
+[ext_resource type="Script" uid="uid://dssya31kfslx6" path="res://Scripts/Menu/PolyButton.gd" id="6_l6llh"]
+[ext_resource type="Script" uid="uid://b5tat81hf6q51" path="res://Scripts/Menu/MenuButton.gd" id="6_ocger"]
+[ext_resource type="Texture2D" uid="uid://bajr5mbr6up1h" path="res://Sprites/Synth.png" id="6_wbdvm"]
+[ext_resource type="Texture2D" uid="uid://c03cchq12dk7e" path="res://Sprites/Menu/MenuPolygon2.png" id="6_x0760"]
+[ext_resource type="Texture2D" uid="uid://bpmtnb0yr1cuo" path="res://Sprites/Menu/Car.png" id="8_48g0d"]
 [ext_resource type="Script" uid="uid://c68l5wtmdp0nw" path="res://Scripts/UwUwUwU.gd" id="9_i37ye"]
+[ext_resource type="Texture2D" uid="uid://bii8apvdgpdsf" path="res://Sprites/Menu/Windows.png" id="10_lvy56"]
 [ext_resource type="AudioStream" uid="uid://ciox5th7011an" path="res://Sounds/opened-the-car-door.mp3" id="10_pde1v"]
-[ext_resource type="Texture2D" uid="uid://baqswstkfsvlg" path="res://Sprites/Grabber.png" id="11_3p34a"]
+[ext_resource type="Texture2D" uid="uid://c7jpq1vrlc4nc" path="res://Sprites/Menu/Grabber.png" id="11_3p34a"]
 [ext_resource type="StyleBox" uid="uid://ck1eiesqg272e" path="res://Other/Edging.tres" id="11_d77ms"]
-[ext_resource type="Texture2D" uid="uid://5o4wgqfp0530" path="res://Sprites/ФонСинтSun.png" id="11_dldpb"]
-[ext_resource type="Texture2D" uid="uid://b4q3sdhdifyot" path="res://Sprites/ФонСинт.png" id="11_rfqti"]
-[ext_resource type="Script" uid="uid://boncn2yfamhgt" path="res://Scripts/OptionsButton.gd" id="12_g8i7c"]
-[ext_resource type="Texture2D" uid="uid://c3unlvvfrpcn4" path="res://Sprites/ФонСинтNoSun.png" id="13_dldpb"]
-[ext_resource type="Script" uid="uid://8m8lruoc5kec" path="res://Scripts/MenuSoundPoly.gd" id="13_h63v2"]
-[ext_resource type="Texture2D" uid="uid://v3fse3w33vr5" path="res://Sprites/PolyTexture.png" id="13_l6llh"]
-[ext_resource type="Texture2D" uid="uid://bamqcqb4ghnre" path="res://Sprites/PolyEdging2.png" id="13_owyel"]
+[ext_resource type="Texture2D" uid="uid://cvf6ybcm2ks7u" path="res://Sprites/ФонСинтSun.png" id="11_dldpb"]
+[ext_resource type="Texture2D" uid="uid://brqeyumkf53xo" path="res://Sprites/ФонСинт.png" id="11_rfqti"]
+[ext_resource type="Script" uid="uid://boncn2yfamhgt" path="res://Scripts/Menu/OptionsButton.gd" id="12_g8i7c"]
+[ext_resource type="Texture2D" uid="uid://ln4eapeyhucs" path="res://Sprites/ФонСинтNoSun.png" id="13_dldpb"]
+[ext_resource type="Script" uid="uid://8m8lruoc5kec" path="res://Scripts/Menu/MenuSoundPoly.gd" id="13_h63v2"]
+[ext_resource type="Texture2D" uid="uid://blradwihvnxlw" path="res://Sprites/PolyTexture.png" id="13_l6llh"]
+[ext_resource type="Texture2D" uid="uid://coc5potu5dsyo" path="res://Sprites/PolyEdging2.png" id="13_owyel"]
 [ext_resource type="Script" uid="uid://dmgbxfm0frdwe" path="res://Scripts/SettingSun.gd" id="14_d77ms"]
 [ext_resource type="Texture2D" uid="uid://p60mvl6vaj06" path="res://Sprites/Menu/SettingsControl.png" id="15_3p34a"]
 [ext_resource type="Texture2D" uid="uid://bt23pl37a84uq" path="res://Sprites/Menu/SettingsBack.png" id="16_owyel"]
 [ext_resource type="Texture2D" uid="uid://yreyg6amlr0o" path="res://Sprites/Menu/SettingsSound.png" id="17_h63v2"]
 [ext_resource type="Texture2D" uid="uid://c3knkvv1i5lni" path="res://Sprites/Menu/SettingsGraphics.png" id="18_l6llh"]
 [ext_resource type="AudioStream" uid="uid://b66uyep17pi8m" path="res://Sounds/ROAD.wav" id="18_nakb8"]
-[ext_resource type="Script" uid="uid://csqaf8xrfm51d" path="res://Scripts/ResetEverything.gd" id="19_jbv25"]
+[ext_resource type="Script" uid="uid://csqaf8xrfm51d" path="res://Scripts/Menu/ResetEverything.gd" id="19_jbv25"]
 [ext_resource type="Texture2D" uid="uid://cqkv1dguooo0e" path="res://Sprites/Menu/Nah, i miscalled that one graphics. THIS ONE is graphics.png" id="19_ocger"]
-[ext_resource type="Script" uid="uid://cx2ehyer8t20w" path="res://Scripts/CRT.gd" id="21_pde1v"]
+[ext_resource type="Script" uid="uid://cx2ehyer8t20w" path="res://Scripts/Misc/CRT.gd" id="21_pde1v"]
 [ext_resource type="Shader" uid="uid://cf7f5lsu5ynts" path="res://Shaders/CRT.gdshader" id="28_nakb8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l6llh"]
 radius = 91.0055
 
-[sub_resource type="Animation" id="Animation_q3rjx"]
-length = 8.0
-loop_mode = 1
-step = 0.0333
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MainMenu/AnimationPlayer/CollisionShape2D/Car:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 4, 8),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [0.0349066, -0.0349066, 0.0349066]
-}
+[sub_resource type="AtlasTexture" id="AtlasTexture_x0760"]
+atlas = ExtResource("6_x0760")
+region = Rect2(0, 0, 790, 560)
 
-[sub_resource type="Animation" id="Animation_6swd7"]
-resource_name = "Y"
-length = 6.0
-loop_mode = 1
-step = 0.033
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MainMenu/AnimationPlayer/CollisionShape2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(-0.0333333, 3, 6),
-"transitions": PackedFloat32Array(1.07177, 1, 1),
-"update": 0,
-"values": [Vector2(0, -10), Vector2(0, 10), Vector2(0, -10)]
-}
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvy56"]
+atlas = ExtResource("6_x0760")
+region = Rect2(790, 0, 790, 560)
 
-[sub_resource type="Animation" id="Animation_wbdvm"]
-resource_name = "drive"
-length = 10.0
-loop_mode = 1
-step = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MainMenu/AnimationPlayer/CollisionShape2D/Car:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 5, 10),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(330, 190), Vector2(310, 180), Vector2(330, 190)]
-}
+[sub_resource type="AtlasTexture" id="AtlasTexture_48g0d"]
+atlas = ExtResource("6_x0760")
+region = Rect2(1580, 0, 790, 560)
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_6swd7"]
-_data = {
-&"RESET": SubResource("Animation_q3rjx"),
-&"Y": SubResource("Animation_6swd7"),
-&"drive": SubResource("Animation_wbdvm")
-}
+[sub_resource type="AtlasTexture" id="AtlasTexture_ygxe1"]
+atlas = ExtResource("6_x0760")
+region = Rect2(0, 560, 790, 560)
 
-[sub_resource type="LabelSettings" id="LabelSettings_pde1v"]
-line_spacing = 23.0
-paragraph_spacing = 2.0
-font_size = 36
+[sub_resource type="AtlasTexture" id="AtlasTexture_0idt7"]
+atlas = ExtResource("6_x0760")
+region = Rect2(790, 560, 790, 560)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ki2a1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x0760")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lvy56")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_48g0d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ygxe1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0idt7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3p34a"]
 
@@ -116,94 +96,21 @@ shader_parameter/scanlines_mult = 0.1
 [node name="Node2D" type="Node2D"]
 texture_filter = 1
 
-[node name="options" type="Panel" parent="."]
-visible = false
-offset_right = 640.0
-offset_bottom = 360.0
-
-[node name="VSlider" type="VSlider" parent="options"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 14.0
-offset_right = 113.0
-offset_bottom = 351.0
-max_value = 200.0
-value = 100.0
-
-[node name="Label" type="Label" parent="options"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 92.0
-offset_right = 146.0
-offset_bottom = 115.0
-text = "Скорость музяки"
-
-[node name="Label" type="Label" parent="options/Label"]
-layout_mode = 0
-offset_left = 276.0
-offset_top = 187.0
-offset_right = 414.0
-offset_bottom = 236.0
-text = "громакость
- музяки"
-
-[node name="Control" type="Control" parent="options"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="HSlider" type="HSlider" parent="options"]
-layout_mode = 0
-offset_left = 294.0
-offset_top = 306.0
-offset_right = 592.0
-offset_bottom = 322.0
-max_value = 1000.0
-value = 500.0
-
-[node name="Controls" type="Button" parent="options"]
-layout_mode = 0
-offset_left = 452.0
-offset_top = 206.0
-offset_right = 600.0
-offset_bottom = 237.0
-text = "Управление
-"
-
-[node name="CheckButton" type="CheckButton" parent="options"]
-layout_mode = 0
-offset_left = 165.0
-offset_top = 42.0
-offset_right = 209.0
-offset_bottom = 66.0
-button_pressed = true
-text = "VSync"
-
-[node name="Warning" type="Sprite2D" parent="options"]
-position = Vector2(527, 192)
-texture = ExtResource("2_wwsa2")
-
-[node name="MainMenu" type="CanvasLayer" parent="."]
+[node name="MainMenu" type="Node2D" parent="."]
 script = ExtResource("2_158mb")
 
-[node name="Label" type="Label" parent="MainMenu"]
-anchors_preset = -1
-anchor_left = 0.583
-anchor_top = 0.347
-anchor_right = 0.798
-anchor_bottom = 0.411
-offset_left = -0.119995
-offset_top = 0.0800018
-offset_right = 0.279968
-offset_bottom = 0.0399933
-text = "Менюшка типа..."
-metadata/_edit_use_anchors_ = true
-
 [node name="Synth" type="Sprite2D" parent="MainMenu"]
-position = Vector2(320, 180)
+position = Vector2(320, 230)
 texture = ExtResource("6_wbdvm")
 
+[node name="ФонСинтNoSun" type="Sprite2D" parent="MainMenu/Synth"]
+show_behind_parent = true
+position = Vector2(0, 50)
+texture = ExtResource("13_dldpb")
+
 [node name="Area2D" type="Area2D" parent="MainMenu/Synth"]
+position = Vector2(-1, -52)
+monitoring = false
 script = ExtResource("6_ocger")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MainMenu/Synth/Area2D"]
@@ -212,96 +119,83 @@ shape = SubResource("CircleShape2D_l6llh")
 
 [node name="Control" type="Area2D" parent="MainMenu/Synth"]
 position = Vector2(-320, -180)
+monitoring = false
 script = ExtResource("6_l6llh")
 
+[node name="MenuPolygon" type="AnimatedSprite2D" parent="MainMenu/Synth/Control"]
+position = Vector2(320, 230)
+sprite_frames = SubResource("SpriteFrames_ki2a1")
+frame_progress = 0.6265487
+
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="MainMenu/Synth/Control"]
-polygon = PackedVector2Array(0, 133, 63, 109, 92, 135, 132, 115, 236, 167, 360, 149, 375, 165, 456, 92, 524, 120, 600, 98, 620, 140, 640, 133, 640, 360, 0, 361)
+position = Vector2(321, 180)
+polygon = PackedVector2Array(194, -88.8, 183, -91.2, 183, -89.399994, 180.59998, -87, 178.59998, -87, 170, -78.399994, 168.59998, -78, 160, -69.399994, 158.59998, -69, 150, -60.399994, 148.59998, -60, 140, -51.399994, 138.6, -51, 130, -42.399994, 128.6, -42, 120, -33.399994, 118.600006, -33, 110, -24.399994, 108.600006, -24, 104.5, -20, 93.399994, -32, 93, -34, 86.899994, -34, -31.100006, -17, -34.799988, -17, -46, -22.600006, -46, -24, -49.799988, -24, -91, -44.600006, -91, -46, -94.79999, -46, -136, -66.600006, -136, -68, -140.2, -68, -176.3, -49, -178.6, -49, -199, -67.5, -199, -69, -201.6, -69, -204, -71.399994, -204, -74.3, -209.2, -73, -212.2, -73, -215, -71.600006, -215, -70.7, -217, -70, -220.2, -70, -223, -68.600006, -223, -67.7, -225, -67, -228.2, -67, -231, -65.600006, -231, -64.7, -233, -64, -236.2, -64, -239, -62.600006, -239, -61.699997, -241, -61, -244.2, -61, -247, -59.600006, -247, -58.699997, -273, -50, -276.2, -50, -286.2, -45, -289.4, -45, -295, -56.199997, -295, -59.300003, -301, -69.399994, -301, -72.3, -308, -84.399994, -308, -87.399994, -313, -85.7, -313, -84.8, -316.2, -84, -320.2, -84, -324, -82.7, -324, -82, -327.2, -82, -331, -80.7, -331, -79.8, -334.2, -79, -338.2, -79, -342, -77.7, -342, -76.8, -345.2, -76, -349.2, -76, -367, -70, -370, -70, -370, 230, 370, 230, 370, -50.100006, 367, -49, 363.8, -49, 353.8, -44, 350.59998, -44, 345, -55.199997, 345, -58.300003, 339, -68.399994, 339, -71.3, 332, -83.399994, 332, -86.399994, 327, -84.7, 327, -83.8, 323.8, -83, 319.8, -83, 316, -81.7, 316, -81, 312.8, -81, 295, -75, 290.8, -75, 287, -73.7, 287, -73, 283.8, -73, 280, -71.7, 280, -70.8, 276.8, -70, 272.8, -70, 255, -64, 251.20001, -64, 245, -66.7, 245, -68, 241.20001, -68, 240, -68.600006, 240, -70, 236.20001, -70, 235, -70.600006, 235, -71.8, 228, -73.8, 228, -75, 224.20001, -75, 223, -75.600006, 223, -77, 219.20001, -77, 218, -77.600006, 218, -78.8, 211, -80.8, 211, -81.7, 194, -87.7)
 
-[node name="AnimationPlayer2" type="AnimationPlayer" parent="MainMenu"]
-root_node = NodePath("../..")
-libraries = {
-&"": SubResource("AnimationLibrary_6swd7")
-}
+[node name="Car" type="Node2D" parent="MainMenu"]
+position = Vector2(-50, 50)
 
-[node name="AnimationPlayer3" type="AnimationPlayer" parent="MainMenu"]
-root_node = NodePath("../..")
-libraries = {
-&"": SubResource("AnimationLibrary_6swd7")
-}
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="MainMenu"]
-root_node = NodePath("../..")
-libraries = {
-&"": SubResource("AnimationLibrary_6swd7")
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MainMenu/AnimationPlayer"]
-
-[node name="Car" type="Sprite2D" parent="MainMenu/AnimationPlayer/CollisionShape2D"]
+[node name="Car" type="Sprite2D" parent="MainMenu/Car"]
 texture_filter = 1
-position = Vector2(330, 190)
-rotation = 0.0349066
-texture = ExtResource("7_q3rjx")
+position = Vector2(320, 180)
+texture = ExtResource("8_48g0d")
 
-[node name="Exit" type="Button" parent="MainMenu/AnimationPlayer/CollisionShape2D/Car"]
+[node name="Exit" type="Button" parent="MainMenu/Car/Car"]
 visibility_layer = 0
 anchors_preset = -1
-anchor_left = -0.0596346
-anchor_top = 0.241336
-anchor_right = 0.0153654
-anchor_bottom = 0.318836
-offset_left = 231.552
-offset_top = -44.5343
-offset_right = 239.552
-offset_bottom = -44.5343
-rotation = 0.702354
+anchor_left = -0.07420263
+anchor_top = 0.1023819
+anchor_right = 0.049302097
+anchor_bottom = 0.2882205
+offset_left = 372.51553
+offset_top = 67.752045
+offset_right = 380.51553
+offset_bottom = 67.75203
+rotation = 0.30019662
 metadata/_edit_use_anchors_ = true
 
-[node name="Start" type="Button" parent="MainMenu/AnimationPlayer/CollisionShape2D/Car"]
+[node name="Start" type="Button" parent="MainMenu/Car/Car"]
 visibility_layer = 0
 anchors_preset = -1
 anchor_left = -0.000860304
 anchor_top = -0.0538513
 anchor_right = 0.0109038
 anchor_bottom = 0.0586488
-offset_left = -158.415
-offset_top = 19.5405
-offset_right = -50.4146
-offset_bottom = 50.5405
+offset_left = -244.36337
+offset_top = 50.771595
+offset_right = -136.36298
+offset_bottom = 81.7716
 metadata/_edit_use_anchors_ = true
 
-[node name="Area2D" type="Area2D" parent="MainMenu/AnimationPlayer/CollisionShape2D/Car"]
+[node name="Area2D" type="Area2D" parent="MainMenu/Car/Car"]
+monitoring = false
 script = ExtResource("9_i37ye")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="MainMenu/AnimationPlayer/CollisionShape2D/Car/Area2D"]
-polygon = PackedVector2Array(-340, -200, -340, -141.9, -246.4, -104, -245.1, -104, -195.9, -20.3, -203, -10.1, -210, -15, -210, -18.1, -263.1, -15, -265.3, -15, -271.3, -1, -275.2, -1, -267, 15.4, -267, 17.8, -232.6, 21.8, -317, 39.4, -336.9, 38, -340, 38, -340, 200, 340, 200, 340, 32.9, 314.8, 35, 311.1, 35, 260.5, 21.2, 290.3, 17, 296.7, 17, 300, -1.8, 300, -4.7, 293, -13.7, 293, -15.9, 257, -17, 244.5, -17, 229.3, -9.5, 226.8, -17.9, 274, -100, 332, -126, 332, -126.4, 340, -128, 340, -200, 235.152, -200.329, 214.888, -121.574, 170.966, -3.96904, 126.643, -12.4274, 11.6088, -11.4121, -121.973, -25.7589, -156.394, -8.54715, -186.356, -121.57, -21, -136, 27.1992, -138.033, 215.887, -121.608, 235.152, -200.329)
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="MainMenu/Car/Car/Area2D"]
+polygon = PackedVector2Array(-370, -230, -370, -137.3, -368.5, -135, -367.6, -135, -363.6, -126, -362.6, -126, -329.6, -58, -329, -58, -329, -55.800003, -319.6, -37, -319, -37, -319, -34.800003, -316.6, -30, -316, -30, -316, -27.800003, -310.6, -17, -310, -17, -310, -14.800003, -305.6, -6, -304.8, -6, -298.8, 15, -297.9, 15, -296.9, 23, -296.2, 23, -297, 27.899994, -298.2, 29, -301.3, 29, -307.3, 33, -310.3, 33, -316.3, 37, -317, 37, -317, 35.600006, -318.6, 34, -319, 32.600006, -320.6, 31, -321, 29.600006, -322.6, 28, -323, 26.600006, -327.5, 21, -328, 19.600006, -329.6, 18, -330, 16.600006, -332.6, 14, -333.4, 14, -337.4, 7, -338.2, 7, -341, -4.199997, -341, -8.199997, -345, -19, -345, -23.199997, -351, -37.199997, -351, -40.300003, -358, -53.399994, -358, -55.399994, -359.6, -57, -360.4, -57, -361, -58.199997, -361, -60.300003, -368.5, -70, -370, -70, -372, 347, 370, 238, 370, 58.399994, 364.5, 52, 364, 51.799988, 370, 51, 370, -10.100006, 359.8, -8, 355.59998, -8, 350.59998, -4, 348.5, -4, 346.5, -1, 344.5, -1, 317, 35.700012, 317, 36.399994, 296.2, 27, 296, 22.199997, 298, 18.199997, 298, 14.100006, 305, -3.800003, 305, -6.800003, 319, -34.800003, 319, -37.699997, 329, -55.699997, 329, -58.699997, 363, -124.8, 363, -126.6, 363.40002, -127, 364.59998, -127, 368, -133.8, 368, -135.6, 370, -137.6, 370, -230, 357.8, -230, 341.5, -205, 340.40002, -205, 328.40002, -179, 327, -179, 327, -175.2, 326.40002, -174, 325, -174, 325, -170.2, 324.40002, -169, 323, -169, 323, -165.2, 322.40002, -164, 321, -164, 321, -160.2, 320.40002, -159, 319, -159, 319, -155.2, 318.40002, -154, 317, -154, 317, -150.2, 316.40002, -149, 315, -149, 315, -145.2, 314.40002, -144, 313, -144, 313, -140.2, 312.40002, -139, 311, -139, 311, -135.2, 301, -113.2, 301, -110.4, 299, -108.4, 299, -105.4, 297, -103.4, 297, -100.399994, 295, -98.399994, 295, -95.399994, 259, -25.199997, 259, -23.399994, 251, -13.399994, 251, -11.5, 246, -7.5, 246, -6.699997, 235, -2.699997, 235, -2, 232, -2, 232, -1.1000061, 14, -10, 14, -11, -222, -2, -222, -1.1000061, -233, -2, -235.7, -2, -244.7, -7, -246.5, -7, -250.5, -12, -251, -13.399994, -252.6, -15, -253.4, -15, -258.4, -24, -259.4, -24, -294.4, -96, -295, -96, -295, -98.2, -296.4, -101, -297, -101, -297, -103.2, -298.4, -106, -299, -106, -299, -108.2, -300.4, -111, -301, -111, -301, -113.2, -302.4, -116, -303, -116, -303, -118.2, -304.4, -121, -305, -121, -305, -123.2, -306.4, -126, -307, -126, -307, -128.2, -308.4, -131, -309, -131, -309, -133.2, -310.4, -136, -311, -136, -311, -138.2, -312.4, -141, -313, -141, -313, -143.2, -314.4, -146, -315, -146, -315, -148.2, -325, -170.2, -325, -173.4, -327, -175.4, -327, -178.3, -340, -202.4, -340, -204.4, -341.6, -206, -342, -207.4, -343.6, -209, -344, -210.4, -345.6, -212, -346, -213.3, -356, -226.4, -356, -228.6, -358, -229.6)
 
-[node name="OpenedTheCarDoor" type="AudioStreamPlayer" parent="MainMenu/AnimationPlayer/CollisionShape2D/Car"]
+[node name="OpenedTheCarDoor" type="AudioStreamPlayer" parent="MainMenu/Car/Car"]
 stream = ExtResource("10_pde1v")
 volume_db = 10.0
 bus = &"SFX"
 
-[node name="Exit2" type="Button" parent="MainMenu/AnimationPlayer/CollisionShape2D/Car"]
+[node name="Exit2" type="Button" parent="MainMenu/Car/Car"]
 visibility_layer = 0
 anchors_preset = -1
 anchor_left = -0.0596346
 anchor_top = 0.241336
-anchor_right = 0.0153654
-anchor_bottom = 0.318836
-offset_left = 20.449497
-offset_top = -41.799507
-offset_right = 28.449501
-offset_bottom = -41.799507
+anchor_right = 0.032063086
+anchor_bottom = 0.3691724
+offset_left = 6.129612
+offset_top = -56.014565
+offset_right = 14.129615
+offset_bottom = -56.014565
 rotation = 8.457899e-05
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="MainMenu/AnimationPlayer/CollisionShape2D/Car"]
-offset_left = -4.4607677
-offset_top = 44.182594
-offset_right = 35.53923
-offset_bottom = 94.182594
-text = "∞"
-label_settings = SubResource("LabelSettings_pde1v")
+[node name="Windows" type="Sprite2D" parent="MainMenu/Car/Car"]
+show_behind_parent = true
+position = Vector2(0, -85)
+texture = ExtResource("10_lvy56")
 
 [node name="ФонСинт" type="Sprite2D" parent="."]
 visible = false
@@ -486,15 +380,6 @@ offset_bottom = -124.0
 button_pressed = true
 text = "CRT"
 
-[node name="CRT" type="ColorRect" parent="ФонСинт"]
-material = SubResource("ShaderMaterial_pde1v")
-offset_left = -320.0
-offset_top = -180.0
-offset_right = 320.0
-offset_bottom = 180.0
-mouse_filter = 2
-script = ExtResource("21_pde1v")
-
 [node name="Panel" type="Panel" parent="."]
 visible = false
 offset_right = 640.0
@@ -564,26 +449,29 @@ offset_right = 155.0
 offset_bottom = 84.0
 texture_normal = ExtResource("19_ocger")
 
-[connection signal="value_changed" from="options/VSlider" to="options" method="_on_v_slider_value_changed"]
-[connection signal="button_down" from="options/Controls" to="options" method="_on_controls_button_down"]
-[connection signal="toggled" from="options/CheckButton" to="options" method="_on_vsync_button_toggled"]
+[node name="CRT" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_pde1v")
+offset_right = 640.0
+offset_bottom = 360.0
+mouse_filter = 2
+script = ExtResource("21_pde1v")
+
 [connection signal="mouse_entered" from="MainMenu/Synth/Area2D" to="MainMenu/Synth/Area2D" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="MainMenu/Synth/Area2D" to="MainMenu/Synth/Area2D" method="_on_mouse_exited"]
 [connection signal="input_event" from="MainMenu/Synth/Control" to="MainMenu/Synth/Control" method="_on_input_event"]
 [connection signal="mouse_entered" from="MainMenu/Synth/Control" to="MainMenu/Synth/Control" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="MainMenu/Synth/Control" to="MainMenu/Synth/Control" method="_on_mouse_exited"]
-[connection signal="button_down" from="MainMenu/AnimationPlayer/CollisionShape2D/Car/Exit" to="MainMenu" method="_on_exit_button_down"]
-[connection signal="button_down" from="MainMenu/AnimationPlayer/CollisionShape2D/Car/Start" to="MainMenu" method="_on_start_button_down"]
-[connection signal="mouse_entered" from="MainMenu/AnimationPlayer/CollisionShape2D/Car/Area2D" to="MainMenu/AnimationPlayer/CollisionShape2D/Car/Area2D" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="MainMenu/AnimationPlayer/CollisionShape2D/Car/Area2D" to="MainMenu/AnimationPlayer/CollisionShape2D/Car/Area2D" method="_on_mouse_exited"]
-[connection signal="button_down" from="MainMenu/AnimationPlayer/CollisionShape2D/Car/Exit2" to="MainMenu" method="_on_infinity_button_down"]
+[connection signal="button_down" from="MainMenu/Car/Car/Exit" to="MainMenu" method="_on_exit_button_down"]
+[connection signal="button_down" from="MainMenu/Car/Car/Start" to="MainMenu" method="_on_start_button_down"]
+[connection signal="mouse_entered" from="MainMenu/Car/Car/Area2D" to="MainMenu/Car/Car/Area2D" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MainMenu/Car/Car/Area2D" to="MainMenu/Car/Car/Area2D" method="_on_mouse_exited"]
+[connection signal="button_down" from="MainMenu/Car/Car/Exit2" to="MainMenu" method="_on_infinity_button_down"]
 [connection signal="button_down" from="ФонСинт/BackToMain" to="ФонСинт" method="_on_back_to_main_button_down"]
 [connection signal="value_changed" from="ФонСинт/MAIN" to="ФонСинт" method="_on_main_value_changed"]
 [connection signal="value_changed" from="ФонСинт/SFX" to="ФонСинт" method="_on_sfx_value_changed"]
-[connection signal="button_down" from="ФонСинт/DeBugtton" to="options" method="_on_de_bugtton_button_down"]
 [connection signal="button_down" from="ФонСинт/DeBugtton" to="ФонСинт" method="_on_de_bugtton_button_down"]
 [connection signal="pressed" from="ФонСинт/DeBugtton" to="ФонСинт" method="_on_de_bugtton_pressed"]
-[connection signal="toggled" from="ФонСинт/DeBugtton" to="options" method="_on_de_bugtton_toggled"]
 [connection signal="value_changed" from="ФонСинт/Volume" to="ФонСинт" method="_on_volume_value_changed"]
 [connection signal="value_changed" from="ФонСинт/Speed" to="ФонСинт" method="_on_speed_value_changed"]
 [connection signal="value_changed" from="ФонСинт/Voicelines" to="ФонСинт" method="_on_voicelines_value_changed"]

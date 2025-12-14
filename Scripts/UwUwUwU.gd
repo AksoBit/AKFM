@@ -12,13 +12,6 @@ func _process(delta: float) -> void:
 
 
 func _on_mouse_entered() -> void:
-	$"../../../../Synth/Control".monitoring = false
-	$"../../../../Synth/Area2D".monitoring = false
-	$"../../../../Synth/Control".visible = false
-	$"../../../../Synth/Area2D".visible = false
-
+	monitoring = true
 func _on_mouse_exited() -> void:
-	$"../../../../Synth/Control".monitoring = true
-	$"../../../../Synth/Area2D".monitoring = true
-	$"../../../../Synth/Control".visible = true
-	$"../../../../Synth/Area2D".visible = true
+	monitoring = false

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://fxda0l6enmg2"
+path="res://.godot/imported/308 Permanent Redirect.ogg-729ea11ed0fd12cf1f8c68561762183c.oggvorbisstr"
+
+[deps]
+
+source_file="res://Music/AksoBit/308 Permanent Redirect.ogg"
+dest_files=["res://.godot/imported/308 Permanent Redirect.ogg-729ea11ed0fd12cf1f8c68561762183c.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

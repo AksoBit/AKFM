@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://vq741q4jhd1i"
+path="res://.godot/imported/207 Multi-Status (INTRO).ogg-f5185f09cffce6ab7f05988e8c43be42.oggvorbisstr"
+
+[deps]
+
+source_file="res://Music/Polygon/207 Multi-Status (INTRO).ogg"
+dest_files=["res://.godot/imported/207 Multi-Status (INTRO).ogg-f5185f09cffce6ab7f05988e8c43be42.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

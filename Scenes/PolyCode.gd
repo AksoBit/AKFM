@@ -4,6 +4,7 @@ var DontLetMeCook = 0
 #Поняли? Типа Enemy Counter, EnCounter... Ха... Ха... Да, я понял, это не смешно. В этом даже почти шутки нет.
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	Global.MusicPack = 4
 	$AnimatedSprite2D.play("default")
 
 
@@ -16,9 +17,13 @@ func _process(delta: float) -> void:
 func new_enemy():
 	EnCounter += 1
 	if EnCounter >= 0:
-		$UwUGG.get_node("UwUGG").EPICER_MUSIK()
+		$UwUGG.get_node("UwUGG/MusicPlayer").EPICER_MUSIK()
 func enemy_dies():
 	EnCounter -= 1
 	if EnCounter <= 0:
 		EnCounter = 0
-		$UwUGG.get_node("UwUGG").calm_down()
+		$UwUGG.get_node("UwUGG/MusicPlayer").calm_down()
+
+
+func _on_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://Scenes/Motorslice/Motorender.tscn")

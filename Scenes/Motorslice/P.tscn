@@ -1,0 +1,423 @@
+[gd_scene load_steps=32 format=3 uid="uid://bc1yemd064vid"]
+
+[ext_resource type="Script" uid="uid://b4sd6nox4umqx" path="res://Scripts/Motorslice/p.gd" id="1_t88ls"]
+[ext_resource type="AudioStream" uid="uid://b6o2lwyfadj0m" path="res://Music/1xx/100 Continue.ogg" id="5_d46va"]
+[ext_resource type="AudioStream" uid="uid://coij0gd3cdwwl" path="res://Sounds/Motorslice/SandStep.wav" id="5_rqw4p"]
+[ext_resource type="Script" uid="uid://cjkhg4ona4kfl" path="res://Scripts/MC/MusicPlayer.gd" id="6_5qodf"]
+[ext_resource type="AudioStream" uid="uid://cf2o32vs5xb6e" path="res://Sounds/Dash.wav" id="7_5j3ke"]
+[ext_resource type="Script" uid="uid://cswi8dc6b510a" path="res://Scripts/step.gd" id="9_mab8b"]
+[ext_resource type="Texture2D" uid="uid://c841a2waq5wsn" path="res://Sprites/Motorslice/World/SandPart.png" id="9_rqw4p"]
+[ext_resource type="AudioStream" uid="uid://dtrna5wav7pvs" path="res://Sounds/MC/Whoosh1.wav" id="10_dmp4b"]
+[ext_resource type="AudioStream" uid="uid://dtyqf6s16v3y5" path="res://Sounds/hitHurt.wav" id="11_s4qvk"]
+[ext_resource type="Texture2D" uid="uid://ujoomtacgmr7" path="res://Sprites/Motorslice/P/P.png" id="12_rqw4p"]
+[ext_resource type="Texture2D" uid="uid://csonpemk2p3s3" path="res://Other/curva.tres" id="13_2e5rm"]
+[ext_resource type="FontFile" uid="uid://da8s7os3013x" path="res://Fonts/DepartureMono-Regular.otf" id="13_f2s80"]
+[ext_resource type="Script" uid="uid://c0b27usf4hees" path="res://Scripts/Motorslice/OrbieCam.gd" id="14_t88ls"]
+[ext_resource type="Shader" uid="uid://cie8slgga3ka4" path="res://Shaders/Flashing.gdshader" id="14_uly1j"]
+[ext_resource type="Texture2D" uid="uid://5w42vvbholc0" path="res://Sprites/Motorslice/World/particle.png" id="15_7b6j8"]
+[ext_resource type="Script" uid="uid://d0tncl7jf4b5o" path="res://Scripts/Motorslice/debugger.gd" id="15_f2s80"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f643e"]
+size = Vector2(49, 65)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wu0m5"]
+size = Vector2(18, 55)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lgkhq"]
+particle_flag_align_y = true
+particle_flag_disable_z = true
+initial_velocity_max = 79.96
+gravity = Vector3(0, 98, 0)
+alpha_curve = ExtResource("13_2e5rm")
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_73kql"]
+shader = ExtResource("14_uly1j")
+shader_parameter/Flashing = false
+shader_parameter/White = false
+
+[sub_resource type="Animation" id="Animation_ssrd1"]
+resource_name = "Attack"
+length = 0.26667002
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Animations:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.13333334, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_nhhmn"]
+resource_name = "Idle"
+length = 4.0000033
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Animations:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6666667, 1.3333334, 2, 2.6666667, 3.3333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [3, 4, 6, 5, 3, 5]
+}
+
+[sub_resource type="Animation" id="Animation_bcvmy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Animations:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("footstepart:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Step:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("footstepart2:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_kfw33"]
+resource_name = "Run"
+length = 0.80000335
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Animations:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666666, 0.13333334, 0.2, 0.26666665, 0.3333333, 0.39999998, 0.4666667, 0.5333333, 0.6, 0.6666666, 0.73333335),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [8, 7, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("footstepart:emitting")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.06666667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Step:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.06666667, 0.3, 0.5, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Step")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"random_pitch"
+}, {
+"args": [],
+"method": &"random_pitch"
+}]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("footstepart2:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_f2s80"]
+resource_name = "Slide"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Animations:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [19]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nhhmn"]
+_data = {
+&"Attack": SubResource("Animation_ssrd1"),
+&"Idle": SubResource("Animation_nhhmn"),
+&"RESET": SubResource("Animation_bcvmy"),
+&"Run": SubResource("Animation_kfw33"),
+&"Slide": SubResource("Animation_f2s80")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7b6j8"]
+size = Vector2(18, 55)
+
+[sub_resource type="LabelSettings" id="LabelSettings_7b6j8"]
+font = ExtResource("13_f2s80")
+font_size = 11
+font_color = Color(0, 0, 0, 1)
+outline_size = 3
+
+[sub_resource type="Curve" id="Curve_am1lo"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.15827338, 0.9662922), 0.0, 0.0, 0, 0, Vector2(0.82014394, 0.92134833), -0.614749, -0.614749, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_rqw4p"]
+curve = SubResource("Curve_am1lo")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_f2s80"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(320, 180, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+angle_min = -720.0
+angle_max = 720.0
+inherit_velocity_ratio = 1.0
+initial_velocity_max = 30.0
+gravity = Vector3(0, 0, 0)
+alpha_curve = SubResource("CurveTexture_rqw4p")
+turbulence_enabled = true
+
+[node name="Node2D" type="Node2D"]
+
+[node name="P" type="CharacterBody2D" parent="."]
+z_index = 1
+position = Vector2(320, 301)
+collision_layer = 16385
+collision_mask = 15
+script = ExtResource("1_t88ls")
+
+[node name="Area2D" type="Area2D" parent="P"]
+scale = Vector2(-1, 1)
+collision_mask = 14
+monitoring = false
+
+[node name="HitArea" type="CollisionShape2D" parent="P/Area2D"]
+position = Vector2(-15.5, -4.5)
+shape = SubResource("RectangleShape2D_f643e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="P"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_wu0m5")
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="P"]
+stream = ExtResource("5_d46va")
+bus = &"Music"
+script = ExtResource("6_5qodf")
+
+[node name="SoundPlayerMC" type="AudioStreamPlayer2D" parent="P"]
+stream = ExtResource("7_5j3ke")
+bus = &"SFX"
+
+[node name="Step" type="AudioStreamPlayer2D" parent="P"]
+stream = ExtResource("5_rqw4p")
+volume_db = 24.0
+max_polyphony = 5
+bus = &"SFX"
+script = ExtResource("9_mab8b")
+
+[node name="Whoosh" type="AudioStreamPlayer2D" parent="P"]
+stream = ExtResource("10_dmp4b")
+bus = &"SFX"
+
+[node name="Hit" type="AudioStreamPlayer2D" parent="P"]
+stream = ExtResource("11_s4qvk")
+bus = &"SFX"
+
+[node name="Coyote" type="Timer" parent="P"]
+wait_time = 0.05
+one_shot = true
+
+[node name="footstepart" type="GPUParticles2D" parent="P"]
+texture_filter = 1
+position = Vector2(0, 26)
+rotation = -1.5708
+emitting = false
+amount = 10
+texture = ExtResource("9_rqw4p")
+lifetime = 0.3
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_lgkhq")
+
+[node name="Animations" type="Sprite2D" parent="P"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_73kql")
+position = Vector2(0, -5.0000076)
+texture = ExtResource("12_rqw4p")
+hframes = 5
+vframes = 4
+frame = 4
+
+[node name="SlidePart" type="GPUParticles2D" parent="P"]
+texture_filter = 1
+position = Vector2(0, 26)
+rotation = -1.5708
+emitting = false
+amount = 20
+texture = ExtResource("9_rqw4p")
+lifetime = 0.3
+process_material = SubResource("ParticleProcessMaterial_lgkhq")
+
+[node name="footstepart2" type="GPUParticles2D" parent="P"]
+texture_filter = 1
+position = Vector2(0, 26)
+rotation = -1.5708
+emitting = false
+amount = 10
+texture = ExtResource("9_rqw4p")
+lifetime = 0.3
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_lgkhq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="P"]
+libraries = {
+&"": SubResource("AnimationLibrary_nhhmn")
+}
+
+[node name="RayCast2D" type="RayCast2D" parent="P"]
+position = Vector2(0, -28)
+target_position = Vector2(32, 0)
+collision_mask = 2
+
+[node name="ShiftDetector" type="Area2D" parent="P"]
+scale = Vector2(-1, 1)
+collision_mask = 16
+
+[node name="HitArea" type="CollisionShape2D" parent="P/ShiftDetector"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_7b6j8")
+
+[node name="WallRun" type="Timer" parent="P"]
+wait_time = 0.5
+one_shot = true
+
+[node name="Debugger" type="Label" parent="P"]
+visible = false
+texture_filter = 1
+offset_left = -13.0
+offset_top = -62.0
+offset_right = 27.0
+offset_bottom = -39.0
+text = "UwU"
+label_settings = SubResource("LabelSettings_7b6j8")
+script = ExtResource("15_f2s80")
+
+[node name="Slide" type="Timer" parent="P"]
+wait_time = 2.0
+one_shot = true
+
+[node name="kmp" type="Area2D" parent="P"]
+scale = Vector2(-1, 1)
+collision_mask = 32
+
+[node name="HitArea" type="CollisionShape2D" parent="P/kmp"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_7b6j8")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+z_index = 2
+position = Vector2(320, 180)
+script = ExtResource("14_t88ls")
+
+[node name="Panel" type="Panel" parent="Camera2D"]
+visible = false
+offset_left = -321.0
+offset_top = 114.0
+offset_right = 319.0
+offset_bottom = 180.0
+
+[node name="Label" type="Label" parent="Camera2D/Panel"]
+layout_mode = 0
+offset_top = 21.0
+offset_right = 640.0
+offset_bottom = 44.0
+text = "Не пытайся бежать."
+horizontal_alignment = 1
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Camera2D"]
+texture_filter = 1
+amount = 10
+texture = ExtResource("15_7b6j8")
+lifetime = 3.0
+process_material = SubResource("ParticleProcessMaterial_f2s80")
+
+[connection signal="body_entered" from="P/Area2D" to="P/Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="P/Area2D" to="P/Area2D" method="_on_body_exited"]
+[connection signal="finished" from="P/Step" to="P/Step" method="_on_finished"]
+[connection signal="timeout" from="P/Coyote" to="P" method="_on_coyote_timeout"]
+[connection signal="animation_finished" from="P/AnimationPlayer" to="P/Area2D" method="_on_animation_player_animation_finished"]
+[connection signal="body_entered" from="P/ShiftDetector" to="P" method="_on_shift_detector_body_entered"]
+[connection signal="body_exited" from="P/ShiftDetector" to="P" method="_on_shift_detector_body_exited"]
+[connection signal="timeout" from="P/WallRun" to="P" method="_on_wall_run_timeout"]
+[connection signal="timeout" from="P/Slide" to="P" method="_on_slide_timeout"]
+[connection signal="body_entered" from="P/kmp" to="P" method="_on_kmp_body_entered"]
+[connection signal="body_exited" from="P/kmp" to="P" method="_on_kmp_body_exited"]

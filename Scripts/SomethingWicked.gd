@@ -30,7 +30,7 @@ extends CharacterBody2D
 #Рывки:
 var DashOverdose = 0 #Уровень Передоза 
 var DashesUsed = 0 #Количество рывков, необходимо для Передоза
-@export var dashesleft = 2 #Количество рывков, которые можно совершить без отката.
+var dashesleft = 2 #Количество рывков, которые можно совершить без отката.
 var DashRegen = 0 #Я хз чстнслв
 var candash = true #При false отключает рывки
 
@@ -43,7 +43,7 @@ var iswalkin = false
 
 var admin = false #Дает читы как в полигоне
 var IsInBackrooms = false #Для закулисья
-var IsAlreadyDied = false #Для счетчика смертей
+var AlreadyDied = false #Для счетчика смертей
 var IsInLib = false #Нужна для того, чтобы там работала книжка
 
 #Движения всякие
@@ -55,18 +55,14 @@ var fast_fall_gravity_multiplier = 1.5
 var isknockbacking = false
 
 #Эм, это... Это.
-var shift_pressed := false
-var shift_pressed_time := 0.0
-var tap_threshold := 0.2
-var IsActuallyDrawin = 0
 var ShiftClick = false
 var HitstoppingNow = false
 var hitstopdur = 0
 var DPM = 0
-
+var death_reason = "Я вообще хз лол"
 #Овердрайв!
 var BladePoint1 = Vector2.ZERO #Используется для следов от рывков 
-var BladePoint2 = Vector2.ZERO
+var BladePoint2 = Vector2.ZERO #Как и эта
 var OVERDRIVEN = false #Сам факт овердрайва
 var OVERDRIVE_TYPE = 1 #Тип оружия
 var energy := 128 #Мне некуда было запихнуть саму энергию, пускай туточке будет
@@ -74,10 +70,6 @@ var GOD_MODE = false
 var OVERLOAD := 0
 
 #Музыка!
-var music = Global.music
-var AlreadyPlaying2 = false
-var AlreadyPlaying = false
-var AlreadyOver200 = false
 var NotRegen = true
 var EnReg = true
 var NotCoreRegening = true
@@ -86,7 +78,7 @@ var NotRegening = true
 var MusicPack = Global.MusicPack
 var CoreCounter := 0
 var rng = RandomNumberGenerator.new()
-var Whooshes = [1, 2, 3]
+var Whooshes
 
 
 #А туточке всякие загрузки и пути
@@ -98,30 +90,29 @@ var CORE = preload("res://Scenes/CORE.tscn") #Ядро
 var Rodger = preload("res://Scenes/ReRodger.tscn") #Роджер для спавна
 var Hack = preload("res://Scenes/Hack.tscn") #Хэк для спавна
 var TechnoZen = preload("res://Scenes/TechnoZen.tscn") #Техно для спавна
-var NeonThingy = preload("res://Scenes/MC/NeonThingy.tscn")
-var TEST_THINGY = preload("res://Scenes/NeonGG.tscn")
+var NeonThingy = preload("res://Scenes/MC/NeonThingy.tscn") 
+var TEST_THINGY = preload("res://Scenes/RemIS/RemIS.tscn")
+var overdriver = preload("res://Scenes/Polygon/overdriver.tscn")
+var Newoverdriver
+@onready var music = $MusicPlayer
+#НУ ПРОСТИТЕ ЗА ЭТО, Я НЕ УМЕЮ ПО-ДРУГОМУ
+@onready var Scene = get_parent().get_parent().get_parent().get_parent().get_parent()
 @onready var EnergyIcon = get_parent().get_parent().get_parent().get_parent().get_parent().get_node("SubViewportContainer2/SubViewport/UI/UI")
+@onready var DeathMessage = get_parent().get_parent().get_parent().get_parent().get_parent().get_node("SubViewportContainer2/SubViewport/UI/Death")
 @onready var EnergyLable = get_parent().get_parent().get_parent().get_parent().get_parent().get_node("SubViewportContainer2/SubViewport/UI/UI/RichTextLabel")
 @onready var TextPanel = get_parent().get_parent().get_parent().get_parent().get_parent().get_node("SubViewportContainer2/SubViewport/UI/Panel")
 @onready var OverloadBar = get_parent().get_parent().get_parent().get_parent().get_parent().get_node("SubViewportContainer2/SubViewport/UI/OverloadBar")
 @onready var AttackArea = $Area2D
 func _ready() -> void:
+	Input.set_custom_mouse_cursor(preload("res://Sprites/Misc/CURSOR.png"))
 	update_overload()
 	await get_tree().process_frame
 	if OS.get_unique_id() == "{5fffa4c0-29de-11eb-9669-806e6f6e6963}":
 		admin = true
 		transfer_to_text_panel("ПРИВЕТ, ХОЗЯИН~", false, Color.from_rgba8(0, 68, 255, 255), Color.from_rgba8(148, 175, 255, 255))
-	MusicPack = Global.MusicPack
-	$"ПервыйПлеер".pitch_scale = Global.MusicPitch
-	if MusicPack == 1:
-		music = load("res://Music/1xx/100 Continue.ogg")
-	elif MusicPack == 2:
-		music = load("res://Music/5xx/508 Loop Detected.wav")
-	elif MusicPack == 3:
-		music = load("res://Sounds/w9u2jbrxo7scu2gicg67bltaf1cy7nycy2ior.mp3")
 	update_energy()
 	DPMstuff()
-	MusicPlayer()
+	music.play_from_pos()
 func _process(delta):
 	if energy > 256:
 		energy = 256
@@ -135,38 +126,8 @@ func _process(delta):
 		NotCoreRegening = false
 		CoreReg = true
 		$CoreRegen.start()
-	if energy < 200:
-		AlreadyOver200 = false
-	if energy >= 200 and not OVERDRIVEN and AlreadyPlaying and not AlreadyOver200:
-		MusicPack = Global.MusicPack
-		if MusicPack == 1 and not Global.OVERDRUM:
-			music = load('res://Music/1xx/103 Early Hints (OVER 200).ogg')
-		elif MusicPack == 2 and not Global.OVERDRUM:
-			music = load("res://Music/4xx/416 Range Not Satisfiable (OVER 200).wav")
-		elif MusicPack == 1 and Global.OVERDRUM:
-			music = load('res://Music/1xx/103 Early Hints (OVER 200).ogg')
-		elif MusicPack == 2 and Global.OVERDRUM:
-			music = load("res://Music/BREAKCORE/4xx/[BREAK] 416 Range Not Satisfiable (OVER 200).ogg")
-		AlreadyOver200 = true
-		AlreadyPlaying2 = false
-		MusicPlayer()
-	elif not OVERDRIVEN and AlreadyPlaying and not AlreadyPlaying2 and not AlreadyOver200:
-		if MusicPack == 1 and not Global.OVERDRUM:
-			music = load("res://Music/1xx/103 Early Hints.ogg")
-		elif MusicPack == 2 and not Global.OVERDRUM:
-			music = load("res://Music/4xx/416 Range Not Satisfiable.wav")
-		elif MusicPack == 1 and Global.OVERDRUM:
-			music = load("res://Music/1xx/103 Early Hints.ogg")
-		elif MusicPack == 2 and Global.OVERDRUM:
-			music = load("res://Music/BREAKCORE/4xx/[BREAK] 416 Range Not Satisfiable.ogg")
-		AlreadyPlaying2 = true
-		MusicPlayer()
-	if IsActuallyDrawin >= 0:
-		queue_redraw()
-	
 	if energy <= 0:
 		die()
-		
 	if DashesUsed >= 2:
 		DashOverdose = 1
 		if DashesUsed >= 5:
@@ -180,13 +141,6 @@ func _process(delta):
 		NotRegen = false 
 		DashRegen = DashesUsed
 		$DashRegen.start()
-	if shift_pressed and not OVERDRIVEN and candash:
-		var hold_time = (Time.get_ticks_msec() / 1000.0) - shift_pressed_time
-		if hold_time >= tap_threshold:
-			IsActuallyDrawin = 1
-	elif HitstoppingNow == false:
-		IsActuallyDrawin = 0
-
 func _physics_process(delta):
 	var current_gravity = base_gravity
 	if velocity.y > 0 and not is_on_floor():
@@ -200,11 +154,6 @@ func _physics_process(delta):
 		if not isknockbacking:
 			var direction = Input.get_axis("ui_left", "ui_right")
 			velocity.x = direction * speed
-			if direction == 0 or not is_on_floor(): 
-				$Step.stop()
-			else:
-				if not $Step.playing:
-					$Step.play()
 	if velocity.x < 0:
 		$Animations.flip_h = true
 		$Animations.texture.normal_texture = preload("res://Sprites/MC/NormalSiriFliped.png")
@@ -232,8 +181,9 @@ func _physics_process(delta):
 		$AnimationPlayer.play("Run")
 	elif not AttackArea.attacking:
 		$AnimationPlayer.play("Idle")
-
 func _input(event):
+	if AlreadyDied and not event is InputEventMouse and event.pressed:
+		restart()
 	if event is InputEventKey and event.keycode == KEY_F and IsInLib:
 		if event.pressed:
 			pass
@@ -251,16 +201,20 @@ func _input(event):
 			NEWCORE.get_node("Core").MC = self
 			NEWCORE.get_node("Core").linear_velocity += velocity / 2
 			CoreReg = false
-			if not GOD_MODE:
-				CoreCounter += 1 
-				if CoreCounter >= 2:
-					if CoreCounter >= 4:
-						if CoreCounter >= 6:
-							transfer_to_text_panel("overcore", true, Color.from_rgba8(51, 0, 2, 255))
-						else:
-							transfer_to_text_panel("overcore", true, Color.from_rgba8(103, 0, 2, 255))
+			CoreCounter += 1 
+			if CoreCounter >= 3:
+				if CoreCounter >= 5:
+					if CoreCounter >= 7:
+						transfer_to_text_panel("overcore", true, Color.from_rgba8(51, 0, 2, 255))
 					else:
-						transfer_to_text_panel("overcore", true, Color.from_rgba8(152, 0, 2, 255))
+						transfer_to_text_panel("overcore", true, Color.from_rgba8(103, 0, 2, 255))
+				else:
+					transfer_to_text_panel("overcore", true, Color.from_rgba8(152, 0, 2, 255))
+			if CoreCounter < 2 and not GOD_MODE:
+				energy -= 5
+			if energy <= 0:
+				death_reason = "Передоз ядрами"
+			elif not GOD_MODE:
 				energy -= CoreCounter * 5
 			update_energy()
 	if event is InputEventKey and event.keycode == KEY_1 and admin:
@@ -275,14 +229,16 @@ func _input(event):
 			if get_parent().get_parent().has_method("new_enemy"):
 				get_parent().get_parent().new_enemy()
 			var NewHack = Hack.instantiate()
-			get_parent().get_parent().add_child(NewHack)	
+			get_parent().get_parent().add_child(NewHack)
 			NewHack.global_position = get_global_mouse_position()
 			NewHack.get_node("ManHack").activate()
 	if event is InputEventKey and event.keycode == KEY_7 and admin:
 		if not event.pressed:
 			var NewTest = TEST_THINGY.instantiate()
 			get_parent().get_parent().add_child(NewTest)
-			NewTest.global_position = get_global_mouse_position()
+			if get_parent().get_parent().has_method("new_enemy"):
+				get_parent().get_parent().new_enemy()
+			NewTest.get_node("RemIS").global_position = get_global_mouse_position()
 	if event is InputEventKey and event.keycode == KEY_4 and admin:
 		if not event.pressed:
 			if get_parent().get_parent().has_method("new_enemy"):
@@ -291,6 +247,13 @@ func _input(event):
 			get_parent().get_parent().add_child(NewTechnoZen)
 			NewTechnoZen.global_position = get_global_mouse_position()
 			NewTechnoZen.get_node("TechnoZen").activate()
+	if event is InputEventKey and event.keycode == KEY_O and admin:
+		if event.is_pressed() and Newoverdriver == null:
+			Newoverdriver = overdriver.instantiate()
+			get_parent().get_parent().add_child(Newoverdriver)
+			Newoverdriver.global_position = get_global_mouse_position()
+		elif event.is_released():
+			Newoverdriver.queue_free()
 	if event is InputEventKey and event.keycode == KEY_5 and admin:
 		if not event.pressed:
 			OVERDRIVE()
@@ -309,41 +272,17 @@ func _input(event):
 			NewRodger.global_position = get_global_mouse_position()
 			NewRodger.get_node("Roach").activate()
 	if event is InputEventKey and event.keycode == KEY_ENTER:
-		if not IsInBackrooms:
+		if not AlreadyDied:
 			get_tree().change_scene_to_file("res://Scenes/menu.tscn")
-		else:
-			$"../Camera2D/Panel".visible = true
-			await get_tree().create_timer(2).timeout
-			$"../Camera2D/Panel".visible = false
 	if event is InputEventKey and event.keycode == KEY_8 and admin:
-		Engine.time_scale = 0.2
+		Engine.time_scale = 0.3
 	if event is InputEventKey and event.keycode == KEY_SHIFT and candash:
 		if event.pressed:
-			shift_pressed = true
-			shift_pressed_time = Time.get_ticks_msec() / 1000.0
-		elif ShiftClick == true:
-			shift_pressed = false
-			ShiftClick = false
-			var hold_time = (Time.get_ticks_msec() / 1000.0) - shift_pressed_time
-			if hold_time < tap_threshold:
-				print('pong')
-				dash(false)
-				hit()
-			else:
-				print('ping')
-				dash(true)
-				hit()
+			pass
 		else:
-			shift_pressed = false
-			var hold_time = (Time.get_ticks_msec() / 1000.0) - shift_pressed_time
-			if hold_time < tap_threshold:
-				dash(false)
-			else:
-				dash(true)
+			dash()
 	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed and shift_pressed:
-			ShiftClick = true
-		elif event.button_index == MOUSE_BUTTON_LEFT and event.pressed and not AttackArea.attacking:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed and not AttackArea.attacking:
 			hit()
 		elif event.button_index == MOUSE_BUTTON_RIGHT and event.pressed and not AttackArea.attacking:
 			if OVERDRIVEN and OVERDRIVE_TYPE == 1:
@@ -352,34 +291,23 @@ func _input(event):
 				parryMC()
 	if event is InputEventKey and event.keycode == KEY_C:
 		if event.pressed:
-			Engine.time_scale = 0
+			Engine.time_scale = 0.0000000001
 		else:
 			Engine.time_scale = 1
-func dash(IsWicked): #Параметр IsWicked отвечает за то, будет рывок направленным или нет
+func dash():
 	var to_mouse = 0
 	if not isdashing and dashesleft > 0:
 		collision_mask = (1 << 0) | (1 << 1) | (1 << 3)
 		collision_layer = (1 << 9) 
 		BladePoint1 = global_position
-		if IsWicked:
-			var mouse_pos = get_global_mouse_position()
-			to_mouse = (mouse_pos - global_position).normalized()
-			if not OVERDRIVEN:
-				velocity = to_mouse * DashSpeed
-			else:
-				velocity = to_mouse * DashSpeed * 1.5
+		var mouse_pos = get_global_mouse_position()
+		to_mouse = (mouse_pos - global_position).normalized()
+		if not OVERDRIVEN:
+			velocity = to_mouse * DashSpeed
 		else:
-			var direction = Input.get_axis("ui_left", "ui_right")
-			if direction == 0:
-				direction = -1 if $Animations.flip_h else 1
-			velocity.y = 0
-			if not OVERDRIVEN:
-				velocity.x = direction * DashSpeed
-			else:
-				velocity.x = direction * DashSpeed + 1.5
+			velocity = to_mouse * DashSpeed * 1.5
 		base_gravity = 0
 		isdashing = true
-		dashesleft -= 1
 		overdose()
 		$SoundPlayerMC.pitch_scale = randf_range(0.9, 1.1)
 		$SoundPlayerMC.play()
@@ -391,20 +319,20 @@ func overdose():
 	DashesUsed += 1
 	match DashOverdose:
 		1:
-			energy -= 10
+			energy -= 5
 			OVERLOAD -= 1
 			EnReg = false
 			update_energy()
 			transfer_to_text_panel("overdash", true, Color.from_rgba8(152,0,2,255))
 		2:
 			OVERLOAD -= 2
-			energy -= 20
+			energy -= 10
 			EnReg = false
 			update_energy()
 			transfer_to_text_panel("overdash", true, Color.from_rgba8(103,0,2, 255))
 		3:
 			OVERLOAD -= 3
-			energy -= 30
+			energy -= 20
 			EnReg = false
 			update_energy()
 			transfer_to_text_panel("overdash", true, Color.from_rgba8(51,0,2, 255))
@@ -441,7 +369,8 @@ func OverdriveRift():
 	NeonMain.global_rotation_degrees += 90
 func _on_dashtime_timeout():
 	collision_layer = (1 << 0) | (1 << 14)
-	collision_mask = (1 << 0) | (1 << 1) | (1 << 2) | (1 << 3)
+	collision_mask = (1 << 0) | (1 << 1) | (1 << 2)
+	dashesleft -= 1
 	if OVERDRIVEN and OVERDRIVE_TYPE == 1:
 		OverdriveRift()
 		base_gravity = 1200
@@ -451,11 +380,6 @@ func _on_dashtime_timeout():
 		base_gravity = 1200
 		velocity = Vector2.ZERO
 		isdashing = false
-func _draw():
-	#Рисует линию для рывка
-	var mouse_pos = get_global_mouse_position()
-	draw_line(Vector2.ZERO, mouse_pos - global_position, Color.WHITE, IsActuallyDrawin)
-
 func update_energy():
 	#I, EvaX, humbly submit a toast
 	#To Nicholas Alexander
@@ -492,12 +416,6 @@ func update_energy():
 			EnergyIcon.play("64")
 		elif energy > 0:
 			EnergyIcon.play("32")
-
-
-
-
-
-
 		energy = clamp(energy, 0, 256)
 	var EnergyButWithZeros = str(energy).pad_zeros(3)
 	var FirstNumUwU = EnergyButWithZeros.substr(0, 1)
@@ -512,19 +430,26 @@ func _on_dash_regen_timeout() -> void:
 		DashesUsed -= 1
 	NotRegen = true
 func die():
+	DeathMessage.visible = true
+	if IsInLib:
+		DeathMessage.get_node("Label").text = str("
+		Счет — ", Global.lib_score,"
+		Лучший счет — ", Save.get_value("~NUMBERS~", "BestLibScore"),"
+		Убийств — ", Global.BodyCountForCoolness,"
+		Причина смерти — ", death_reason, "
+		")
 	#Просто смерть. Хреново сделанная.
 	global_rotation_degrees = 90
 	speed = 0
 	velocity. x = 0
 	velocity.y = 0
 	jump_force = 0
-	$"ПервыйПлеер".pitch_scale = lerp($"ПервыйПлеер".pitch_scale, 0.0, 0.02)
-	Engine.time_scale = lerp($"ПервыйПлеер".pitch_scale, 0.0, 0.02)
-	if IsAlreadyDied == false:
-		IsAlreadyDied = true
+	music.pitch_scale = lerp(music.pitch_scale, 0.0, 0.02)
+	await get_tree().create_timer(1).timeout
+	if AlreadyDied == false:
+		AlreadyDied = true
 		var Deaths = Save.get_value("~NUMBERS~", "YourselfKilled", ) + 1
 		Save.set_value("~NUMBERS~", "YourselfKilled", Deaths )
-	Engine.time_scale = 0
 func _on_dash_regen_2_timeout():
 	return
 	#ЗАРЕЗЕРВИРОВАННО
@@ -541,66 +466,50 @@ func take_damage(damage = 1, hitstopdur = 0, OverHeatDamage = 1, reason = null):
 		if OVERLOAD > 0:
 			OVERLOAD -= OverHeatDamage
 		if hitstopdur > 0:
-			PitchShiftDamage()
+			music.PitchShiftDamage(hitstopdur)
 		if hitstopdur > 0 and not HitstoppingNow:
 			hitstop(hitstopdur)
 		elif HitstoppingNow:
 			print("хитстоп на ", hitstopdur, " не удался из-за наложения")
-		var OverDamage = 1
-		if OVERLOAD < 10:
-			OverDamage = 1
-		elif OVERLOAD < 20:
-			OverDamage = 1.2
-		elif OVERLOAD < 30:
-			OverDamage = 1.4
-		elif OVERLOAD < 40:
-			OverDamage = 1.6
-		elif OVERLOAD < 50:
-			OverDamage = 1.8
-		elif OVERLOAD < 60:
-			OverDamage = 2
-		elif OVERLOAD < 70:
-			OverDamage = 2.2
-		elif OVERLOAD < 80:
-			OverDamage = 2.4
-		elif OVERLOAD < 90:
-			OverDamage = 2.6
-		elif OVERLOAD < 100:
-			OverDamage = 2.8
-		else:
-			OverDamage = 3
+		var OverDamage = calc_overdamage()
 		energy -= int(damage * OverDamage)
+		if energy <= 0:
+			death_reason = reason
 		update_energy()
 		update_overload()
 		EnReg = false
 	knockback()
-func EPICER_MUSIK():
-	if not OVERDRIVEN and not AlreadyPlaying:
-		if MusicPack == 1 and not Global.OVERDRUM:
-			music = load('res://Music/1xx/103 Early Hints.ogg')
-		elif MusicPack == 2 and not Global.OVERDRUM:
-			music = load("res://Music/4xx/416 Range Not Satisfiable.wav")
-		elif MusicPack == 1 and Global.OVERDRUM:
-			music = load('res://Music/1xx/103 Early Hints.ogg')
-		elif MusicPack == 2 and Global.OVERDRUM:
-			music = load("res://Music/BREAKCORE/4xx/[BREAK] 416 Range Not Satisfiable.ogg")
-		MusicPlayer()
-		AlreadyPlaying = true
-func calm_down():
-	if not OVERDRIVEN:
-		if MusicPack == 1:
-			music = load('res://Music/1xx/100 Continue.ogg')
-		elif MusicPack == 2:
-			music = load("res://Music/5xx/508 Loop Detected.wav")
-		MusicPlayer()
-		AlreadyPlaying = false
-		var AlreadyPlaying2 = false
+func calc_overdamage():
+		var OverDamage = 1
+		if OVERLOAD < 10:
+			OverDamage = 1
+		elif OVERLOAD < 20:
+			OverDamage = 1.1
+		elif OVERLOAD < 30:
+			OverDamage = 1.2
+		elif OVERLOAD < 40:
+			OverDamage = 1.3
+		elif OVERLOAD < 50:
+			OverDamage = 1.4
+		elif OVERLOAD < 60:
+			OverDamage = 1.5
+		elif OVERLOAD < 70:
+			OverDamage = 1.6
+		elif OVERLOAD < 80:
+			OverDamage = 1.7
+		elif OVERLOAD < 90:
+			OverDamage = 1.8
+		elif OVERLOAD < 100:
+			OverDamage = 1.9
+		else:
+			OverDamage = 2
+		return OverDamage
 func hitstop(hitstopdur):
 	print("хитстоп на ", hitstopdur)
 	HitstoppingNow = true
-	Engine.time_scale = 0
+	get_tree().paused = true
 	await(get_tree().create_timer(hitstopdur, true, false, true).timeout)
-	Engine.time_scale = 1
+	get_tree().paused = false
 	HitstoppingNow = false
 func hit():
 	$Area2D.monitoring = true
@@ -608,38 +517,18 @@ func hit():
 	print('Произошол тролленг')
 	$AnimationPlayer.play("Attack")
 	rng.randomize()
-	Whooshes = [Whoosh1, Whoosh2]
+	Whooshes = [Whoosh1, Whoosh2, Whoosh3]
 	var Sound = Whooshes[rng.randi() % Whooshes.size()]
 	$Whoosh.stream = Sound
 	$Whoosh.pitch_scale = randf_range(0.7, 1.3)
 	$Whoosh.play()
 func OVERDRIVE():
 	energy = 256
-	update_energy()
+	music.DoSomething(4)
 	OVERDRIVEN = true
-	if MusicPack == 1:
-		music = load("res://Sounds/All the stuff.wav")
-	elif MusicPack == 2:
-		music = load("res://Music/4xx/414 URI Too Long (pre).wav")
-	$"ПервыйПлеер".stop()
-	$"ПервыйПлеер".stream = music
-	$"ПервыйПлеер".play()
-	var OneTimeTestWarUwUNyaLol = 5.33 / Global.MusicPitch
-	await get_tree().create_timer(OneTimeTestWarUwUNyaLol).timeout
 	speed = 800
 	jump_force = 600
-	if MusicPack == 1 and not Global.OVERDRUM:
-		music = load("res://Music/1xx/101 Switching Protocols.ogg")
-	elif MusicPack == 2 and not Global.OVERDRUM:
-		music = load("res://Music/4xx/414 URI Too Long.wav")
-	elif MusicPack == 1 and Global.OVERDRUM:
-		music = load("res://Music/1xx/101 Switching Protocols.ogg")
-	elif MusicPack == 2 and Global.OVERDRUM:
-		music = load("res://Music/BREAKCORE/4xx/414 URI Too Long.ogg")
-	$"ПервыйПлеер".stop()
-	$"ПервыйПлеер".stream = music
-	$"ПервыйПлеер".play()
-	update_energy()
+	await get_tree().create_timer(5.33).timeout
 	while OVERLOAD > 0:
 		take_overheat(-1)
 		await get_tree().create_timer(0.2).timeout
@@ -650,26 +539,14 @@ func OVERDRIVE():
 	OVERLOAD = 0
 	energy = 128
 	print('Конец овердрайва')
-	if MusicPack == 1 and not Global.OVERDRUM:
-		music = load("res://Music/1xx/103 Early Hints.ogg")
-	elif MusicPack == 2 and not Global.OVERDRUM:
-		music = load("res://Music/4xx/416 Range Not Satisfiable.wav")
-	elif MusicPack == 1 and Global.OVERDRUM:
-		music = load("res://Music/1xx/103 Early Hints.ogg")
-	elif MusicPack == 2 and Global.OVERDRUM:
-		music = load("res://Music/BREAKCORE/4xx/[BREAK] 416 Range Not Satisfiable.ogg")
-	MusicPlayer()
+	update_energy()
+	music.DoSomething(2)
+func take_energy_overdrive():
+	await get_tree().create_timer(5.33 / Global.MusicPitch).timeout
 	update_energy()
 func knockback():
 	#Отбрасывание, теперь вообще отключил. Доработаю потом когда-нить
 	pass
-func MusicPlayer():
-	#Это плеер музыки. Он просто переключает музыку, лол
-	#Ничего такого
-	var pos = $"ПервыйПлеер".get_playback_position()
-	$"ПервыйПлеер".stop()
-	$"ПервыйПлеер".stream = music
-	$"ПервыйПлеер".play(pos)
 func parryMC():
 	#Паррирование! Оно включается на 0.1 секунду и обратно. Пока что почти бесполезно. 
 	#Разве что роджеров попинать да из ЯДРА сделать миниган.
@@ -695,7 +572,6 @@ func update_overload():
 	if ThirdNum == "0":
 		ThirdNum = "O"
 	OverloadBar.get_node("Label").text = str(FirstNum)
-	
 	EnergyIcon.get_node("OverheatThingy").scale.x = float(OVERLOAD) / 2
 	EnergyIcon.get_node("OverheatThingy").global_position.x = 11.5 + float(OVERLOAD) / 2
 	OverloadBar.get_node("Label2").text = str(SecondNum)
@@ -722,7 +598,6 @@ func DPMstuff():
 		await get_tree().create_timer(5).timeout
 func update_DPM(Damage):
 	DPM += Damage
-func PitchShiftDamage():
-	$"ПервыйПлеер".pitch_scale = lerp($"ПервыйПлеер".pitch_scale, 0.2, 0.2)
-	await get_tree().create_timer(0.2).timeout
-	$"ПервыйПлеер".pitch_scale = lerp($"ПервыйПлеер".pitch_scale, Global.MusicPitch, 1)
+func restart():
+	print(Scene.scene_file_path)
+	get_tree().change_scene_to_file(Scene.scene_file_path)

@@ -20,15 +20,16 @@ func _process(delta: float) -> void:
 	pass
 
 func ClrTimer(Mult, RowText):
-	await get_tree().create_timer(5).timeout
-	for i in range(9):
-		if Mult == Multiplyers[i] and RowText == Rows[i]:
-			Rows[i] = null
-			Colors[i] = null
-			OutlineColors[i] = null
-			Multiplyers[i] = null
-			get_node("Row " + str(i + 1)).visible = false
-			Aranged()
+	if get_tree() != null:
+		await get_tree().create_timer(5).timeout
+		for i in range(9):
+			if Mult == Multiplyers[i] and RowText == Rows[i]:
+				Rows[i] = null
+				Colors[i] = null
+				OutlineColors[i] = null
+				Multiplyers[i] = null
+				get_node("Row " + str(i + 1)).visible = false
+				Aranged()
 func update_text_panel(text, is_minus, text_color = Color.from_hsv(0.0, 0.0, 1.0, 1.0), outline = Color.from_rgba8(255, 255, 255, 255)):
 	while IsArranging:
 		await get_tree().process_frame

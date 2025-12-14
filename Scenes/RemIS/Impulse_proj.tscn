@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://btxy1dhr85aol"]
+
+[ext_resource type="Texture2D" uid="uid://dosj61pccdigk" path="res://Sprites/Enemies/RemIS/Impulse_proj.png" id="1_5v0ll"]
+[ext_resource type="Script" uid="uid://0hwdx8i60ljj" path="res://Scripts/Enemies/RemIS/impulse_proj.gd" id="1_rovuh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h1wpq"]
+size = Vector2(6, 6)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="proj" type="CharacterBody2D" parent="."]
+texture_filter = 1
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_rovuh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="proj"]
+shape = SubResource("RectangleShape2D_h1wpq")
+
+[node name="Area2D" type="Area2D" parent="proj/CollisionShape2D"]
+collision_layer = 0
+collision_mask = 263
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="proj/CollisionShape2D/Area2D"]
+shape = SubResource("RectangleShape2D_h1wpq")
+
+[node name="ImpulseProj" type="Sprite2D" parent="proj/CollisionShape2D/Area2D/CollisionShape2D"]
+texture_filter = 1
+texture = ExtResource("1_5v0ll")
+
+[connection signal="body_entered" from="proj/CollisionShape2D/Area2D" to="proj" method="_on_area_2d_body_entered"]

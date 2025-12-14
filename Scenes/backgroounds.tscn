@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c60j373p4na4k"]
 
-[ext_resource type="Texture2D" uid="uid://bxfpbmbaa5r1q" path="res://Sprites/backroomswalls2.png" id="1_03yjl"]
-[ext_resource type="Texture2D" uid="uid://c0qoenkh8d6nn" path="res://Sprites/backroomswalls2end.png" id="2_03yjl"]
+[ext_resource type="Texture2D" uid="uid://drt6qjri77drl" path="res://Sprites/Backrooms/backroomswalls2.png" id="1_03yjl"]
+[ext_resource type="Texture2D" uid="uid://dhw8twd1l7ou7" path="res://Sprites/Backrooms/backroomswalls2end.png" id="2_03yjl"]
 
 [node name="Node2D" type="Node2D"]
 

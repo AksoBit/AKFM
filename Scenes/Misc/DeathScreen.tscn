@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://e2sn77dnr80m"]
+
+[ext_resource type="FontFile" uid="uid://da8s7os3013x" path="res://Fonts/DepartureMono-Regular.otf" id="1_mnxji"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xmqhj"]
+font = ExtResource("1_mnxji")
+font_size = 11
+font_color = Color(1, 0, 0, 1)
+outline_size = 3
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_right = 244.0
+offset_bottom = 360.0
+text = "E 0:00:03:653   PolyButton.gd:16 @ _process(): res://Scenes/NeonGG.tscn:21 - Parse Error: [ext_resource] referenced non-existent resource at: res://Scripts/Blood.gd.
+  <C++ Source>  scene/resources/resource_format_text.cpp:40 @ _printerr()
+  <Stack Trace> PolyButton.gd:16 @ _process()
+W 0:00:04:383   GDScript::reload: The local variable \"current_speed\" is declared but never used in the block. If this is intended, prefix it with an underscore: \"_current_speed\".
+  <GDScript Error>UNUSED_VARIABLE
+  <GDScript Source>Hack.gd:55 @ GDScript::reload()
+"
+label_settings = SubResource("LabelSettings_xmqhj")
+autowrap_mode = 3

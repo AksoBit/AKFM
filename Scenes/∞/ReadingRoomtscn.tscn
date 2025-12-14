@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://mspn6hpj0565"]
+[gd_scene load_steps=36 format=3 uid="uid://mspn6hpj0565"]
 
 [ext_resource type="Texture2D" uid="uid://cf0aerflavl0p" path="res://Sprites/∞/ShelfsNoBack.png" id="1_c5ko4"]
 [ext_resource type="Texture2D" uid="uid://d1qtf5pqeojy2" path="res://Sprites/∞/Shelfs.png" id="2_s0s1c"]
@@ -9,10 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://btd3ad4g636se" path="res://Sprites/∞/Columns/Wall.png" id="7_cceer"]
 [ext_resource type="Texture2D" uid="uid://bnnd0mqrp2mxo" path="res://Sprites/∞/bookshelfs/1.png" id="8_hu3c1"]
 [ext_resource type="Texture2D" uid="uid://b0jliq5jv4i5d" path="res://Sprites/∞/Columns/Floor.png" id="9_317bb"]
-[ext_resource type="Texture2D" uid="uid://d1vcexxp8iog4" path="res://Sprites/black.png" id="10_5agm0"]
-[ext_resource type="Script" uid="uid://bu487v7gmm71h" path="res://Scripts/noclip.gd" id="11_wsgx6"]
-[ext_resource type="Script" uid="uid://b550a5shtk4rf" path="res://Scripts/LibraryTrigger.gd" id="12_je0e7"]
-[ext_resource type="Texture2D" uid="uid://bputqpnxy4uk0" path="res://Sprites/cube.png" id="13_axijp"]
+[ext_resource type="Script" uid="uid://bu487v7gmm71h" path="res://Scripts/Misc/noclip.gd" id="11_wsgx6"]
+[ext_resource type="Script" uid="uid://b550a5shtk4rf" path="res://Scripts/Triggers/LibraryTrigger.gd" id="12_je0e7"]
+[ext_resource type="Texture2D" uid="uid://j216p8k88xqh" path="res://Sprites/Misc/black.png" id="13_axijp"]
 [ext_resource type="Texture2D" uid="uid://mxuia1ypxaen" path="res://Sprites/∞/Interior/Sprite-0003.png" id="14_legp8"]
 [ext_resource type="Texture2D" uid="uid://dhhvhvxvxcao4" path="res://Sprites/∞/Interior/LightThingyIFogotpng.png" id="15_6185s"]
 
@@ -84,7 +83,7 @@ texture_region_size = Vector2i(32, 32)
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c6gy5"]
-texture = ExtResource("10_5agm0")
+texture = ExtResource("13_axijp")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 

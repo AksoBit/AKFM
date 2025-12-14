@@ -1,13 +1,13 @@
 [gd_scene load_steps=16 format=3 uid="uid://b2fif5xdntjnl"]
 
-[ext_resource type="Texture2D" uid="uid://cu5iwnion486b" path="res://Sprites/PolyEdging.png" id="1_7a06y"]
-[ext_resource type="Script" uid="uid://usb5lcs6t76y" path="res://Scripts/IMPULSE.gd" id="2_7a06y"]
-[ext_resource type="Script" uid="uid://cea6r7sdyh1m5" path="res://Scripts/MIKUMIKUBEAMHIT.gd" id="3_d53g5"]
-[ext_resource type="Texture2D" uid="uid://hm0lv6sya1th" path="res://Sprites/TechnoZen/laser.png" id="4_8w6we"]
-[ext_resource type="Texture2D" uid="uid://chkmjxija8fl8" path="res://Sprites/Spark.png" id="5_dgkiu"]
+[ext_resource type="Texture2D" uid="uid://b8exgie5odxxd" path="res://Sprites/PolyEdging.png" id="1_7a06y"]
+[ext_resource type="Script" uid="uid://usb5lcs6t76y" path="res://Scripts/Enemies/IMPULSE.gd" id="2_7a06y"]
+[ext_resource type="Script" uid="uid://cea6r7sdyh1m5" path="res://Scripts/Enemies/MIKUMIKUBEAMHIT.gd" id="3_d53g5"]
+[ext_resource type="Texture2D" uid="uid://hm0lv6sya1th" path="res://Sprites/Enemies/TechnoZen/laser.png" id="4_8w6we"]
+[ext_resource type="Texture2D" uid="uid://p4y8on6yneni" path="res://Sprites/Spark.png" id="5_dgkiu"]
 [ext_resource type="AudioStream" uid="uid://b4c85bfxd0ric" path="res://Sounds/Enemies/TechnoZen/explosion.wav" id="6_oieh4"]
 [ext_resource type="AudioStream" uid="uid://brbcplnfpl1a7" path="res://Sounds/Enemies/TechnoZen/laserShoot (2).wav" id="7_l6lnv"]
-[ext_resource type="Script" uid="uid://dq0n1a84lf4c6" path="res://Scripts/ray.gd" id="8_qns7a"]
+[ext_resource type="Script" uid="uid://dq0n1a84lf4c6" path="res://Scripts/Enemies/ray.gd" id="8_qns7a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6b3ox"]
 size = Vector2(20, 0.99999946)
@@ -72,7 +72,7 @@ script = ExtResource("2_7a06y")
 position = Vector2(0, -500)
 scale = Vector2(1, 999.99994)
 collision_layer = 8
-collision_mask = 519
+collision_mask = 535
 monitoring = false
 script = ExtResource("3_d53g5")
 

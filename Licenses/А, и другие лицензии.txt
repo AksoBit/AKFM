@@ -1,3 +1,6 @@
 Шрифт Fifaks10Dev1 - Эм... В файле лицензии написано "Fuck Kreative Korp"... Я не уверен кто его автор...
 Шрифт DepartureMono-Regular - Copyright 2022–2024 Helena Zhang (helenazhang.com), лицензия SIL OPEN FONT LICENSE Version 
 Спрайт Pip.png - Я не думаю что Пип защищен лицензией, но это отсылочка на https://www.youtube.com/@GlowyPumpkin
+Абсолютно все в папках Motorslice - https://store.steampowered.com/app/2830030/MOTORSLICE/
+Спрайты Pikat.png и PikatCooked.png - отсылка на https://www.youtube.com/@pikat
+Спрайт HollowKnight.png это отсылка на, вы догадались, Hollow Knight https://store.steampowered.com/app/367520/Hollow_Knight/

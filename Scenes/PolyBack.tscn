@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dguu3lm4p4l2p"]
 
-[ext_resource type="Texture2D" uid="uid://bcb8rpijc7vtl" path="res://Sprites/PolyBack.png" id="1_6f5o5"]
+[ext_resource type="Texture2D" uid="uid://i0rvhppvn48b" path="res://Sprites/PolyBack.png" id="1_6f5o5"]
 
 [node name="Node2D" type="Node2D"]
 

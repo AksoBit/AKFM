@@ -2,14 +2,14 @@
 
 [ext_resource type="Texture2D" uid="uid://bov04lxjbskq" path="res://Sprites/AksoBit/BSOD.png" id="1_6lxjs"]
 [ext_resource type="Shader" uid="uid://bikpltre5f3l2" path="res://Shaders/SubP.gdshader" id="1_djnlx"]
-[ext_resource type="Texture2D" uid="uid://b4q3sdhdifyot" path="res://Sprites/ФонСинт.png" id="1_xnf50"]
+[ext_resource type="Texture2D" uid="uid://brqeyumkf53xo" path="res://Sprites/ФонСинт.png" id="1_xnf50"]
 [ext_resource type="PackedScene" uid="uid://dhsclxwwchsih" path="res://Scenes/Домики.tscn" id="3_anw3t"]
 [ext_resource type="PackedScene" uid="uid://dlomnpbd24ptv" path="res://Scenes/PeyGorno.tscn" id="3_xnf50"]
 [ext_resource type="PackedScene" uid="uid://5jqidrlxo36k" path="res://Sprites/TEST.tscn" id="4_xr8db"]
 [ext_resource type="Shader" uid="uid://cie8slgga3ka4" path="res://Shaders/Flashing.gdshader" id="5_xr8db"]
 [ext_resource type="PackedScene" uid="uid://1yb4wbnegc86" path="res://Scenes/UI.tscn" id="6_anw3t"]
 [ext_resource type="Shader" uid="uid://cf7f5lsu5ynts" path="res://Shaders/CRT.gdshader" id="8_bqmdl"]
-[ext_resource type="Script" uid="uid://cx2ehyer8t20w" path="res://Scripts/CRT.gd" id="9_dntf2"]
+[ext_resource type="Script" uid="uid://cx2ehyer8t20w" path="res://Scripts/Misc/CRT.gd" id="9_dntf2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xnf50"]
 shader = ExtResource("1_djnlx")
