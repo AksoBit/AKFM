@@ -31,7 +31,7 @@ extends Node
 
 var config = ConfigFile.new()
 var path = "user://settings.cfg"
-var Version = "1.3.4"
+var Version = "1.3.5"
 func _ready():
 	if config.load(path) != OK:
 		set_value("~SOUND~", "Global", 50 )
